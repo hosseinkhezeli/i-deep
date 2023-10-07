@@ -6,7 +6,7 @@ import { useKeenSlider } from "keen-slider/react";
 import CarouselImage1 from "@public/images/rectangle-34624746.png";
 import CarouselImage2 from "@public/images/ai-innovation-7f5e61b7.webp";
 import { lightPalette } from "@/theme/components/palette/light/lightPalette";
-import CarouselSlide from "./carousel-slide";
+import CarouselSlide from "./components/carousel-slide";
 
 const MainCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

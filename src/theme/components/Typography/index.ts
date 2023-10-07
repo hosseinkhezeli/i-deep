@@ -41,6 +41,7 @@ export const typography = {
       fontWeight: 600,
       fontSize: "16px",
       lineHeight: "180%",
+      letterSpacing:"-0.3px",
       color:lightPalette.text.primary
     },
   
@@ -55,7 +56,7 @@ export const typography = {
     body2: {
       fontWeight: 400,
       fontSize: "16px",
-      lineHeight: "20px",
+      lineHeight: "150%",
       color:lightPalette.text.primary
     },
     body3: {

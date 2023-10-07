@@ -2,6 +2,7 @@ import * as React from "react";
 
 import ThemeRegistry from "@/theme/components/ThemeRegistry/ThemeRegistry";
 import DrawerAppBar from "./components/app-bar";
+import Footer from "./components/footer/footer";
 
 
 
@@ -21,6 +22,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <DrawerAppBar />
           {children}
+          <Footer/>
         </ThemeRegistry>
       </body>
     </html>

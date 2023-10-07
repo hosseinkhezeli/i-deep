@@ -86,7 +86,7 @@ const iconItems = (
         }}
       />
     </Box>
-    <Typography display={"inline-block"} variant="h5">{title}</Typography>
+    <Typography display={"inline-block"} variant="h5" width={"max-content"}>{title}</Typography>
     <Typography display={"inline-block"} variant="subtitle1" textAlign={"center"} maxWidth={350}>{description}</Typography>
   </Box>
 );

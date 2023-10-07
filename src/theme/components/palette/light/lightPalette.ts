@@ -17,7 +17,7 @@ export const lightPalette = {
     75: "#535250",
     50: "#72716E",
     25: "#9B9A97",
-    20: "#9B9A9733",
+    20: "#C7BFCD",
     back: "#EFF2F4",
   },
   divider: "#CCCCCC",
