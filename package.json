@@ -13,7 +13,7 @@
     "@emotion/cache": "latest",
     "@emotion/react": "latest",
     "@emotion/styled": "latest",
-    "@mui/icons-material": "latest",
+    "@mui/icons-material": "^5.14.12",
     "@mui/material": "latest",
     "keen-slider": "^6.8.6",
     "next": "latest",
