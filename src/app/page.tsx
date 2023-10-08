@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   return (
-    <div style={{overflowX:"hidden"}}>
+    <div style={{overflowX:"hidden",paddingTop:"2rem"}}>
       <MainCarousel />
       <OurProjectJourney />
       <ProjectDisplay

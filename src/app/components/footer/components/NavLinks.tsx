@@ -10,11 +10,11 @@ const NavLinks = () => {
       links: [
         {
           title: "AI services",
-          link: "our-services/ai-video-generation",
+          link: "/ai-services",
         },
         {
           title: "text to video",
-          link: "our-services/ai-video-generation",
+          link: "ai-services/ai-video-generation",
         },
       ],
     },

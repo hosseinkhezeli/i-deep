@@ -78,6 +78,7 @@ const BasicAccordion = () => {
       <Box width={"95vw"} maxWidth={1536} mx={"auto"}>
         {accordionData.map((item: AccordionDataType, index: number) => (
           <Accordion
+          key={index}
             expanded={expanded === `panel${index}`}
             onChange={handleChange(`panel${index}`)}
             sx={{

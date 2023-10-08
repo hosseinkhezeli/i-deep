@@ -2,7 +2,7 @@
 import { Poppins } from 'next/font/google';
 import { lightPalette } from '../palette/light/lightPalette';
 const poppins = Poppins({
-    weight: ['300', '400', '500','600', '700','900'],
+    weight: ['300', '400', '500','600', '700','800','900'],
     subsets: ['latin'],
     display: 'swap',
   });
@@ -42,6 +42,14 @@ export const typography = {
       fontSize: "16px",
       lineHeight: "180%",
       letterSpacing:"-0.3px",
+      color:lightPalette.text.primary
+    },
+    h6: {
+      fontWeight: 400,
+      fontSize: "14px",
+      lineHeight: "180%",
+      letterSpacing:"-0.3px",
+      wordSpacing:"3px",
       color:lightPalette.text.primary
     },
   

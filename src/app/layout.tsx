@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import ThemeRegistry from "@/theme/components/ThemeRegistry/ThemeRegistry";
-import DrawerAppBar from "./components/app-bar";
+import DrawerAppBar from "./components/DrawerAppBar";
 import Footer from "./components/footer/footer";
 
 
@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body style={{overflowX:"hidden"}}>
         <ThemeRegistry>
           <DrawerAppBar />
           {children}

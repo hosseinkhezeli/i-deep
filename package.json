@@ -17,8 +17,10 @@
     "@mui/material": "latest",
     "keen-slider": "^6.8.6",
     "next": "latest",
+    "next-videos": "^1.4.1",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-player": "^2.13.0"
   },
   "devDependencies": {
     "@types/node": "latest",

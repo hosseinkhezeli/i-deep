@@ -22,7 +22,7 @@ export const MuiButton: TMuiButton = {
   defaultProps: {disableElevation: true, variant: 'contained'},
   styleOverrides: {
     root: ({ownerState , theme}) => ({
-      borderRadius: theme.shape.borderRadius * 2.8,
+      borderRadius: theme.shape.borderRadius * 2,
       textTransform: "capitalize",
       minHeight: "40px",
       whiteSpace:"nowrap",

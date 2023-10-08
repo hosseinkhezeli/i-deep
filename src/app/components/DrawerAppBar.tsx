@@ -25,14 +25,14 @@ interface Props {
 const drawerWidth = 240;
 const navItems = [
   "Home",
-  "Our Services",
+  "Ai Services",
   "Work with us",
   "Contact us",
   "About us",
 ];
 const navLinks = [
   "/",
-  "/our-services",
+  "/ai-services",
   "/work-with-us",
   "/contact-us",
   "/about-us",
@@ -69,7 +69,7 @@ export default function DrawerAppBar(props: Props) {
               <ListItemButton sx={{ textAlign: "center", p: 0 }}>
                 <Link href={navLinks[index]} style={{ width: "100%" }}>
                   <Typography
-                    variant="body1"
+                    variant="h6"
                     sx={{ width: "100%", textAlign: "center", p: 3 }}
                   >
                     {item}
@@ -106,7 +106,7 @@ export default function DrawerAppBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", width: "100%", height: {xs:"60px",sm:"72px",md:"100px", xl: "140px" } }}>
+    <Box sx={{ display: "flex", width: "100%", height: {xs:"60px",sm:"72px",md:"88px", xl: "120px" } }}>
       <AppBar
         component="nav"
         sx={{
