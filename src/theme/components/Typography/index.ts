@@ -19,7 +19,7 @@ export const typography = {
     h2: {
       fontWeight: 600,
       fontSize: "32px",
-      lineHeight: "30px",
+      lineHeight: "130%",
       color:lightPalette.text.primary
     },
   
