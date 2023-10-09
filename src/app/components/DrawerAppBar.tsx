@@ -26,6 +26,7 @@ const drawerWidth = 240;
 const navItems = [
   "Home",
   "Ai Services",
+  "Platforms",
   "Work with us",
   "Contact us",
   "About us",
@@ -33,6 +34,7 @@ const navItems = [
 const navLinks = [
   "/",
   "/ai-services",
+  "/platforms",
   "/work-with-us",
   "/contact-us",
   "/about-us",
@@ -40,6 +42,7 @@ const navLinks = [
 
 export default function DrawerAppBar(props: Props) {
   const path = usePathname();
+  console.log(path.slice(1))
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -151,7 +154,7 @@ export default function DrawerAppBar(props: Props) {
             >
               {navItems.map((item: string, index: number) => (
                 <Link href={navLinks[index]} key={index}>
-                  {navLinks[index] === path ? (
+                  { path===navLinks[index]? (
                     <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
                     <Typography
                       variant="subtitle1"

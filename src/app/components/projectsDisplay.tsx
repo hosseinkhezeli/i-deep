@@ -47,7 +47,7 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
             src={image}
             alt="Project mockup"
             sizes="(min-width: 808px) 80vw, 80vw"
-            quality={100}
+            quality={90}
             style={{
               width: "75vw",
               height: "max-content",

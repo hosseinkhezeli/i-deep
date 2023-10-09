@@ -22,7 +22,7 @@ export const MuiTab: TMuiTab = {
   styleOverrides: {
     root: ({ ownerState, theme }) => ({
       // boxShadow: "0px 0px 10px rgba(94, 129, 233, 0.2)",
-      color: theme.palette.gray[100],
+      color: theme.palette.grey[100],
       fontSize: 12
     }),
   },

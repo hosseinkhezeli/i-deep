@@ -3,6 +3,8 @@ import Image, { StaticImageData } from "next/image";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import RibbonIcon from "@public/images/soon_bg.svg"
+import { lightPalette } from "@/theme/components/palette/light/lightPalette";
 
 type Props = {
   link: string;
@@ -27,8 +29,15 @@ const ServicesCard = ({
       style={{
         pointerEvents: `${isActive ? "auto" : "none"}`,
         display: "content",
+        position:"relative"
       }}
     >
+      {!isActive && (<>
+        <Image src={RibbonIcon} alt="Ribbon" style={{position:"absolute",left:0,top:"27.5%",zIndex:1,width:"100px"}}/>
+        <Typography position={"absolute"} left={"2rem"} top={"29%"} color={lightPalette.secondary.back} fontSize={16} zIndex={1} >Soon</Typography>
+      </>
+        
+      )}
       <Box
         position={"relative"}
         boxShadow={"0px 16px 48px 0px rgba(0,0,0,0.1)"}
@@ -40,18 +49,8 @@ const ServicesCard = ({
         alignItems={"center"}
         borderRadius={5}
         gap={2}
+        sx={{opacity:`${isActive?"1":"0.5"}`}}
       >
-        {!isActive && (
-          <Box
-            bgcolor={"#ffffff60"}
-            position={"absolute"}
-            width={"100%"}
-            height={{xs:"96%",md:"94%"}}
-            maxWidth={{ xs: "unset", md: "477px" }}
-            borderRadius={5}
-           
-          />
-        )}
 
         <Image
           src={image}

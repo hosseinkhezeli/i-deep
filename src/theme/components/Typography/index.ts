@@ -1,6 +1,7 @@
 
 import { Poppins } from 'next/font/google';
 import { lightPalette } from '../palette/light/lightPalette';
+
 const poppins = Poppins({
     weight: ['300', '400', '500','600', '700','800','900'],
     subsets: ['latin'],
@@ -88,14 +89,14 @@ export const typography = {
     },
     button:{
       fontWeight: 500,
-      textTransform:"none",
+      // textTransform:capitalize,
       fontSize: "14px",
       letterSpacing:"-0.3px",
       color:lightPalette.text.primary,
     },
     button_disabled:{
       fontWeight: 500,
-      textTransform:"none",
+      // textTransform,
       fontSize: "14px",
       letterSpacing:"-0.3px",
       color:lightPalette.text.primary,

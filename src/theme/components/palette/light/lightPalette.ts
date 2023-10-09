@@ -8,7 +8,7 @@ export const lightPalette = {
     75: "#0088cc",
     50: "#0088cc",
     25: "#CFDBE3",
-    20: "#0F4C7533",
+    20: "#5392BB35",
     back: "#EFF2F4",
   },
   secondary:{
