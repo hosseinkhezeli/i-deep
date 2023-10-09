@@ -42,7 +42,6 @@ const navLinks = [
 
 export default function DrawerAppBar(props: Props) {
   const path = usePathname();
-  console.log(path.slice(1))
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

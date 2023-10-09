@@ -4,6 +4,7 @@ import { StaticImageData } from "next/image";
 import MAMImage from "@public/images/plat-mediaManagment.png";
 import CarBazaarImage from "@public/images/palt-roadMaster.jpg";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 type Props = {
   title: string;
   description: string;
@@ -17,6 +18,7 @@ const Platforms = () => {
   return (
     <>
       <Box>
+        <Typography variant="h2" fontSize={{xs:40,md:50}} textAlign={"center"} my={10}>Platforms Overview</Typography>
         {platformCardData.map((item: Props, index: number) => (
           <PlatformCard
             key={index}
