@@ -1,21 +1,22 @@
-import { Box, Button, Typography } from "@mui/material";
-import Image from "next/image";
+'use client'
+//react
 import React from "react";
+//next
+import Image from "next/image";
+//mui
+import { Box, Button, Typography } from "@mui/material";
+import theme from "@/theme/theme";
+import styled from "@mui/material/styles/styled"
+//image
 import ThinkingRobot from "@public/images/thinkingAironman.webp";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+
 
 const GetAiServices = () => {
   return (
     <>
-      <Box width={"100vw"} bgcolor={lightPalette.secondary.main}>
-        <Box display={"flex"} flexDirection={{ xs: "column", md: "row" }} maxWidth={1300} mx={"auto"}>
-          <Box
-            mx={"auto"}
-            width={"100%"}
-            display={"flex"}
-            flexBasis={{xs:"50%",lg:"40%"}}
-            order={{ xs: 2 }}
-            alignItems={"flex-end"}
+      <Background>
+        <ComponentWrapper>
+          <ImageWrapper
           >
             <Image
               src={ThinkingRobot}
@@ -31,18 +32,11 @@ const GetAiServices = () => {
                 marginRight: "auto",
               }}
             />
-          </Box>
-          <Box
-            display={"flex"}
-            flexDirection={"column"}
-            px={4}
-            py={14}
-            gap={8}
-            flexBasis={{xs:"50%",lg:"60%"}}
-            order={{ xs: 1 }}
+          </ImageWrapper>
+          <ContentWrapper
           >
             <Typography
-              color={lightPalette.secondary.back}
+              color={theme.palette.secondary.contrastText}
               variant="h2"
               fontSize={{ xs: 24, md: 48 }}
               textAlign={{ xs: "center" }}
@@ -50,7 +44,7 @@ const GetAiServices = () => {
               Get AI Services
             </Typography>
             <Typography
-              color={lightPalette.secondary.back}
+              color={theme.palette.secondary.contrastText}
               variant="body1"
               padding={4}
               textAlign={"justify"}
@@ -68,27 +62,64 @@ const GetAiServices = () => {
             </Typography>
             <Box display={"flex"} justifyContent={"center"}>
               <Button
+              variant="contained"
+              color='info'
                 sx={{
                   width: "max-content",
-                  bgcolor: lightPalette.secondary.back,
-                  color: lightPalette.secondary.main,
                   px: 15,
                   py: 4,
                   fontWeight: 600,
-                  ":hover": {
-                    bgcolor: lightPalette.secondary[75],
-                    color: lightPalette.secondary.back,
-                  },
                 }}
               >
                 Explore Now !
               </Button>
             </Box>
-          </Box>
-        </Box>
-      </Box>
+          </ContentWrapper>
+        </ComponentWrapper>
+      </Background>
     </>
   );
 };
 
 export default GetAiServices;
+
+const Background = styled(Box)(()=>({
+  width:"100vw",
+  backgroundColor:theme.palette.secondary.main
+}))
+const ComponentWrapper = styled(Box)((props)=>({
+  display:"flex",
+  maxWidth:1300,
+  margin:"0px auto",
+  flexDirection:"column",
+  [props.theme.breakpoints.up("md")]:{
+    flexDirection:"row"
+  }
+}))
+
+const ImageWrapper = styled(Box)((props)=>({
+width:"100%",
+display:"flex",
+order:2,
+alignItems:"flex-end",
+flexBasis:"50%",
+[props.theme.breakpoints.up("lg")]:{
+  flexBasis:"40%",
+}
+}))
+
+
+const ContentWrapper = styled(Box)((props)=>({
+display:"flex",
+flexDirection:"column",
+padding:"14px 4px",
+gap:8,
+flexBasis:"50%",
+order:1,
+[props.theme.breakpoints.up("lg")]:{
+  flexBasis:"60%",
+}
+
+}))
+
+

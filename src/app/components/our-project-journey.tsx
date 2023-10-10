@@ -1,7 +1,13 @@
+"use client"
+//react
+import React from "react";
+//next
+import Image, { StaticImageData } from "next/image";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Image, { StaticImageData } from "next/image";
-import React from "react";
+import styled from "@mui/material/styles/styled"
+//icon
 import SearchIcon from "@public/images/vuesax-linear-vuesax-linear-search-normal.svg";
 import BrushIcon from "@public/images/vuesax-linear-vuesax-linear-brush.svg";
 import LinkArrowIcon from "@public/images/vuesax-linear-vuesax-linear-programming-arrow.svg";
@@ -23,14 +29,7 @@ const iconImageItems = [SearchIcon, BrushIcon, LinkArrowIcon, PaypalIcon];
 const OurProjectJourney = () => {
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        alignItems={"center"}
-        gap={{ xs: 10,md:20 }}
-        my={{xs:10,md:50}}
-        maxWidth={1536}
-        mx={"auto"}
+      <ComponentWrapper
       >
         <Typography
           display={"inline-block"}
@@ -60,7 +59,7 @@ const OurProjectJourney = () => {
             )
           )}
         </Box>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
@@ -90,3 +89,20 @@ const iconItems = (
     <Typography display={"inline-block"} variant="subtitle1" textAlign={"center"} maxWidth={350}>{description}</Typography>
   </Box>
 );
+
+const ComponentWrapper = styled(Box)((props)=>({
+display:"flex",
+flexDirection:"column",
+alignItems:"center",
+margin:"0px auto",
+maxWidth:"auto",
+[props.theme.breakpoints.up("xs")]:{
+  gap:10,
+  margin:"10px auto",
+},
+[props.theme.breakpoints.up("md")]:{
+  gap:50,
+  margin:"50px auto",
+}
+}))
+

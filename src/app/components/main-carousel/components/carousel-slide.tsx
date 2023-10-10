@@ -1,10 +1,14 @@
 "use client";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+//react
+import { useEffect, useState } from "react";
+//mui
+import theme from "@/theme/theme";
+import { styled } from "@mui/material";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+//next
 import Image, { StaticImageData } from "next/image";
-import { useEffect, useState } from "react";
 
 type Props = {
   image: StaticImageData;
@@ -26,22 +30,8 @@ const CarouselSlide = ({
   const screenWidth = useWindowSize();
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={{ xs: "column", md: "row" }}
-        justifyContent={{ xs: "center", md: "space-between" }}
-        maxWidth={1536}
-        mx={"auto"}
-        gap={{ md: "1vw", xl: "4vw" }}
-      >
-        <Box
-          display={"flex"}
-          justifyContent={"center"}
-          my={{ xs: 4, md: 0 }}
-          width={{ xs: "100vw", md: "max-content" }}
-          paddingRight={{ xs: 0, md: "2vw" }}
-          flexBasis={"50%"}
-        >
+      <ComponentWrapper>
+        <ImageWrapper>
           <Image
             src={image}
             alt={"Co-workers in the office"}
@@ -50,7 +40,7 @@ const CarouselSlide = ({
             style={{
               width: `${screenWidth && screenWidth < 900 ? "auto" : "40vw"}`,
               height: "auto",
-              boxShadow: `-20px 20px 0px 0px ${lightPalette.secondary.main}`,
+              boxShadow: `-20px 20px 0px 0px ${theme.palette.secondary.main}`,
               borderRadius: "0.625rem",
               transform: "translateX(2vw)",
               marginBottom: `${
@@ -61,17 +51,8 @@ const CarouselSlide = ({
               }`,
             }}
           />
-        </Box>
-        <Box
-          display={"flex"}
-          flexDirection={{ xs: "column", sm: "row", md: "column" }}
-          justifyContent={{ xs: "center" }}
-          alignItems={{ xs: "center", md: "flex-start" }}
-          flexBasis={"50%"}
-          width={{ md: "max-content" }}
-          mx={{ xs: "auto", md: "0" }}
-          gap={{ xs: "0", lg: "80px", xl: "160px" }}
-        >
+        </ImageWrapper>
+        <ContentWrapper>
           <Box
             width={{ xs: "100%", sm: "max-content" }}
             display={"flex"}
@@ -80,9 +61,9 @@ const CarouselSlide = ({
           >
             <Typography
               width={"max-content"}
-              bgcolor={lightPalette.secondary.main}
+              bgcolor={theme.palette.secondary.main}
               variant="h3"
-              color={lightPalette.text.back}
+              color={theme.palette.secondary.contrastText}
               fontSize={{ md: "7vw", lg: "6vw", xl: "88px" }}
               p={"16px"}
               py={{ md: "2.5vw", xl: "35px" }}
@@ -129,6 +110,7 @@ const CarouselSlide = ({
               {text}
             </Typography>
             <Button
+            variant="contained"
               sx={{
                 px: { xs: "1.5rem", md: "3rem" },
                 py: { md: "1rem" },
@@ -138,8 +120,8 @@ const CarouselSlide = ({
               {buttonCaption}
             </Button>
           </Box>
-        </Box>
-      </Box>
+        </ContentWrapper>
+      </ComponentWrapper>
     </>
   );
 };
@@ -171,3 +153,64 @@ function useWindowSize() {
   }, []); // Empty array ensures that effect is only run on mount
   return windowSize;
 }
+
+const ImageWrapper = styled(Box)((props) => ({
+  display: "flex",
+  justifyContent: "center",
+  flexBasis: "50%",
+  [props.theme.breakpoints.up("xs")]: {
+    margin:"0px 4px",
+    width: "100vw",
+    paddingRight: 0,
+  },
+  [props.theme.breakpoints.up("md")]: {
+    margin:"0px 0px",
+    width: "max-content",
+    paddingRight: "2vw",
+  },
+}));
+
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  maxWidth: 1536,
+  margin:"0px auto",
+  [props.theme.breakpoints.up("xs")]: {
+    flexDirection: "column",
+    justifyContent: "center",
+  },
+  [props.theme.breakpoints.up("md")]: {
+    gap: "1vw",
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  [props.theme.breakpoints.up("xl")]: {
+    gap: "4vw",
+  },
+}));
+const ContentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexBasis: "50%",
+  justifyContent: "center",
+  [props.theme.breakpoints.up("xs")]: {
+    flexDirection: "column",
+    alignItems: "center",
+    margin:"0px auto",
+    gap: 0,
+  },
+  [props.theme.breakpoints.up("sm")]: {
+    flexDirection: "row",
+  },
+  [props.theme.breakpoints.up("md")]: {
+    flexDirection: "column",
+    alignItems: "flex-start",
+    width: "max-content",
+    margin:"0px",
+  },
+  [props.theme.breakpoints.up("lg")]: {
+    gap: "80px",
+  },
+  [props.theme.breakpoints.up("xl")]: {
+    gap: "160px",
+  },
+}));
+

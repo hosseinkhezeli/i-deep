@@ -27,6 +27,9 @@ const theme = createTheme({
   palette: getDesignTokens("light"),
   typography,
   spacing: 4,
+  shape:{
+    borderRadius:10
+  },
   breakpoints: {
     values: {
         xs: 0,

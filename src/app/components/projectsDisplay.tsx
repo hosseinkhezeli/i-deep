@@ -1,6 +1,11 @@
-import { Box, Button, Typography } from "@mui/material";
-import Image, { StaticImageData } from "next/image";
+"use client"
+//react
 import React from "react";
+//next
+import Image, { StaticImageData } from "next/image";
+//mui
+import { Box, Button, Typography } from "@mui/material";
+import styled from "@mui/material/styles/styled"
 
 type Props = {
   title: string;
@@ -10,16 +15,7 @@ type Props = {
 const ProjectDisplay = ({ title, description, image }: Props) => {
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        alignItems={"center"}
-        maxWidth={1536}
-        mx={"auto"}
-        px={4}
-        width={"max-content"}
-        gap={10}
-        my={30}
+      <ComponentWrapper
       >
         <Typography
           display={"inline-block"}
@@ -55,6 +51,7 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
           />
         </Box>
         <Button
+        variant="contained"
           sx={{
             px: { xs: 10, lg: 25 },
             py: "1rem",
@@ -63,9 +60,19 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
         >
           View Project !
         </Button>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default ProjectDisplay;
+
+const ComponentWrapper = styled(Box)((props)=>({
+  display:"flex",
+  flexDirection:"column",
+  alignItems:"center",
+  margin:"30px auto",
+  padding:"0px 4px",
+  width:"max-content",
+  gap:10,
+}))

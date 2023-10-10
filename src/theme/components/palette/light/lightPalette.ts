@@ -1,73 +1,55 @@
-
-
 export const lightPalette = {
   // palette values for light mode
+  // 50 shade is main shade with less opacity
+  //100 darkest shade / 20 lightest shade / back for overlays
   primary: {
-    main: "#0289cc",
-    100: "#0289cc",
-    75: "#0088cc",
-    50: "#0088cc",
-    25: "#CFDBE3",
-    20: "#5392BB35",
-    back: "#EFF2F4",
+    main: "#1675f9",
+    dark: "#1C5DB8",
+    light: "#1675f935",
+    contrastText: "#fff",
   },
-  secondary:{
-    main: "#323130",
-    100: "#323130",
-    75: "#535250",
-    50: "#72716E",
-    25: "#9B9A97",
-    20: "#C7BFCD",
-    back: "#EFF2F4",
+  secondary: {
+    main: "#1d1d1d",
+    dark: "#171717",
+    light: "#1d1d1d35",
+    contrastText: "#fff",
   },
-  divider: "#CCCCCC",
+  divider: "#1d1d1d",
 
   background: {
-    main: "#F5F5F5",
-    default: "#F5F5F5",
-    1: "#FAFAFA",
-    2: "#F9F9F9",
-    3: "#FFFFFF",
+    main: "#fff",
+    default: "#fff",
+    1: "#F4F9FF",
+    2: "#E9EEF0",
+    3: "#fff",
   },
-  success:{
-    main:'#26B144',
+  success: {
+    main: "#35E188",
   },
   warning: {
     main: "#ffa500",
-    100: "#FFCF5C",
-    75: "#FFDB85",
-    50: "#FFE7AD",
-    25: "#FFE7AD",
+    100: "#DC8F00",
+    75: "#EB9900",
+    50: "#ffa50035",
+    25: "#FFBC3E",
+    20: "#FFCD7035",
   },
   error: {
-    main: "#E74C3C",
-    100: "#E74C3C",
-    75: "#ED796D",
-    50: "#F3A59D",
-    light: "#E74C3C",
-  },
-  info: {
-    main: "#1F74E2",
-  },
-  gray: {
-    main: "#2E3840",
-    100: "#1B262C",
-    75: "#8E8D8D",
-    50: "#8D9395",
-    25: "#C6C9CA",
-    back: "#CFCFCFB2",
-    light: "#EBEBEB",
-  },
-  text: {
-    primary: "#323130",
-    secondary: "#0088cc",
-    disabled:"#FFFFFF",
-    100: "#1B262C",
-    75: "#545C61",
-    50: "#8D9395",
-    25: "#9f9f9f",
-    0: "#fff",
-    back: "#EFF2F4",
+    main: "#E23F2D",
+    100: "#AB2C1D",
+    75: "#BD3425",
+    50: "#E23F2D35",
+    25: "#F85948",
+    20: "#FD6F5F35",
   },
 
+  text: {
+    primary: "#1d1d1d",
+    secondary: "#fff",
+    disabled: "#747474",
+  },
+  button:{
+    primary: "#fff",
+    secondary: "#1d1d1d",
+  }
 };
