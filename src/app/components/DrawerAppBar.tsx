@@ -1,5 +1,10 @@
 "use client";
-import * as React from "react";
+//react
+import React from "react";
+//nexr
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+//mui
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -12,11 +17,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import Image from "next/image";
-import CompanyLogo from "@public/assets/logo-4793f509.svg";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+import theme from "@/theme/theme";
+//component
+import CompanyLogo from "./LogoIcon";
 
 interface Props {
   window?: () => Window;
@@ -58,6 +61,7 @@ export default function DrawerAppBar(props: Props) {
         height: "100%",
         justifyContent: "space-between",
         pb: 6,
+        backgroundColor:theme.palette.background.default
       }}
     >
       <Box display={"flex"} flexDirection={"column"}>
@@ -84,6 +88,7 @@ export default function DrawerAppBar(props: Props) {
         <Divider />
         <Box mx={"auto"}>
           <Button
+          variant="contained"
             disabled
             sx={{
               mt: 4,
@@ -108,7 +113,13 @@ export default function DrawerAppBar(props: Props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex", width: "100%", height: {xs:"60px",sm:"72px",md:"88px", xl: "120px" } }}>
+    <Box
+      sx={{
+        display: "flex",
+        width: "100%",
+        height: { xs: "60px", sm: "72px", md: "88px", xl: "120px" },
+      }}
+    >
       <AppBar
         component="nav"
         sx={{
@@ -121,15 +132,20 @@ export default function DrawerAppBar(props: Props) {
             justifyContent: "flex-start",
             maxWidth: "1536px",
             mx: "auto",
-            py: { xs: "0.7rem",sm:"1rem", xl: "2rem" },
+            py: { xs: "0.7rem", sm: "1rem", xl: "2rem" },
           }}
         >
-          <Box width={"100%"} display={"flex"} alignItems={"center"} gap={{xs:"0",md:"1rem"}}>
+          <Box
+            width={"100%"}
+            display={"flex"}
+            alignItems={"center"}
+            gap={{ xs: "0", md: "1rem" }}
+          >
             <IconButton
               aria-label="open drawer"
               edge="start"
               onClick={handleDrawerToggle}
-              sx={{ mx:{xs:0,md:2}, display: { md: "none" } }}
+              sx={{ mx: { xs: 0, md: 2 }, display: { md: "none" } }}
             >
               <MenuIcon />
             </IconButton>
@@ -137,10 +153,12 @@ export default function DrawerAppBar(props: Props) {
               <Box
                 width={{ xs: 100, md: 165 }}
                 height={{ xs: 31, md: 55 }}
-                position={"relative"}
-                mx={{xs:0,sm:4}}
+                display={"flex"}
+                justifyContent={"center"}
+                alignItems={"center"}
+                mx={{ xs: 0, sm: 4 }}
               >
-                <Image src={CompanyLogo} alt="Company Logo" fill sizes="" />
+                <CompanyLogo />
               </Box>
             </Box>
 
@@ -153,17 +171,26 @@ export default function DrawerAppBar(props: Props) {
             >
               {navItems.map((item: string, index: number) => (
                 <Link href={navLinks[index]} key={index}>
-                  { path===navLinks[index]? (
-                    <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
-                    <Typography
-                      variant="subtitle1"
-                      display={"inline-block"}
-                      color={lightPalette.primary.main}
-                      fontWeight={500}
+                  {path === navLinks[index] ? (
+                    <Box
+                      display={"flex"}
+                      flexDirection={"column"}
+                      alignItems={"center"}
                     >
-                      {item}
-                    </Typography>
-                    <Box bgcolor={lightPalette.primary.main} width={6}height={6} borderRadius={"50%"}/>
+                      <Typography
+                        variant="subtitle1"
+                        display={"inline-block"}
+                        color={theme.palette.primary.main}
+                        fontWeight={500}
+                      >
+                        {item}
+                      </Typography>
+                      <Box
+                        bgcolor={theme.palette.primary.main}
+                        width={6}
+                        height={6}
+                        borderRadius={"50%"}
+                      />
                     </Box>
                   ) : (
                     <Typography variant="subtitle1">{item}</Typography>
@@ -192,7 +219,7 @@ export default function DrawerAppBar(props: Props) {
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
-            keepMounted: true
+            keepMounted: true,
           }}
           sx={{
             display: { xs: "block", md: "none" },

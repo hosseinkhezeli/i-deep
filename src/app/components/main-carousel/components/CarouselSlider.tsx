@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 //mui
 import theme from "@/theme/theme";
-import { styled } from "@mui/material";
+import  styled  from "@mui/material/styles/styled";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -79,7 +79,7 @@ const CarouselSlide = ({
               fontSize={{ md: "7vw", lg: "6vw", xl: "88px" }}
               p={{ xs: "16px", md: "3vw", xl: "20px" }}
               pl={{ md: 0 }}
-              my={{ xl: 5 }}
+              my={{ xl: 2 }}
             >
               {subHeader}
             </Typography>
@@ -173,7 +173,8 @@ const ImageWrapper = styled(Box)((props) => ({
 const ComponentWrapper = styled(Box)((props) => ({
   display: "flex",
   maxWidth: 1536,
-  margin:"0px auto",
+  margin:"0px auto 2rem auto",
+  gap: "15px",
   [props.theme.breakpoints.up("xs")]: {
     flexDirection: "column",
     justifyContent: "center",
@@ -195,7 +196,7 @@ const ContentWrapper = styled(Box)((props) => ({
     flexDirection: "column",
     alignItems: "center",
     margin:"0px auto",
-    gap: 0,
+    gap: 0
   },
   [props.theme.breakpoints.up("sm")]: {
     flexDirection: "row",
@@ -210,7 +211,7 @@ const ContentWrapper = styled(Box)((props) => ({
     gap: "80px",
   },
   [props.theme.breakpoints.up("xl")]: {
-    gap: "160px",
+    gap: "100px",
   },
 }));
 

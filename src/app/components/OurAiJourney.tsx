@@ -36,18 +36,17 @@ const OurProjectJourney = () => {
           variant="h2"
           fontSize={{ xs: "24px",md:"64px" }}
         >
-          Our Project Journey
+          Our AI Journey
         </Typography>
         <Typography
           display={"inline-block"}
           variant="body2"
           maxWidth={{ xs: 250 ,sm:400,md:"unset"}}
-          fontWeight={{lg:500}}
-          fontSize={{lg:22}}
+          fontWeight={{lg:400}}
+          fontSize={{lg:20}}
           textAlign={{ xs: "center" }}
         >
-          At iDeep, we follow a simple and effective roadmap to bring your
-          vision to life
+          Embark on a transformative AI journey with iDeep, where innovation meets efficiency, redefining industries
         </Typography>
         <Box display={"flex"} flexDirection={{ xs: "column", md: "row" }} gap={{xs:10,md:0}}>
           {titleItems.map((item: string, index: number) =>
@@ -94,15 +93,12 @@ const ComponentWrapper = styled(Box)((props)=>({
 display:"flex",
 flexDirection:"column",
 alignItems:"center",
-margin:"0px auto",
-maxWidth:"auto",
-[props.theme.breakpoints.up("xs")]:{
-  gap:10,
-  margin:"10px auto",
-},
+maxWidth:1400,
+gap:10,
+margin:"2rem auto",
 [props.theme.breakpoints.up("md")]:{
   gap:50,
-  margin:"50px auto",
+  margin:"6rem auto",
 }
 }))
 

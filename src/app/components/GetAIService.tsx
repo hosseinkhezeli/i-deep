@@ -90,7 +90,8 @@ const Background = styled(Box)(()=>({
 const ComponentWrapper = styled(Box)((props)=>({
   display:"flex",
   maxWidth:1300,
-  margin:"0px auto",
+  margin:"2rem auto",
+  padding:"1rem auto",
   flexDirection:"column",
   [props.theme.breakpoints.up("md")]:{
     flexDirection:"row"
@@ -112,7 +113,7 @@ flexBasis:"50%",
 const ContentWrapper = styled(Box)((props)=>({
 display:"flex",
 flexDirection:"column",
-padding:"14px 4px",
+padding:"2rem 4px",
 gap:8,
 flexBasis:"50%",
 order:1,

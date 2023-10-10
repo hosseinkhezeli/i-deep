@@ -10,7 +10,7 @@ import theme from "@/theme/theme";
 //images
 import CarouselImage1 from "@public/images/rectangle-34624746.png";
 import CarouselImage2 from "@public/images/ai-innovation-7f5e61b7.webp";
-import CarouselSlide from "./components/carousel-slide";
+import CarouselSlide from "./components/CarouselSlider";
 
 const MainCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,7 +30,7 @@ const MainCarousel = () => {
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           {carouselData.map((carousel:any,index:number)=>(
-          <div className={`keen-slider__slide number-slide${index+1}`} style={{display:`${index>0?"flex":"block"}`,alignItems:"center"}}>
+          <div key={index} className={`keen-slider__slide number-slide${index+1}`} style={{display:`${index>0?"flex":"block"}`,alignItems:"center"}}>
             <CarouselSlide
               image={carousel.image}
               header={carousel.header}

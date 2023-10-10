@@ -19,6 +19,7 @@ export const darkPalette = {
   background: {
     main: "#1d1d1d",
     default: "#1d1d1d",
+    paper:"#333333",
     1: "#393939",
     2: "#323232",
     3: "#1d1d1d",

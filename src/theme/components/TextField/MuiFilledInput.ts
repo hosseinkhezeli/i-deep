@@ -4,7 +4,7 @@ import {
   FilledInputClasses,
 } from "@mui/material/FilledInput";
 import { Theme } from "@mui/material/styles";
-import { lightPalette } from "../palette/light/lightPalette";
+import theme from "@/theme/theme";
 
 type TMuiFilledInput =
   | {
@@ -24,13 +24,14 @@ type TMuiFilledInput =
 
 export const MuiFilledInput: TMuiFilledInput = {
   styleOverrides: {
-    root: ({ ownerState, theme }) => ({
-      backgroundColor: lightPalette.secondary.back,
+    root: ({ ownerState, Theme }) => ({
+      backgroundColor: theme.palette.background.default,
+      transition: "0.3s",
       '&:hover': {
-        backgroundColor: lightPalette.secondary[25]
-
+        backgroundColor: theme.palette.background.default,
+        boxShadow:`0px 0px 10px 0px ${theme.palette.primary.main}`
       },
-      '&.Mui-focused': { background: lightPalette.secondary[25], },
+      '&.Mui-focused': { background: theme.palette.background.default,boxShadow:`0px 0px 10px 0px ${theme.palette.primary.main} inset` },
       "& input": {
         ...(ownerState.size === "small"
           ? {

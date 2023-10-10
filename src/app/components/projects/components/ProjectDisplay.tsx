@@ -47,6 +47,7 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
             style={{
               width: "75vw",
               height: "max-content",
+              maxWidth:1124
             }}
           />
         </Box>
@@ -54,7 +55,7 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
         variant="contained"
           sx={{
             px: { xs: 10, lg: 25 },
-            py: "1rem",
+            py: "0.8rem",
             fontSize: { xs: 14, lg: 18 },
           }}
         >
@@ -71,8 +72,8 @@ const ComponentWrapper = styled(Box)((props)=>({
   display:"flex",
   flexDirection:"column",
   alignItems:"center",
-  margin:"30px auto",
+  margin:"80px auto",
   padding:"0px 4px",
   width:"max-content",
-  gap:10,
+  gap:15,
 }))

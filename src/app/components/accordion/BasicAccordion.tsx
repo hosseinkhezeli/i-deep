@@ -1,5 +1,7 @@
-"use client"
+"use client";
+//react
 import React, { useState } from "react";
+//mui
 import {
   Typography,
   Box,
@@ -7,16 +9,17 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
+import styled from "@mui/material/styles/styled"
+//types
+type AccordionDataType = {
+  title: string;
+  description: string;
+};
+type Props = {
+  data: any;
+};
 
-type AccordionDataType ={
-  title:string,
-  description:string
-}
-type Props ={
-  data:any
-}
-
-const BasicAccordion = ({data}:Props) => {
+const BasicAccordion = ({ data }: Props) => {
 
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -24,22 +27,15 @@ const BasicAccordion = ({data}:Props) => {
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+
   return (
     <>
-      <Box width={"95vw"} maxWidth={1536} mx={"auto"}>
+      <ComponentWrapper>
         {data.map((item: AccordionDataType, index: number) => (
           <Accordion
-          key={index}
+            key={index}
             expanded={expanded === `panel${index}`}
             onChange={handleChange(`panel${index}`)}
-            sx={{
-              backgroundColor: "transparent",
-              boxShadow: "none",
-              marginBottom: "10px",
-              border: "none",
-              borderBottom: `1px solid #32313061`,
-              ":before":{backgroundColor: "transparent",}
-            }}
           >
             <AccordionSummary
               expandIcon={expanded === `panel${index}` ? "-" : "+"}
@@ -50,7 +46,7 @@ const BasicAccordion = ({data}:Props) => {
                   variant="h1"
                   sx={{
                     fontSize: { xs: "14px", md: "20px" },
-                    fontWeight: 700,
+                    fontWeight: 500,
                     lineHeight: { xs: "25px", md: "60px" },
                   }}
                 >
@@ -78,9 +74,14 @@ const BasicAccordion = ({data}:Props) => {
             </AccordionDetails>
           </Accordion>
         ))}
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default BasicAccordion;
+const ComponentWrapper = styled(Box)((props)=>({
+width:"95vw",
+maxWidth:1200,
+margin:"auto 0px "
+}))

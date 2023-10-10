@@ -1,7 +1,7 @@
 //react
 import React from "react";
 //component
-import ProjectDisplay from "./projectsDisplay";
+import ProjectDisplay from "./components/ProjectDisplay";
 //image
 import MAMProjectMockup from "@public/images/Azki_Gtex-6c473a64.webp";
 import CarBazaarProjectMockup from "@public/images/Carbazaar-7c0e57f8.webp";

@@ -1,37 +1,25 @@
+"use client";
+//react
+import React from "react";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import styled from "@mui/material/styles/styled";
+//next
 import Image, { StaticImageData } from "next/image";
-import React from "react";
-import AvailabilityIcon from "@public/images/availability.svg"
-import ClientApproachIcon from "@public/images/customer-service.svg"
-import ClientCareIcon from "@public/images/shield.svg"
-const titleItems = [
-  "24/7 AVAILABILITY",
-  "CLIENT-CENTRIC APPROACH",
-  "RESPONSIVE AND RELIABLE",
-];
-const descriptionItems = [
-  "We're here round the clock, ensuring help is just a call or click away, anytime you need it.",
-  "Your needs and concerns sit at the forefront of our priorities, guiding our every action.",
-  "Depend on us for swift responses and unwavering reliability, delivering solutions when you need them most.",
-];
-const iconImageItems = [AvailabilityIcon, ClientApproachIcon, ClientCareIcon];
+//image
+import AvailabilityIcon from "@public/images/availability.svg";
+import ClientApproachIcon from "@public/images/customer-service.svg";
+import ClientCareIcon from "@public/images/shield.svg";
+
 const Support = () => {
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        alignItems={"center"}
-        gap={{ xs: 10, md: 15 }}
-        my={{ xs: 10, md: 50 }}
-        maxWidth={1536}
-        mx={"auto"}
-      >
+      <ComponentWrapper>
         <Typography
           display={"inline-block"}
           variant="h2"
-          fontSize={{ xs: "24px", md: "64px" }}
+          fontSize={{ xs: "24px", md: "48px" }}
         >
           24/7 Support
         </Typography>
@@ -40,7 +28,7 @@ const Support = () => {
           variant="h5"
           maxWidth={{ xs: "90vw", sm: 400, md: "unset" }}
           fontWeight={400}
-          fontSize={{ xs:18, md: 22 }}
+          fontSize={{ xs: 18, md: 22 }}
           textAlign={{ xs: "center" }}
         >
           Providing all the help you need
@@ -51,7 +39,7 @@ const Support = () => {
           px={"2rem"}
           maxWidth={{ xs: "90vw", sm: 400, md: "1100px" }}
           fontWeight={400}
-          fontSize={{ xs:14, md:18 }}
+          fontSize={{ xs: 14, md: 18 }}
           textAlign={{ xs: "center" }}
         >
           At iDeep, we are committed to providing exceptional support to our
@@ -66,7 +54,7 @@ const Support = () => {
         <Box
           display={"flex"}
           flexDirection={{ xs: "column", md: "row" }}
-          gap={{ xs: 10, md: 0 }}
+          gap={{ xs: 10, md: 20 }}
         >
           {titleItems.map((item: string, index: number) =>
             iconItems(
@@ -77,12 +65,33 @@ const Support = () => {
             )
           )}
         </Box>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default Support;
+
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  maxWidth: 1360,
+  margin: "10px auto",
+  gap: 20,
+  [props.theme.breakpoints.up("md")]: {
+    gap: 50,
+    margin: "50px auto",
+  },
+}));
+
+const ItemWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "0px 4px",
+  // gap: 2,
+}));
 
 const iconItems = (
   key: number,
@@ -90,14 +99,7 @@ const iconItems = (
   description: string,
   iconImage: StaticImageData
 ) => (
-  <Box
-    key={key}
-    display={"flex"}
-    flexDirection={"column"}
-    alignItems={"center"}
-    px={4}
-    gap={2}
-  >
+  <ItemWrapper key={key}>
     <Box>
       <Image
         src={iconImage}
@@ -110,16 +112,28 @@ const iconItems = (
         }}
       />
     </Box>
-    <Typography display={"inline-block"} variant="h5" width={"max-content"}>
+    <Typography display={"inline-block"} variant="h5" width={"fit-content"}>
       {title}
     </Typography>
     <Typography
       display={"inline-block"}
       variant="subtitle1"
       textAlign={"center"}
-      maxWidth={350}
+      maxWidth={300}
     >
       {description}
     </Typography>
-  </Box>
+  </ItemWrapper>
 );
+
+const titleItems = [
+  "24/7 AVAILABILITY",
+  "CLIENT-CENTRIC APPROACH",
+  "RESPONSIVE AND RELIABLE",
+];
+const descriptionItems = [
+  "We're here round the clock, ensuring help is just a call or click away, anytime you need it.",
+  "Your needs and concerns sit at the forefront of our priorities, guiding our every action.",
+  "Depend on us for swift responses and unwavering reliability, delivering solutions when you need them most.",
+];
+const iconImageItems = [AvailabilityIcon, ClientApproachIcon, ClientCareIcon];

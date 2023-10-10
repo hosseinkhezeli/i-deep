@@ -1,30 +1,23 @@
-import Box from "@mui/material/Box";
-import Image from "next/image";
-import { Metadata } from "next/types";
+"use client"
+//react
 import React from "react";
+//next
+import { Metadata } from "next/types";
+import Image from "next/image";
+//image
 import BGTexture from "@public/images/isolation.svg";
+//component
 import HeroSection from "./components/HeroSection";
 import VideoSlider from "./components/Slider";
-export const metadata: Metadata = {
-  title: "iDeep_Our services",
-  description: "The services that iDeep company provides",
-};
+//mui
+import Box from "@mui/material/Box";
+import styled from '@mui/material/styles/styled'
 
-const OurServices = () => {
+
+const AiVideoGeneration = () => {
   return (
     <>
-      <Box
-        position={"relative"}
-        display={"flex"}
-        flexDirection={"column"}
-        gap={10}
-        width={"100vw"}
-        alignItems={"center"}
-        overflow={"hidden"}
-        maxWidth={1536}
-        py={"2rem"}
-        px={"4rem"}
-        mx={"auto"}
+      <ComponentWrapper
       >
         <Image
           src={BGTexture}
@@ -42,9 +35,22 @@ const OurServices = () => {
         <HeroSection/>
         <VideoSlider/>
        
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
-export default OurServices;
+export default AiVideoGeneration;
+
+const ComponentWrapper = styled(Box)((props)=>({
+position:"relative",
+display:"flex",
+flexDirection:"column",
+gap:10,
+width:"100vw",
+alignItems:"center",
+overflow:"hidden",
+maxWidth:1536,
+padding:"2rem 4rem",
+margin:"0px auto"
+}))

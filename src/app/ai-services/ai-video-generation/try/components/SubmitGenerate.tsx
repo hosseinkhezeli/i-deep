@@ -87,10 +87,10 @@ const SubmitGenerate = () => {
             )}
           />
           <Box display={"flex"} sx={{ width: "100%", maxWidth: "400px" }} gap={4}>
-          <Button onClick={router.back} sx={{flexBasis:"50%",bgcolor:lightPalette.primary[20],color:lightPalette.primary.main,borderColor:lightPalette.primary.main,":hover":{color:lightPalette.secondary.back}}}>
+          <Button variant="outlined" color="primary" onClick={router.back} sx={{flexBasis:"50%"}}>
             Go Back
           </Button>
-          <Button type="submit" sx={{flexBasis:"50%"}}>
+          <Button variant="contained" color="primary" type="submit" sx={{flexBasis:"50%"}}>
             Generate your video
           </Button>
           </Box>

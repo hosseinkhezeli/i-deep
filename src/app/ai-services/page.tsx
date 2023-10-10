@@ -1,12 +1,20 @@
+//react
 import React from "react";
+//next
+import { StaticImageData } from "next/image";
+import { Metadata } from "next/types";
+//components
 import ServicesCard from "./components/ServicesCard";
+//images
 import TextToVideoImage from "@public/images/page1.jpg";
 import OCRImage from "@public/images/page4.jpg";
 import SpeechRecognitionImage from "@public/images/page3.jpg";
 import ObjectDetectionImage from "@public/images/page5.jpg";
 import ImageLabeling from "@public/images/page6.jpg";
+//mui
 import Box from "@mui/material/Box";
-import { StaticImageData } from "next/image";
+import Typography from "@mui/material/Typography";
+//types
 type servicesCardDataType = {
   link: string;
   image: StaticImageData;
@@ -16,17 +24,28 @@ type servicesCardDataType = {
   isActive: boolean;
 };
 
+export const metadata: Metadata = {
+  title: "iDeep_Our services",
+  description: "The services that iDeep company provides",
+};
+
 const OurServices = () => {
   return (
     <>
+      <Typography variant="h2" textAlign={"center"} my={4}>
+        AI Services
+      </Typography>
+      <Typography textAlign={"center"}>Intelligence Solutions</Typography>
       <Box
-        display={"flex"}
-        flexWrap={"wrap"}
-        maxWidth={1479}
-        pt={"4rem"}
-        justifyContent={{ xs: "center", xl: "space-between" }}
-        mx={"auto"}
-        gap={6}
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          maxWidth: 1536,
+          paddingTop: "2rem",
+          margin: "0px auto",
+          gap: 5,
+          justifyContent: "center",
+        }}
       >
         {servicesCardData.map((item: servicesCardDataType) => (
           <ServicesCard

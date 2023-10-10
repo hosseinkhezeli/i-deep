@@ -19,6 +19,7 @@ export const lightPalette = {
   background: {
     main: "#fff",
     default: "#fff",
+    paper:"#D2E6FE",
     1: "#F4F9FF",
     2: "#E9EEF0",
     3: "#fff",
@@ -48,8 +49,4 @@ export const lightPalette = {
     secondary: "#fff",
     disabled: "#747474",
   },
-  button:{
-    primary: "#fff",
-    secondary: "#1d1d1d",
-  }
 };

@@ -1,25 +1,21 @@
 "use client";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+//react
+import React from "react";
+//next
+import Image from "next/image";
+//mui
 import { Button, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import Image from "next/image";
-import React from "react";
+import theme from "@/theme/theme";
+import styled from "@mui/material/styles/styled";
+//image
 import InfiniteIcon from "@public/images/infinite.svg";
 
 const StayInTheKnow = () => {
   return (
     <>
-      <Box width={"100vw"} bgcolor={lightPalette.secondary.main}>
-        <Box
-          maxWidth={1536}
-          display={"flex"}
-          flexDirection={{ xs: "column", sm: "row" }}
-          width={"100%"}
-          mx={"auto"}
-          justifyContent={"space-between"}
-          py={"4rem"}
-          px={{ xs: "1rem", md: "6rem" }}
-        >
+      <Background>
+        <ComponentWrapper>
           <Box maxWidth={500}>
             <Box
               display={"flex"}
@@ -28,7 +24,7 @@ const StayInTheKnow = () => {
               gap={1}
             >
               <Typography
-                color={lightPalette.secondary.back}
+                color={theme.palette.secondary.contrastText}
                 fontSize={32}
                 fontWeight={600}
                 height={"100%"}
@@ -45,7 +41,7 @@ const StayInTheKnow = () => {
               </Box>
             </Box>
             <Typography
-              color={lightPalette.secondary[20]}
+              color={theme.palette.secondary.contrastText}
               fontSize={22}
               fontWeight={500}
               lineHeight={"150%"}
@@ -60,7 +56,10 @@ const StayInTheKnow = () => {
             maxWidth={380}
             justifyContent={"center"}
           >
-            <Typography color={lightPalette.secondary.back} fontSize={12}>
+            <Typography
+              color={theme.palette.secondary.contrastText}
+              fontSize={12}
+            >
               Your e-mail :
             </Typography>
             <Box
@@ -70,15 +69,34 @@ const StayInTheKnow = () => {
               width={{ xs: "90vw", sm: "40vw", md: "380px" }}
             >
               <TextField variant="filled" sx={{ flexGrow: 1 }} />
-              <Button sx={{ bgcolor: lightPalette.primary.main, p: 3, px: 5 }}>
+              <Button variant="contained" color="primary" sx={{ p: 3, px: 5 }}>
                 Subscribe
               </Button>
             </Box>
           </Box>
-        </Box>
-      </Box>
+        </ComponentWrapper>
+      </Background>
     </>
   );
 };
 
 export default StayInTheKnow;
+const Background = styled(Box)((props) => ({
+  width: "100vw",
+  backgroundColor: theme.palette.secondary.main,
+}));
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  width: "100%",
+  maxWidth: 1350,
+  margin: "0px auto",
+  padding: "4rem 1rem",
+  justifyContent: "space-between",
+  flexDirection: "column",
+  [props.theme.breakpoints.up("sm")]: {
+    flexDirection: "row",
+  },
+  [props.theme.breakpoints.up("md")]: {
+    padding: "4rem 6rem",
+  },
+}));

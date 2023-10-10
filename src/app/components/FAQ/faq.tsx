@@ -1,12 +1,15 @@
+//react
+import React from "react";
+//mui
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
-import React from "react";
-import BasicAccordion from "../accordion/basic-accordion";
+//component
+import BasicAccordion from "../accordion/BasicAccordion";
 
 const FAQ = () => {
   return (
     <>
-      <Box maxWidth={1536} mx="auto" my={"10rem"}>
+      <Box maxWidth={1200} mx="auto" my={"10rem"}>
         <Typography
           variant="h2"
           fontSize={{ xs: "24px", md: "48px" }}

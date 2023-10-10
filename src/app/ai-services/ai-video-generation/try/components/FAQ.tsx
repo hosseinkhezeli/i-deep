@@ -1,4 +1,4 @@
-import BasicAccordion from "@/app/components/accordion/basic-accordion";
+import BasicAccordion from "@/app/components/accordion/BasicAccordion";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import React from "react";

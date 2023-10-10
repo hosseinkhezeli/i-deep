@@ -2,7 +2,7 @@ import * as React from "react";
 
 import ThemeRegistry from "@/theme/components/ThemeRegistry/ThemeRegistry";
 import DrawerAppBar from "./components/DrawerAppBar";
-import Footer from "./components/footer/footer";
+import Footer from "./components/footer/Footer";
 
 
 

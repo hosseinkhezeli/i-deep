@@ -1,10 +1,12 @@
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+//next
+import Link from "next/link";
+import Image from "next/image";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import WomanImage from "@public/images/woman-laugh.png";
 import Button from "@mui/material/Button";
-import Link from "next/link";
+//image
+import WomanImage from "@public/images/woman-laugh.png";
 
 const HeroSection = () => {
   return (
@@ -106,11 +108,12 @@ const HeroSection = () => {
           >
             <Link href={"ai-video-generation/try"} style={{flexGrow: 1}}>
             <Button
+            variant="outlined"
+            color="primary"
               sx={{
                 width:"100%",
                 px: 4,
                 py: 1.5,
-                ":hover": { bgcolor: lightPalette.secondary[75] },
               }}
             >
               Create a free Ai video !
@@ -118,14 +121,11 @@ const HeroSection = () => {
             </Link>
             <Button
               variant="contained"
+              color="primary"
               sx={{
                 flexGrow: 1,
                 px: 4,
                 py: 1.5,
-                bgcolor: lightPalette.secondary.back,
-                color: lightPalette.secondary.main,
-                border: `1px solid ${lightPalette.secondary.main}`,
-                ":hover": { bgcolor: lightPalette.secondary[25] },
               }}
             >
               Watch Sample Products!

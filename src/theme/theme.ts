@@ -15,6 +15,7 @@ import { MuiIconButton } from './components/IconButton/MuiIconButon';
 import { MuiCard } from './components/Card/MuiCard';
 import { MuiTypography } from './components/Typography/MuiTypography';
 import { MuiAppBar } from './components/AppBar/MuiAppBar';
+import { MuiAccordion } from './components/Accordion/MuiAccordion';
 
 type PaletteMode = "light" | "dark";
 
@@ -24,7 +25,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 const theme = createTheme({
-  palette: getDesignTokens("light"),
+  palette: getDesignTokens("dark"),
   typography,
   spacing: 4,
   shape:{
@@ -40,6 +41,7 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiAccordion,
     MuiCssBaseline,
     MuiAppBar,
     MuiTextField,
