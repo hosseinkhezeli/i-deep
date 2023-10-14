@@ -2,10 +2,7 @@ import { Metadata } from "next/types";
 import React from "react";
 import HeroBanner from "./components/HeroBanner";
 import ContactForm from "./components/ContactForm";
-import { Box, Typography } from "@mui/material";
-import Image from "next/image";
-import GuardIcon from "@public/images/gurd.svg";
-import FlashIcon from "@public/images/flash2.svg";
+import { Box } from "@mui/material";
 import Content from "./components/Content";
 import LocationBanner from "./components/LocationBanner";
 export const metadata: Metadata = {

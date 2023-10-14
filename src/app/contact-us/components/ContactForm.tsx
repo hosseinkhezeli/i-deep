@@ -10,12 +10,14 @@ import {
   FormControlLabel,
   InputLabel,
   MenuItem,
+  PaletteMode,
   Select,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import styled from "@mui/material/styles/styled"
 //react hook form
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { getState } from "@/context/store";
 //types
 interface IContactForm {
   name: string;
@@ -26,6 +28,7 @@ interface IContactForm {
   personalized_ad:boolean
 }
 
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const ContactForm = () => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -127,7 +130,7 @@ const ContactForm = () => {
             control={control}
             render={({ field }) => (
               <FormControlLabel
-              sx={{color:`${theme.palette.primary.main}`}}
+              sx={{color:`${theme(activeTheme).palette.primary.main}`}}
                 control={<Checkbox />}
                 label="Yes, I agree to recieve periodic communication, emails and promotional materials from iDeep related to services and can unsubscribe at any time."
                 {...field}
@@ -147,10 +150,10 @@ export default ContactForm;
 
 const ComponentWrapper = styled(Box)((props)=>({
   maxWidth:540,
-  backgroundColor:theme.palette.mode==="light"?theme.palette.background.default:theme.palette.secondary.main,
+  backgroundColor:theme(activeTheme).palette.mode==="light"?theme(activeTheme).palette.background.default:theme(activeTheme).palette.secondary.main,
   padding:"48px 20px",
-  borderRadius:theme.shape.borderRadius,
-  boxShadow:`0px 16px 48px 0px ${theme.palette.mode==="light"?theme.palette.secondary.light:theme.palette.primary.light}` ,
+  borderRadius:theme(activeTheme).shape.borderRadius,
+  boxShadow:`0px 16px 48px 0px ${theme(activeTheme).palette.mode==="light"?theme(activeTheme).palette.secondary.light:theme(activeTheme).palette.primary.light}` ,
   [props.theme.breakpoints.up("md")]:{
     padding:"48px 36px"
   }

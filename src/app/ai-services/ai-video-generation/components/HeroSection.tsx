@@ -5,12 +5,17 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import theme from "@/theme/theme";
+
 import styled from "@mui/material/styles/styled";
 //image
 import WomanImage from "@public/images/woman-laugh.png";
+import theme from "@/theme/theme";
+import { getState } from "@/context/store";
+import { PaletteMode } from "@mui/material";
+
 
 const HeroSection = () => {
+const activeTheme:PaletteMode =getState().layoutTheme.layoutTheme
   return (
     <>
       <Typography
@@ -26,7 +31,7 @@ const HeroSection = () => {
           style={{
             fontSize: "14px",
             letterSpacing: "1px",
-            color: theme.palette.primary.main,
+            color: theme(activeTheme).palette.primary.main,
           }}
         >
           #1

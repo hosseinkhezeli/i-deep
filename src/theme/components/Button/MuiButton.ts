@@ -1,6 +1,7 @@
 import { OverridesStyleRules } from "@mui/material/styles/overrides";
-import { ButtonProps, ButtonClasses, Theme } from "@mui/material";
+import { ButtonProps, ButtonClasses, Theme, PaletteMode } from "@mui/material";
 import theme from "@/theme/theme";
+import { getState } from "@/context/store";
 
 type TMuiButton =
   | {
@@ -17,54 +18,54 @@ type TMuiButton =
       variants?: [] | undefined;
     }
   | undefined;
-
+  const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 export const MuiButton: TMuiButton = {
   defaultProps: { disableElevation: true },
   styleOverrides: {
     root: ({ ownerState }) => ({
       ...(ownerState.variant === "contained" &&
         ownerState.color === "primary" && {
-          backgroundColor: theme.palette.primary.main,
+          backgroundColor:  theme(activeTheme).palette.primary.main,
           color:
-            theme.palette.mode === "light"
-              ? theme.palette.text.secondary
-              : theme.palette.text.primary,
+            theme(activeTheme).palette.mode === "light"
+              ?  theme(activeTheme).palette.text.secondary
+              :  theme(activeTheme).palette.text.primary,
         }),
         ...(ownerState.variant === "contained" &&
         ownerState.color === "secondary" && {
-          backgroundColor: theme.palette.secondary.main,
+          backgroundColor:  theme(activeTheme).palette.secondary.main,
           color:
-            theme.palette.mode === "light"
-              ? theme.palette.text.secondary
-              : theme.palette.text.primary,
+          theme(activeTheme).palette.mode === "light"
+              ?  theme(activeTheme).palette.text.secondary
+              :  theme(activeTheme).palette.text.primary,
         }),
         ...(ownerState.variant === "contained" &&
         ownerState.color === "info" && {
-          backgroundColor: theme.palette.secondary.contrastText,
+          backgroundColor:  theme(activeTheme).palette.secondary.contrastText,
           color:
-            theme.palette.mode === "light"
-              ? theme.palette.text.primary
-              : theme.palette.text.primary,
+          theme(activeTheme).palette.mode === "light"
+              ?  theme(activeTheme).palette.text.primary
+              :  theme(activeTheme).palette.text.primary,
               ":hover": {
                 color:
-                theme.palette.mode === "light"
-                  ? theme.palette.text.secondary
-                  : theme.palette.text.primary,
+                theme(activeTheme).palette.mode === "light"
+                  ?  theme(activeTheme).palette.text.secondary
+                  :  theme(activeTheme).palette.text.primary,
               },
         }),
       ...(ownerState.variant === "outlined" &&
         ownerState.color === "primary" && {
-          backgroundColor: theme.palette.background.default,
-          color: theme.palette.primary.main,
+          backgroundColor:  theme(activeTheme).palette.background.default,
+          color:  theme(activeTheme).palette.primary.main,
           ":hover": {
-            backgroundColor: theme.palette.primary.light,
+            backgroundColor:  theme(activeTheme).palette.primary.light,
             color:
-              theme.palette.mode === "light"
-                ? theme.palette.primary.main
-                : theme.palette.text.primary,
+            theme(activeTheme).palette.mode === "light"
+                ?  theme(activeTheme).palette.primary.main
+                :  theme(activeTheme).palette.text.primary,
           },
         }),
-      borderRadius: theme.shape.borderRadius,
+      borderRadius:  theme(activeTheme).shape.borderRadius,
       textTransform: "none",
       minHeight: "45px",
       whiteSpace: "nowrap",

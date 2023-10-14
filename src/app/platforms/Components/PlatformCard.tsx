@@ -9,9 +9,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircleIcon from "@mui/icons-material/Circle";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import { Button, List, ListItem, ListItemIcon } from "@mui/material";
+import { Button, List, ListItem, ListItemIcon, PaletteMode } from "@mui/material";
 import styled from "@mui/material/styles/styled"
 import theme from "@/theme/theme";
+import { getState } from "@/context/store";
 //types
 type Props = {
   title: string;
@@ -21,7 +22,7 @@ type Props = {
   image: StaticImageData;
   layout: string;
 };
-
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const PlatformCard = ({
   title,
   description,
@@ -33,7 +34,7 @@ const PlatformCard = ({
   return (
     <Background>
       <ComponentWrapper
-        bgcolor={layout === "dark" ? theme.palette.secondary.main : theme.palette.secondary.contrastText}
+        bgcolor={layout === "dark" ? theme(activeTheme).palette.secondary.main : theme(activeTheme).palette.secondary.contrastText}
       >
         <Box
           width={{ xs: "100%", md: "50%" }}
@@ -48,8 +49,8 @@ const PlatformCard = ({
             variant="h2"
             color={
               layout === "dark"
-                ? theme.palette.secondary.contrastText
-                : theme.palette.secondary.main
+                ? theme(activeTheme).palette.secondary.contrastText
+                : theme(activeTheme).palette.secondary.main
             }
             fontSize={{ xs: "inherit", md: 50 }}
           >
@@ -59,8 +60,8 @@ const PlatformCard = ({
             variant="body1"
             color={
               layout === "dark"
-              ? theme.palette.secondary.contrastText
-              : theme.palette.secondary.main
+              ? theme(activeTheme).palette.secondary.contrastText
+              : theme(activeTheme).palette.secondary.main
             }
           >
             {description}
@@ -75,8 +76,8 @@ const PlatformCard = ({
                   fontWeight={600}
                   color={
                     layout === "dark"
-                    ? theme.palette.secondary.contrastText
-                    : theme.palette.secondary.main
+                    ? theme(activeTheme).palette.secondary.contrastText
+                    : theme(activeTheme).palette.secondary.main
                   }
                 >
                   {item}
@@ -92,7 +93,7 @@ const PlatformCard = ({
                   ? "initial"
                   : "inherit"
               }`,
-              ":hover": { bgcolor: theme.palette.primary.light },
+              ":hover": { bgcolor: theme(activeTheme).palette.primary.light },
             }}
           >
             <Link
@@ -100,7 +101,7 @@ const PlatformCard = ({
               style={{
                 display: "flex",
                 alignItems: "center",
-                color: theme.palette.primary.main,
+                color: theme(activeTheme).palette.primary.main,
               }}
             >
               <ArrowForwardOutlinedIcon />
@@ -145,14 +146,14 @@ const Background = styled(Box)(()=>({
 const ComponentWrapper = styled(Box)((props)=>({
   position:"relative",
   width:"100%",
-  borderRadius:theme.shape.borderRadius,
+  borderRadius:theme(activeTheme).shape.borderRadius,
   display:"flex",
   alignItems:"center",
   maxWidth:1490,
   margin:"2rem auto",
   padding:"16px 0px",
   gap:8,
-  boxShadow:`0px 0px 10px 0px ${theme.palette.mode==="dark"?theme.palette.primary.light:theme.palette.secondary.light}`,
+  boxShadow:`0px 0px 10px 0px ${theme(activeTheme).palette.mode==="dark"?theme(activeTheme).palette.primary.light:theme(activeTheme).palette.secondary.light}`,
   flexDirection:"column",
   [props.theme.breakpoints.up("md")]:{
     flexDirection:"row",

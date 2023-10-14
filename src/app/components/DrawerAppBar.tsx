@@ -1,9 +1,9 @@
 "use client";
 //react
-import React from "react";
-//nexr
+import React, { useState } from "react";
+//next
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 //mui
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -20,11 +20,14 @@ import Button from "@mui/material/Button";
 import theme from "@/theme/theme";
 //component
 import CompanyLogo from "./LogoIcon";
+import { dispatch, getState } from "@/context/store";
+import { setTheme } from "@/context/reducers/themeReducer";
+import { PaletteMode } from "@mui/material";
 
 interface Props {
   window?: () => Window;
 }
-
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const drawerWidth = 240;
 const navItems = [
   "Home",
@@ -44,9 +47,21 @@ const navLinks = [
 ];
 
 export default function DrawerAppBar(props: Props) {
+  const [globalTheme, setGlobalTheme] = useState(activeTheme);
   const path = usePathname();
+  const router = useRouter();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+
+  const changeTheme = () => {
+    if (globalTheme === "light") {
+      setGlobalTheme("dark"), dispatch(setTheme("dark"));
+    } else {
+      setGlobalTheme("light"), dispatch(setTheme("light"));
+    };
+    router.refresh()
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -61,7 +76,7 @@ export default function DrawerAppBar(props: Props) {
         height: "100%",
         justifyContent: "space-between",
         pb: 6,
-        backgroundColor:theme.palette.background.default
+        backgroundColor: theme(activeTheme).palette.background.default,
       }}
     >
       <Box display={"flex"} flexDirection={"column"}>
@@ -88,7 +103,7 @@ export default function DrawerAppBar(props: Props) {
         <Divider />
         <Box mx={"auto"}>
           <Button
-          variant="contained"
+            variant="contained"
             disabled
             sx={{
               mt: 4,
@@ -97,6 +112,17 @@ export default function DrawerAppBar(props: Props) {
             }}
           >
             Create Account
+          </Button>
+          <Button
+            onClick={() => changeTheme()}
+            variant="contained"
+            sx={{
+              mt: 4,
+              width: "200px",
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            Theme
           </Button>
         </Box>
       </Box>
@@ -180,13 +206,13 @@ export default function DrawerAppBar(props: Props) {
                       <Typography
                         variant="subtitle1"
                         display={"inline-block"}
-                        color={theme.palette.primary.main}
+                        color={theme(activeTheme).palette.primary.main}
                         fontWeight={500}
                       >
                         {item}
                       </Typography>
                       <Box
-                        bgcolor={theme.palette.primary.main}
+                        bgcolor={theme(activeTheme).palette.primary.main}
                         width={6}
                         height={6}
                         borderRadius={"50%"}
@@ -208,6 +234,14 @@ export default function DrawerAppBar(props: Props) {
               }}
             >
               Create Account
+            </Button>
+            <Button
+              onClick={() => changeTheme()}
+              sx={{
+                width: "140px",
+              }}
+            >
+              Theme
             </Button>
           </Box>
         </Toolbar>

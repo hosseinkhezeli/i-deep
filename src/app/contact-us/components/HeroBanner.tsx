@@ -10,14 +10,18 @@ import styled from "@mui/material/styles/styled"
 //images
 import ContactUsImage from "@public/images/ideepContactus.svg";
 import theme from "@/theme/theme";
+import { PaletteMode } from "@mui/material";
+import { getState } from "@/context/store";
 
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const HeroBanner = () => {
+  
   return (
     <>
       <ComponentWrapper>
         <Typography
           variant="h2"
-          color={theme.palette.secondary.contrastText}
+          color={theme(activeTheme).palette.secondary.contrastText}
           lineHeight={"150%"}
           fontSize={{ xs: 35, sm: 38, md: 42, lg: 50 }}
           maxWidth={415}
@@ -50,8 +54,8 @@ const ComponentWrapper = styled(Box)((props)=>({
   display:"flex",
   justifyContent:"space-between",
   alignItems:"center",
-  backgroundColor:theme.palette.secondary.main,
-  borderRadius:theme.shape.borderRadius,
+  backgroundColor:theme(activeTheme).palette.secondary.main,
+  borderRadius:theme(activeTheme).shape.borderRadius,
   padding:"4px 8px",
   margin:"3rem auto",
   flexDirection:"column",

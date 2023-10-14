@@ -9,6 +9,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 //next
 import Image, { StaticImageData } from "next/image";
+import { PaletteMode } from "@mui/material";
+import { getState } from "@/context/store";
 
 type Props = {
   image: StaticImageData;
@@ -18,7 +20,7 @@ type Props = {
   text: string;
   buttonCaption: string;
 };
-
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const CarouselSlide = ({
   image,
   header,
@@ -40,7 +42,7 @@ const CarouselSlide = ({
             style={{
               width: `${screenWidth && screenWidth < 900 ? "auto" : "40vw"}`,
               height: "auto",
-              boxShadow: `-20px 20px 0px 0px ${theme.palette.secondary.main}`,
+              boxShadow: `-20px 20px 0px 0px ${theme(activeTheme).palette.secondary.main}`,
               borderRadius: "0.625rem",
               transform: "translateX(2vw)",
               marginBottom: `${
@@ -61,9 +63,9 @@ const CarouselSlide = ({
           >
             <Typography
               width={"max-content"}
-              bgcolor={theme.palette.secondary.main}
+              bgcolor={theme(activeTheme).palette.secondary.main}
               variant="h3"
-              color={theme.palette.secondary.contrastText}
+              color={theme(activeTheme).palette.secondary.contrastText}
               fontSize={{ md: "7vw", lg: "6vw", xl: "88px" }}
               p={"16px"}
               py={{ md: "2.5vw", xl: "35px" }}

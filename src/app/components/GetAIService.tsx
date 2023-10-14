@@ -4,13 +4,14 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, PaletteMode, Typography } from "@mui/material";
 import theme from "@/theme/theme";
 import styled from "@mui/material/styles/styled"
 //image
 import ThinkingRobot from "@public/images/thinkingAironman.webp";
+import { getState } from "@/context/store";
 
-
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const GetAiServices = () => {
   return (
     <>
@@ -36,7 +37,7 @@ const GetAiServices = () => {
           <ContentWrapper
           >
             <Typography
-              color={theme.palette.secondary.contrastText}
+              color={theme(activeTheme).palette.secondary.contrastText}
               variant="h2"
               fontSize={{ xs: 24, md: 48 }}
               textAlign={{ xs: "center" }}
@@ -44,7 +45,7 @@ const GetAiServices = () => {
               Get AI Services
             </Typography>
             <Typography
-              color={theme.palette.secondary.contrastText}
+              color={theme(activeTheme).palette.secondary.contrastText}
               variant="body1"
               padding={4}
               textAlign={"justify"}
@@ -85,7 +86,7 @@ export default GetAiServices;
 
 const Background = styled(Box)(()=>({
   width:"100vw",
-  backgroundColor:theme.palette.secondary.main
+  backgroundColor:theme(activeTheme).palette.secondary.main
 }))
 const ComponentWrapper = styled(Box)((props)=>({
   display:"flex",

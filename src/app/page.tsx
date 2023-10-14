@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+
   return (
     <div style={{overflowX:"hidden",paddingTop:"1rem"}}>
       <MainCarousel />

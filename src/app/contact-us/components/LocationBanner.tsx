@@ -11,7 +11,9 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-
+import { PaletteMode } from "@mui/material";
+import { getState } from "@/context/store";
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const LocationBanner = () => {
   const contactData = [
     {
@@ -39,7 +41,7 @@ const LocationBanner = () => {
             (item: { icon: any; content: string }, index: number) => (
               <Box key={index} display={"flex"} gap={4}>
                 {item.icon}
-                <Typography variant="body2" color={theme.palette.secondary.contrastText}>
+                <Typography variant="body2" color={theme(activeTheme).palette.secondary.contrastText}>
                   {item.content}
                 </Typography>
               </Box>
@@ -75,8 +77,8 @@ const ComponentWrapper = styled(Box)((props) => ({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  backgroundColor: theme.palette.secondary.main,
-  borderRadius: theme.shape.borderRadius,
+  backgroundColor: theme(activeTheme).palette.secondary.main,
+  borderRadius: theme(activeTheme).shape.borderRadius,
   margin: "3rem auto",
   padding: "32px 16px",
   gap: 20,

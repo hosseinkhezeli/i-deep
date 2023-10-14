@@ -4,13 +4,14 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, PaletteMode, TextField, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import theme from "@/theme/theme";
 import styled from "@mui/material/styles/styled";
 //image
 import InfiniteIcon from "@public/images/infinite.svg";
-
+import { getState } from "@/context/store";
+const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const StayInTheKnow = () => {
   return (
     <>
@@ -24,7 +25,7 @@ const StayInTheKnow = () => {
               gap={1}
             >
               <Typography
-                color={theme.palette.secondary.contrastText}
+                color={theme(activeTheme).palette.secondary.contrastText}
                 fontSize={32}
                 fontWeight={600}
                 height={"100%"}
@@ -41,7 +42,7 @@ const StayInTheKnow = () => {
               </Box>
             </Box>
             <Typography
-              color={theme.palette.secondary.contrastText}
+              color={theme(activeTheme).palette.secondary.contrastText}
               fontSize={22}
               fontWeight={500}
               lineHeight={"150%"}
@@ -57,7 +58,7 @@ const StayInTheKnow = () => {
             justifyContent={"center"}
           >
             <Typography
-              color={theme.palette.secondary.contrastText}
+              color={theme(activeTheme).palette.secondary.contrastText}
               fontSize={12}
             >
               Your e-mail :
@@ -83,7 +84,7 @@ const StayInTheKnow = () => {
 export default StayInTheKnow;
 const Background = styled(Box)((props) => ({
   width: "100vw",
-  backgroundColor: theme.palette.secondary.main,
+  backgroundColor: theme(activeTheme).palette.secondary.main,
 }));
 const ComponentWrapper = styled(Box)((props) => ({
   display: "flex",
