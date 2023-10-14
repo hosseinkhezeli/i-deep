@@ -4,8 +4,6 @@ import { lightPalette } from './components/palette/light/lightPalette';
 import { darkPalette } from './components/palette/dark/darkPalette';
 import { MuiCssBaseline } from './components/mui-css-baseline';
 import { MuiTextField } from './components/TextField/TextField';
-import { MuiOutlinedInput } from './components/TextField/MuiOutlinedInput';
-import { MuiFilledInput } from './components/TextField/MuiFilledInput';
 import { MuiAlert } from './components/Alert/Alert';
 import { MuiButton } from './components/Button/MuiButton';
 import { MuiChip } from './components/Chip/MuiChip';
@@ -16,7 +14,8 @@ import { MuiCard } from './components/Card/MuiCard';
 import { MuiTypography } from './components/Typography/MuiTypography';
 import { MuiAppBar } from './components/AppBar/MuiAppBar';
 import { MuiAccordion } from './components/Accordion/MuiAccordion';
-
+import {MuiCheckbox} from "./components/CheckBox/MuiCheckbox"
+import { MuiSelect } from './components/Select/MuiSelect';
 type PaletteMode = "light" | "dark";
 
 const getDesignTokens = (mode: PaletteMode) => ({
@@ -26,6 +25,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 
 const theme = createTheme({
   palette: getDesignTokens("dark"),
+  direction:'ltr',
   typography,
   spacing: 4,
   shape:{
@@ -41,12 +41,12 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiSelect,
     MuiAccordion,
+    MuiCheckbox,
     MuiCssBaseline,
     MuiAppBar,
     MuiTextField,
-    MuiOutlinedInput,
-    MuiFilledInput,
     MuiAlert,
     MuiButton,
     MuiChip,

@@ -1,14 +1,18 @@
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+"use client"
+//react
+import React from "react";
+//next
+import Link from "next/link";
+import Image, { StaticImageData } from "next/image";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import CircleIcon from "@mui/icons-material/Circle";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
-import MAMImage from "@public/images/plat-mediaManagment.png";
 import { Button, List, ListItem, ListItemIcon } from "@mui/material";
-import Image, { StaticImageData } from "next/image";
-import React from "react";
-import Link from "next/link";
-
+import styled from "@mui/material/styles/styled"
+import theme from "@/theme/theme";
+//types
 type Props = {
   title: string;
   description: string;
@@ -27,20 +31,9 @@ const PlatformCard = ({
   layout,
 }: Props) => {
   return (
-    <Box px={8} mx={"auto"} my={8}>
-      <Box
-        position={"relative"}
-        bgcolor={layout === "dark" ? lightPalette.secondary.main : "white"}
-        width={"100%"}
-        borderRadius={2}
-        display={"flex"}
-        flexDirection={{ xs: "column", md: "row" }}
-        alignItems={"center"}
-        maxWidth={1490}
-        mx={"auto"}
-        py={8}
-        gap={8}
-        boxShadow={"0px 16px 48px 0px rgba(0,0,0,0.1)"}
+    <Background>
+      <ComponentWrapper
+        bgcolor={layout === "dark" ? theme.palette.secondary.main : theme.palette.secondary.contrastText}
       >
         <Box
           width={{ xs: "100%", md: "50%" }}
@@ -55,8 +48,8 @@ const PlatformCard = ({
             variant="h2"
             color={
               layout === "dark"
-                ? lightPalette.secondary.back
-                : lightPalette.secondary.main
+                ? theme.palette.secondary.contrastText
+                : theme.palette.secondary.main
             }
             fontSize={{ xs: "inherit", md: 50 }}
           >
@@ -66,8 +59,8 @@ const PlatformCard = ({
             variant="body1"
             color={
               layout === "dark"
-                ? lightPalette.secondary.back
-                : lightPalette.secondary.main
+              ? theme.palette.secondary.contrastText
+              : theme.palette.secondary.main
             }
           >
             {description}
@@ -82,8 +75,8 @@ const PlatformCard = ({
                   fontWeight={600}
                   color={
                     layout === "dark"
-                      ? lightPalette.secondary.back
-                      : lightPalette.secondary.main
+                    ? theme.palette.secondary.contrastText
+                    : theme.palette.secondary.main
                   }
                 >
                   {item}
@@ -99,7 +92,7 @@ const PlatformCard = ({
                   ? "initial"
                   : "inherit"
               }`,
-              ":hover": { bgcolor: lightPalette.primary[20] },
+              ":hover": { bgcolor: theme.palette.primary.light },
             }}
           >
             <Link
@@ -107,7 +100,7 @@ const PlatformCard = ({
               style={{
                 display: "flex",
                 alignItems: "center",
-                color: lightPalette.primary.main,
+                color: theme.palette.primary.main,
               }}
             >
               <ArrowForwardOutlinedIcon />
@@ -122,6 +115,7 @@ const PlatformCard = ({
           px={0}
           display={"flex"}
           justifyContent={layout === "dark" ? "flex-end" : "flex-start"}
+          bgcolor="inherit"
         >
           <Image
             src={image}
@@ -136,9 +130,32 @@ const PlatformCard = ({
             }}
           />
         </Box>
-      </Box>
-    </Box>
+      </ComponentWrapper>
+    </Background>
   );
 };
 
 export default PlatformCard;
+
+const Background = styled(Box)(()=>({
+  padding:"0px 16px",
+  margin:"auto 16px"
+}))
+
+const ComponentWrapper = styled(Box)((props)=>({
+  position:"relative",
+  width:"100%",
+  borderRadius:theme.shape.borderRadius,
+  display:"flex",
+  alignItems:"center",
+  maxWidth:1490,
+  margin:"2rem auto",
+  padding:"16px 0px",
+  gap:8,
+  boxShadow:`0px 0px 10px 0px ${theme.palette.mode==="dark"?theme.palette.primary.light:theme.palette.secondary.light}`,
+  flexDirection:"column",
+  [props.theme.breakpoints.up("md")]:{
+    flexDirection:"row",
+  }
+
+}))

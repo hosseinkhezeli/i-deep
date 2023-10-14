@@ -1,12 +1,16 @@
+"use client";
+//react
+import React from "react";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import styled from "@mui/material/styles/styled";
+import theme from "@/theme/theme";
+//icons
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import React from "react";
-
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
 
 const LocationBanner = () => {
   const contactData = [
@@ -29,52 +33,20 @@ const LocationBanner = () => {
   ];
   return (
     <>
-      <Box
-        width={"90%"}
-        height={{ xs: "auto", md: "480px" }}
-        maxWidth={1480}
-        mx={"auto"}
-        display={"flex"}
-        flexDirection={{ xs: "column", md: "row" }}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        bgcolor={lightPalette.secondary.main}
-        borderRadius={3}
-        px={{ xs: 8, sm: 16 }}
-        py={{ xs: 16, md: 2 }}
-        my={"3rem"}
-        gap={20}
-      >
-        <Box
-          display={"flex"}
-          flexDirection={"column"}
-          height={"100%"}
-          justifyContent={"space-evenly"}
-          flexBasis={"50%"}
-          mx={"auto"}
-          width={"fit-content"}
-          gap={{xs:10,md:0}}
-        >
+      <ComponentWrapper>
+        <ContactInformationWrapper>
           {contactData.map(
             (item: { icon: any; content: string }, index: number) => (
               <Box key={index} display={"flex"} gap={4}>
                 {item.icon}
-                <Typography variant="body2" color={lightPalette.secondary.back}>
+                <Typography variant="body2" color={theme.palette.secondary.contrastText}>
                   {item.content}
                 </Typography>
               </Box>
             )
           )}
-        </Box>
-        <Box
-          flexBasis={{xs:"unset",md:"60%"}}
-          display="flex"
-          justifyContent={{ xs: "center", md: "flex-end" }}
-          alignItems={"center"}
-          height={{xs:"60vw",md:"100%"}}
-          width={"100%"}
-          py={{xs:"unset",md:6}}
-        >
+        </ContactInformationWrapper>
+        <MapComponentWrapper>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1145.4324138638458!2d51.39116136111359!3d35.70722523334853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzXCsDQyJzI2LjAiTiA1McKwMjMnMzAuMCJF!5e0!3m2!1sen!2sde!4v1693060580236!5m2!1sen!2sde"
             style={{
@@ -82,17 +54,69 @@ const LocationBanner = () => {
               borderRadius: "15px",
               width: "100%",
               height: "100%",
-              maxWidth:"480px"
+              maxWidth: "480px",
             }}
             // @ts-ignore
             allowFullScreen=""
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
-        </Box>
-      </Box>
+        </MapComponentWrapper>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default LocationBanner;
+
+const ComponentWrapper = styled(Box)((props) => ({
+  width: "90%",
+  maxWidth: 1480,
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  backgroundColor: theme.palette.secondary.main,
+  borderRadius: theme.shape.borderRadius,
+  margin: "3rem auto",
+  padding: "32px 16px",
+  gap: 20,
+  height: "auto",
+  [props.theme.breakpoints.up("sm")]: {
+    padding: "32px 32px",
+  },
+  [props.theme.breakpoints.up("md")]: {
+    padding: "4px 32px",
+    flexDirection: "row",
+    height: "480px",
+  },
+}));
+
+const MapComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  padding: "unset",
+  justifyContent: "center",
+  height: "60vw",
+  flexBasis: "unset",
+  [props.theme.breakpoints.up("md")]: {
+    justifyContent: "flex-end",
+    height: "100%",
+    flexBasis: "60%",
+    padding: "12px 0px",
+  },
+}));
+const ContactInformationWrapper = styled(Box)((props)=>({
+  display:"flex",
+  flexDirection:"column",
+  height:"100%",
+  justifyContent:"space-evenly",
+  flexBasis:"50%",
+  mx:"auto",
+  width:"fit-content",
+  gap:10,
+  [props.theme.breakpoints.up("md")]:{
+    gap:0
+  }
+
+}))

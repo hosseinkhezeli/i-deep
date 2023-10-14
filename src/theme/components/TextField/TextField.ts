@@ -6,7 +6,13 @@ type TMuiTextField =
   | {
       defaultProps?: Partial<TextFieldProps> | undefined;
       styleOverrides?:
-        | Partial<OverridesStyleRules<"root", "MuiTextField", Omit<Theme, "components">>>
+        | Partial<
+            OverridesStyleRules<
+              "root",
+              "MuiTextField",
+              Omit<Theme, "components">
+            >
+          >
         | undefined;
       variants?: [] | undefined;
     }
@@ -15,44 +21,70 @@ type TMuiTextField =
 export const MuiTextField: TMuiTextField = {
   styleOverrides: {
     root: ({ ownerState, theme }) => ({
-      "& .MuiInputBase-root": {
-        fontSize: "15px",
-        "& .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#c6c6c6",
-        },
-        ".MuiSvgIcon-root": {
-          marginRight: 5,
-        },
-      },
-      "& .MuiInputBase-input": {
-        "&:-webkit-autofill": {
-          "-webkit-background-clip": "text",
-          "-webkit-text-fill-color": theme.palette.primary.main,
-          transition: "background-color 5000s ease-in-out 0s",
-          backgroundColor: "red",
-          // boxShadow: `0 0 0 1000px ${theme.palette.background.default} inset !important`,
-        },
-      },
-
-      "& .MuiOutlinedInput-input": {
-        borderRadius: "8px",
-      },
-
       "& .MuiFilledInput-root": {
-        borderRadius: 10,
-
-        "-webkit-text-fill-color": theme.palette.text.primary,
-
-        "& .MuiInputAdornment-root": {
-          marginTop: "0!important",
-          height: "100%",
-        },
-
+        backgroundColor: theme.palette.background.paper,
+        borderRadius: theme.shape.borderRadius,
         "&::before": { display: "none" },
         "&::after": { display: "none" },
       },
+      "& .Mui-disabled": {
+        color: theme.palette.text.disabled,
+      },
+      "& .MuiInputLabel-filled": {
+        color: theme.palette.text.disabled,
+      },
+      "& .MuiInputLabel-outlined": {
+        color: theme.palette.text.primary,
+      },
+      "& .MuiOutlinedInput-root": {
+        backgroundColor: theme.palette.background.paper,
+      },
+      "& .MuiOutlinedInput-notchedOutline": {
+        border: `none`,
+      },
 
-      "-webkit-text-fill-color": theme.palette.text.primary,
+      "&.Mui-error": {
+        boxShadow: `0px 0px 5px 0px ${theme.palette.error.main}`,
+        "& .MuiOutlinedInput-notchedOutline": {
+          borderColor: `${theme.palette.error.main}`,
+          borderWidth: 1,
+        },
+
+        "&:hover": {
+          "& .MuiOutlinedInput-notchedOutline": {
+            borderColor: `${theme.palette.error.dark} !important`,
+          },
+        },
+      },
+
+      ...(ownerState.variant === "outlined" && {
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: theme.palette.background.default,
+        transition: "0.2s",
+        border: `1px solid ${theme.palette.secondary.light}`,
+        "&:hover": {
+          boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light}`,
+        },
+        "&.Mui-focused": {
+          background: theme.palette.background.paper,
+          boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light} inset`,
+        },
+      }),
+
+      ...(ownerState.variant === "filled" && {
+        borderRadius: theme.shape.borderRadius,
+        backgroundColor: theme.palette.background.default,
+        transition: "0.3s",
+        border: `1px solid ${theme.palette.primary.light}`,
+        "&:hover": {
+          backgroundColor: theme.palette.background.paper,
+          boxShadow: `0px 0px 10px 0px ${theme.palette.primary.light}`,
+        },
+        "&.Mui-focused": {
+          background: theme.palette.background.default,
+          boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light} inset`,
+        },
+      }),
     }),
   },
 };

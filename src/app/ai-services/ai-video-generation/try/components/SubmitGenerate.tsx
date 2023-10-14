@@ -1,14 +1,18 @@
-"use client"
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
-import theme from "@/theme/theme";
-import { Checkbox, FormControlLabel, InputLabel } from "@mui/material";
+"use client";
+//react
+import React from "react";
+//next
+import { useRouter } from "next/navigation";
+//hook
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
+//mui
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import styled from "@mui/material/styles/styled"
+//type
 interface ISubmitForm {
   name: string;
   email: string;
@@ -16,9 +20,12 @@ interface ISubmitForm {
 }
 
 const SubmitGenerate = () => {
+  const router = useRouter();
+
   const onSubmit: SubmitHandler<ISubmitForm> = (data) => {
     console.log(data);
   };
+
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: "",
@@ -26,16 +33,10 @@ const SubmitGenerate = () => {
       confirm: false,
     },
   });
-  const router = useRouter()
+
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        gap={8}
-        maxWidth={{ xs: "auto", md: 600 }}
-        alignItems={{ xs: "center", md: "flex-start" }}
-      >
+      <ComponentWrapper>
         <Typography
           variant="h2"
           fontSize={{ xs: 40, md: 50 }}
@@ -52,12 +53,17 @@ const SubmitGenerate = () => {
           Please note: political, sexual, criminal and discriminatory content
           will not be tolerated or approved.
         </Typography>
-        <form onSubmit={handleSubmit(onSubmit)} style={{display:"flex",flexDirection:"column",gap:20}}>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          style={{ display: "flex", flexDirection: "column", gap: 20 }}
+        >
           <Controller
             name="name"
             control={control}
             render={({ field }) => (
               <TextField
+                autoComplete="off"
+                variant="filled"
                 label={"Your name"}
                 sx={{ width: "100%", maxWidth: "400px" }}
                 {...field}
@@ -69,6 +75,8 @@ const SubmitGenerate = () => {
             control={control}
             render={({ field }) => (
               <TextField
+                variant="filled"
+                autoComplete="off"
                 label={"Email"}
                 sx={{ width: "100%", maxWidth: "400px" }}
                 {...field}
@@ -86,18 +94,45 @@ const SubmitGenerate = () => {
               />
             )}
           />
-          <Box display={"flex"} sx={{ width: "100%", maxWidth: "400px" }} gap={4}>
-          <Button variant="outlined" color="primary" onClick={router.back} sx={{flexBasis:"50%"}}>
-            Go Back
-          </Button>
-          <Button variant="contained" color="primary" type="submit" sx={{flexBasis:"50%"}}>
-            Generate your video
-          </Button>
+          <Box
+            display={"flex"}
+            sx={{ width: "100%", maxWidth: "400px" }}
+            gap={4}
+          >
+            <Button
+              variant="outlined"
+              color="primary"
+              onClick={router.back}
+              sx={{ flexBasis: "50%" }}
+            >
+              Go Back
+            </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              sx={{ flexBasis: "50%" }}
+            >
+              Generate your video
+            </Button>
           </Box>
         </form>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default SubmitGenerate;
+
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: 8,
+  maxWidth: "auto",
+  padding: "0px 16px",
+  alignItems: "center",
+  [props.theme.breakpoints.up("md")]: {
+    maxWidth: 500,
+    alignItems: "flex-start",
+  },
+}));

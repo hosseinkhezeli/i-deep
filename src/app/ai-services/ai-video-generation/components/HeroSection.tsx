@@ -5,6 +5,8 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import theme from "@/theme/theme";
+import styled from "@mui/material/styles/styled";
 //image
 import WomanImage from "@public/images/woman-laugh.png";
 
@@ -24,7 +26,7 @@ const HeroSection = () => {
           style={{
             fontSize: "14px",
             letterSpacing: "1px",
-            color: lightPalette.primary.main,
+            color: theme.palette.primary.main,
           }}
         >
           #1
@@ -40,32 +42,15 @@ const HeroSection = () => {
       >
         Turn your text into videos in minutes
       </Typography>
-      <Box
-        display={"flex"}
-        flexDirection={{ xs: "column", md: "row" }}
-        alignItems={"center"}
-        width={"100%"}
-        justifyContent={{xs:"space-between"}}
-        gap={10}
-      >
-        <Box order={{ xs: 1, md: 2 }} width={"90vw"} maxWidth={475}>
+      <ContentWrapper>
+        <ImageWrapper>
           <Image
             src={WomanImage}
             alt="smiling woman"
             style={{ width: "100%", height: "auto" }}
           />
-        </Box>
-        <Box
-          order={{ xs: 2, md: 1 }}
-          my={10}
-          display={"flex"}
-          flexDirection={"column"}
-          alignItems={{ xs: "center", md: "flex-start" }}
-          justifyContent={{ md: "space-between" }}
-          height={{ xs: "auto", md: "500px" }}
-          px={4}
-          gap={4}
-        >
+        </ImageWrapper>
+        <FormContainer>
           <Box
             display={"flex"}
             flexDirection={"column"}
@@ -106,21 +91,21 @@ const HeroSection = () => {
             justifyContent={"center"}
             gap={3}
           >
-            <Link href={"ai-video-generation/try"} style={{flexGrow: 1}}>
-            <Button
-            variant="outlined"
-            color="primary"
-              sx={{
-                width:"100%",
-                px: 4,
-                py: 1.5,
-              }}
-            >
-              Create a free Ai video !
-            </Button>
+            <Link href={"ai-video-generation/try"} style={{ flexGrow: 1 }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{
+                  width: "100%",
+                  px: 4,
+                  py: 1.5,
+                }}
+              >
+                Create a free Ai video !
+              </Button>
             </Link>
             <Button
-              variant="contained"
+              variant="outlined"
               color="primary"
               sx={{
                 flexGrow: 1,
@@ -131,10 +116,46 @@ const HeroSection = () => {
               Watch Sample Products!
             </Button>
           </Box>
-        </Box>
-      </Box>
+        </FormContainer>
+      </ContentWrapper>
     </>
   );
 };
 
 export default HeroSection;
+
+const ContentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  alignItems: "center",
+  width: "100%",
+  justifyContent: "space-between",
+  gap: 10,
+  flexDirection: "column",
+  [props.theme.breakpoints.up("md")]: {
+    flexDirection: "row",
+  },
+}));
+
+const ImageWrapper = styled(Box)((props) => ({
+  width: "90vw",
+  maxWidth: 475,
+  order: 1,
+  [props.theme.breakpoints.up("md")]: {
+    order: 2,
+  },
+}));
+
+const FormContainer = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+  padding: "0px 8px",
+  margin: "20px 0px",
+  alignItems: "center",
+  height: "auto",
+  [props.theme.breakpoints.up("md")]: {
+    alignItems: "flex-start",
+    height: "500px",
+    justifyContent: "space-between",
+  },
+}));

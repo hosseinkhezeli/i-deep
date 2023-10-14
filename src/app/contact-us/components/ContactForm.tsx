@@ -57,7 +57,7 @@ const ContactForm = () => {
             name="name"
             control={control}
             render={({ field }) => (
-              <TextField sx={{ width: "100%" }} {...field} />
+              <TextField sx={{ width: "100%" }} {...field} autoComplete="off"/>
             )}
           />
         </Box>
@@ -69,7 +69,7 @@ const ContactForm = () => {
             name="email"
             control={control}
             render={({ field }) => (
-              <TextField sx={{ width: "100%" }} {...field} />
+              <TextField sx={{ width: "100%" }} {...field} autoComplete="off" />
             )}
           />
         </Box>
@@ -81,7 +81,7 @@ const ContactForm = () => {
             name="country"
             control={control}
             render={({ field }) => (
-              <Select sx={{ width: "100%" }} {...field}>
+              <Select variant="outlined" sx={{ width: "100%" }} {...field}>
                 <MenuItem value={"iran"}>Iran</MenuItem>
                 <MenuItem value={"germany"}>Germany</MenuItem>
                 <MenuItem value={"turkey"}>Turkey</MenuItem>
@@ -118,7 +118,7 @@ const ContactForm = () => {
                 sx={{ width: "100%" }}
                 multiline
                 rows={3}
-                maxRows={4}
+                // maxRows={4}
                 {...field}
               />
             )}
@@ -137,7 +137,7 @@ const ContactForm = () => {
             )}
           />
         </Box>
-        <Button type="submit" sx={{ width: "100%" }}>
+        <Button type="submit" variant="contained" color="primary" sx={{ width: "100%" }}>
           Send
         </Button>
       </form>

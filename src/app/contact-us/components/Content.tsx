@@ -1,19 +1,20 @@
+'use client'
+//react
+import React from "react";
+//next
+import Image from "next/image";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
+import styled from "@mui/material/styles/styled"
+//icons
 import GuardIcon from "@public/images/gurd.svg";
 import FlashIcon from "@public/images/flash2.svg";
-import React from "react";
 
 const Content = () => {
   return (
     <>
-      <Box
-        display={"flex"}
-        flexDirection={"column"}
-        flexBasis={"50%"}
-        gap={{ xs: 10, lg: 15 }}
-      >
+      <ComponentWrapper>
         <Typography variant="h2" fontSize={{ xs: "35px", lg: "50px" }}>
           WE'RE HERE TO HELP
         </Typography>
@@ -53,9 +54,19 @@ const Content = () => {
             <Image src={FlashIcon} alt="Guard Icon" />
           </Box>
         </Box>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default Content;
+
+const ComponentWrapper = styled(Box)((props)=>({
+  display:"flex",
+  flexDirection:"column",
+  flexBasis:"50%",
+  gap:30,
+  [props.theme.breakpoints.up("lg")]:{
+    gap:50
+  }
+}))

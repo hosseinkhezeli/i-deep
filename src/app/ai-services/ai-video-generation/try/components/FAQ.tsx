@@ -1,12 +1,16 @@
-import BasicAccordion from "@/app/components/accordion/BasicAccordion";
+//react
+import React from "react";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import React from "react";
+import styled from "@mui/material/styles/styled";
+//component
+import BasicAccordion from "@/app/components/accordion/BasicAccordion";
 
 const FAQ = () => {
   return (
     <>
-      <Box maxWidth={1536} mx="auto" my={"10rem"}>
+      <ComponentWrapper>
         <Typography
           variant="h2"
           fontSize={{ xs: "24px", md: "48px" }}
@@ -26,12 +30,14 @@ const FAQ = () => {
           If you don't see what's on your mind, reach out to us anytime.
         </Typography>
         <BasicAccordion data={accordionData} />
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default FAQ;
+
+//data
 const accordionData = [
   {
     title: 'What AI services do you offer, including "Text to Video"?',
@@ -62,3 +68,12 @@ const accordionData = [
       'Our AI services are designed with flexibility and quality in mind. "Text to Video" offers an exceptional blend of simplicity, versatility, and customization, ensuring it meets the demands of diverse projects and objectives.',
   },
 ];
+
+//component
+const ComponentWrapper = styled(Box)((props) => ({
+  maxWidth: 1400,
+  margin: "10rem auto",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}));

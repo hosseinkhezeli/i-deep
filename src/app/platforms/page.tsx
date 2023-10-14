@@ -1,10 +1,15 @@
+//react
 import React from "react";
-import PlatformCard from "./Components/PlatformCard";
+//next
 import { StaticImageData } from "next/image";
-import MAMImage from "@public/images/plat-mediaManagment.png";
-import CarBazaarImage from "@public/images/palt-roadMaster.jpg";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+//images
+import PlatformCard from "./Components/PlatformCard";
+import MAMImage from "@public/images/plat-mediaManagment.png";
+import CarBazaarImage from "@public/images/palt-roadMaster.png";
+//types
 type Props = {
   title: string;
   description: string;

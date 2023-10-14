@@ -3,9 +3,9 @@ export const lightPalette = {
   // 50 shade is main shade with less opacity
   //100 darkest shade / 20 lightest shade / back for overlays
   primary: {
-    main: "#1675f9",
-    dark: "#1C5DB8",
-    light: "#1675f935",
+    main: "#0088cc",
+    dark: "#005F8F",
+    light: "#1FB4FF35",
     contrastText: "#fff",
   },
   secondary: {
@@ -19,7 +19,7 @@ export const lightPalette = {
   background: {
     main: "#fff",
     default: "#fff",
-    paper:"#D2E6FE",
+    paper:"#EBECEE",
     1: "#F4F9FF",
     2: "#E9EEF0",
     3: "#fff",

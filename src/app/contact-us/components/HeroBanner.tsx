@@ -1,31 +1,23 @@
+'use client'
+//react
+import React from "react";
+//next
+import Image from "next/image";
+//mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import React from "react";
+import styled from "@mui/material/styles/styled"
+//images
 import ContactUsImage from "@public/images/ideepContactus.svg";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+import theme from "@/theme/theme";
 
 const HeroBanner = () => {
   return (
     <>
-      <Box
-        width={"90%"}
-        height={{ xs: "auto", lg: "360px" }}
-        maxWidth={1480}
-        mx={"auto"}
-        display={"flex"}
-        flexDirection={{ xs: "column", sm: "row" }}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-        bgcolor={lightPalette.secondary.main}
-        borderRadius={3}
-        px={{ xs: 4, sm: 16 }}
-        py={2}
-        my={"3rem"}
-      >
+      <ComponentWrapper>
         <Typography
           variant="h2"
-          color={lightPalette.secondary.back}
+          color={theme.palette.secondary.contrastText}
           lineHeight={"150%"}
           fontSize={{ xs: 35, sm: 38, md: 42, lg: 50 }}
           maxWidth={415}
@@ -45,9 +37,30 @@ const HeroBanner = () => {
             alt="Website illustration"
           />
         </Box>
-      </Box>
+      </ComponentWrapper>
     </>
   );
 };
 
 export default HeroBanner;
+
+const ComponentWrapper = styled(Box)((props)=>({
+  width:"90%",
+  maxWidth:1480,
+  display:"flex",
+  justifyContent:"space-between",
+  alignItems:"center",
+  backgroundColor:theme.palette.secondary.main,
+  borderRadius:theme.shape.borderRadius,
+  padding:"4px 8px",
+  margin:"3rem auto",
+  flexDirection:"column",
+height:"auto",
+  [props.theme.breakpoints.up("sm")]:{
+    flexDirection:"row",
+    padding:"32px 64px",
+  },
+  [props.theme.breakpoints.up("lg")]:{
+    height:"360px"
+  }
+}))

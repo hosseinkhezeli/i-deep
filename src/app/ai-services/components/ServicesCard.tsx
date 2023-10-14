@@ -68,7 +68,7 @@ const ServicesCard = ({
         <Image
           src={image}
           alt="Face recognition"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "100%",borderRadius:"12px" }}
         />
         <Typography variant="h5" fontSize={"20px"}>
           {title}
@@ -93,7 +93,7 @@ export default ServicesCard;
 
 const ComponentWrapper = styled(Box)((props)=>({
   position:"relative",
-  boxShadow:"0px 16px 48px 0px rgba(0,0,0,0.1)",
+  boxShadow:`${theme.palette.mode==="dark"?`0px 5px 10px 0px ${theme.palette.primary.main.padEnd(9,"15")}`:`0px 20px 35px 0px ${theme.palette.secondary.main.padEnd(9,"20")}`}` ,
   width:"100%",
   maxWidth:"unset",
   padding:20,
@@ -102,6 +102,12 @@ const ComponentWrapper = styled(Box)((props)=>({
   alignItems:"center",
   borderRadius:10,
   gap:2,
+  border:`${theme.palette.mode==="dark"?`1px solid ${theme.palette.primary.main.padEnd(9,"30")}`:"none"}`,
+  transition: "0.3s",
+  ":hover":{
+    transform: "scale(1.005)",
+    boxShadow:`${theme.palette.mode==="dark"?`0px 5px 10px 0px ${theme.palette.primary.main.padEnd(9,"30")}`:`0px 20px 35px 0px ${theme.palette.secondary.main.padEnd(9,"30")}`}` ,
+  },
   [props.theme.breakpoints.up("sm")]:{
     maxWidth:400,
   }
