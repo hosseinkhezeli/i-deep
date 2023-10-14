@@ -21,8 +21,18 @@ type TMuiTextField =
 export const MuiTextField: TMuiTextField = {
   styleOverrides: {
     root: ({ ownerState, theme }) => ({
+      "& .MuiOutlinedInput-input":{
+        color:theme.palette.text.secondary,
+      },
+      "& .MuiFilledInput-input":{
+        color:theme.palette.text.secondary,
+      },
       "& .MuiFilledInput-root": {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? theme.palette.secondary.dark
+            : theme.palette.background.paper,
+
         borderRadius: theme.shape.borderRadius,
         "&::before": { display: "none" },
         "&::after": { display: "none" },
@@ -34,10 +44,13 @@ export const MuiTextField: TMuiTextField = {
         color: theme.palette.text.disabled,
       },
       "& .MuiInputLabel-outlined": {
-        color: theme.palette.text.primary,
+        color: theme.palette.primary.main,
       },
       "& .MuiOutlinedInput-root": {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor:
+          theme.palette.mode === "dark"
+            ? theme.palette.secondary.dark
+            : theme.palette.background.paper,
       },
       "& .MuiOutlinedInput-notchedOutline": {
         border: `none`,
@@ -59,29 +72,27 @@ export const MuiTextField: TMuiTextField = {
 
       ...(ownerState.variant === "outlined" && {
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: theme.palette.background.default,
         transition: "0.2s",
         border: `1px solid ${theme.palette.secondary.light}`,
         "&:hover": {
           boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light}`,
         },
         "&.Mui-focused": {
-          background: theme.palette.background.paper,
+          backgroundColor: theme.palette.mode==="dark"?theme.palette.secondary.dark:theme.palette.background.paper,
           boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light} inset`,
         },
       }),
 
       ...(ownerState.variant === "filled" && {
         borderRadius: theme.shape.borderRadius,
-        backgroundColor: theme.palette.background.default,
         transition: "0.3s",
         border: `1px solid ${theme.palette.primary.light}`,
         "&:hover": {
-          backgroundColor: theme.palette.background.paper,
+          backgroundColor: theme.palette.mode==="dark"?theme.palette.secondary.light:theme.palette.background.paper,
           boxShadow: `0px 0px 10px 0px ${theme.palette.primary.light}`,
         },
         "&.Mui-focused": {
-          background: theme.palette.background.default,
+          backgroundColor: theme.palette.mode==="dark"?theme.palette.secondary.dark:theme.palette.background.paper,
           boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light} inset`,
         },
       }),

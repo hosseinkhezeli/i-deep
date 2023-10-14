@@ -16,6 +16,8 @@ import { MuiAppBar } from './components/AppBar/MuiAppBar';
 import { MuiAccordion } from './components/Accordion/MuiAccordion';
 import {MuiCheckbox} from "./components/CheckBox/MuiCheckbox"
 import { MuiSelect } from './components/Select/MuiSelect';
+import { MuiFormControl } from './components/FormControl/MuiFormControl';
+import { MuiFormControlLabel } from './components/FormControl/MuiFormControlLabel';
 type PaletteMode = "light" | "dark";
 
 const getDesignTokens = (mode: PaletteMode) => ({
@@ -24,7 +26,7 @@ const getDesignTokens = (mode: PaletteMode) => ({
 });
 
 const theme = createTheme({
-  palette: getDesignTokens("dark"),
+  palette: getDesignTokens("light"),
   direction:'ltr',
   typography,
   spacing: 4,
@@ -41,6 +43,8 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiFormControl,
+    MuiFormControlLabel,
     MuiSelect,
     MuiAccordion,
     MuiCheckbox,

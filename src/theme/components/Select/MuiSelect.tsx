@@ -19,11 +19,13 @@ export const MuiSelect: TMuiSelect = {
   styleOverrides: {
     root: ({ ownerState, Theme }) => ({
       ...(ownerState.variant === "outlined" && {
-        backgroundColor: theme.palette.background.paper,
+        backgroundColor: theme.palette.mode==="dark"?theme.palette.secondary.dark:theme.palette.background.paper,
+
+          color:theme.palette.text.secondary,
+
       }),
 
       "&.Mui-focused": {
-        background: theme.palette.background.paper,
         boxShadow: `0px 0px 5px 0px ${theme.palette.primary.light} inset`,
       },
       "& .MuiOutlined-notchedOutline": {

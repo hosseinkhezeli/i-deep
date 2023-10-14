@@ -22,8 +22,8 @@ type TMuiCheckbox =
 export const MuiCheckbox: TMuiCheckbox= {
   styleOverrides: {
     root: ({ ownerState, Theme }) => ({
-        color:theme.palette.secondary.main
-     
+      color:theme.palette.mode==="dark"?theme.palette.text.secondary:theme.palette.text.primary
     }),
+    
   },
 };

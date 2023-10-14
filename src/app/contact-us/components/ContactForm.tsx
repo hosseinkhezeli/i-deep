@@ -1,4 +1,8 @@
 "use client";
+//react
+import React from "react";
+//mui
+import theme from "@/theme/theme";
 import {
   Box,
   Button,
@@ -9,9 +13,10 @@ import {
   Select,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import React from "react";
+import styled from "@mui/material/styles/styled"
+//react hook form
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-
+//types
 interface IContactForm {
   name: string;
   email: string;
@@ -37,14 +42,7 @@ const ContactForm = () => {
     console.log(data);
   };
   return (
-    <Box
-      maxWidth={540}
-      bgcolor={"white"}
-      px={{xs:5,md:9}}
-      py={12}
-      borderRadius={"20px"}
-      boxShadow={"0px 16px 48px 0px rgba(0,0,0,0.176)"}
-    >
+    <ComponentWrapper>
       <form
         onSubmit={handleSubmit(onSubmit)}
         style={{ display: "flex", flexDirection: "column", gap: 30 }}
@@ -118,7 +116,6 @@ const ContactForm = () => {
                 sx={{ width: "100%" }}
                 multiline
                 rows={3}
-                // maxRows={4}
                 {...field}
               />
             )}
@@ -130,6 +127,7 @@ const ContactForm = () => {
             control={control}
             render={({ field }) => (
               <FormControlLabel
+              sx={{color:`${theme.palette.primary.main}`}}
                 control={<Checkbox />}
                 label="Yes, I agree to recieve periodic communication, emails and promotional materials from iDeep related to services and can unsubscribe at any time."
                 {...field}
@@ -141,8 +139,19 @@ const ContactForm = () => {
           Send
         </Button>
       </form>
-    </Box>
+    </ComponentWrapper>
   );
 };
 
 export default ContactForm;
+
+const ComponentWrapper = styled(Box)((props)=>({
+  maxWidth:540,
+  backgroundColor:theme.palette.mode==="light"?theme.palette.background.default:theme.palette.secondary.main,
+  padding:"48px 20px",
+  borderRadius:theme.shape.borderRadius,
+  boxShadow:`0px 16px 48px 0px ${theme.palette.mode==="light"?theme.palette.secondary.light:theme.palette.primary.light}` ,
+  [props.theme.breakpoints.up("md")]:{
+    padding:"48px 36px"
+  }
+}))

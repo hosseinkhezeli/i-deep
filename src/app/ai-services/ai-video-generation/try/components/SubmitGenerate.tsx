@@ -12,6 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import styled from "@mui/material/styles/styled"
+import theme from "@/theme/theme";
 //type
 interface ISubmitForm {
   name: string;
@@ -53,6 +54,8 @@ const SubmitGenerate = () => {
           Please note: political, sexual, criminal and discriminatory content
           will not be tolerated or approved.
         </Typography>
+        <FormWrapper>
+
         <form
           onSubmit={handleSubmit(onSubmit)}
           style={{ display: "flex", flexDirection: "column", gap: 20 }}
@@ -101,9 +104,9 @@ const SubmitGenerate = () => {
           >
             <Button
               variant="outlined"
-              color="primary"
+              // color="primary"
               onClick={router.back}
-              sx={{ flexBasis: "50%" }}
+              sx={{ flexBasis: "50%" ,bgcolor:"inherit"}}
             >
               Go Back
             </Button>
@@ -117,6 +120,7 @@ const SubmitGenerate = () => {
             </Button>
           </Box>
         </form>
+        </FormWrapper>
       </ComponentWrapper>
     </>
   );
@@ -136,3 +140,16 @@ const ComponentWrapper = styled(Box)((props) => ({
     alignItems: "flex-start",
   },
 }));
+
+const FormWrapper = styled(Box)((props)=>({
+  maxWidth:540,
+  backgroundColor:"white",
+  borderRadius:theme.shape.borderRadius,
+  boxShadow:"0px 0px 10px 0px rgba(0,0,0,0.176)",
+  padding:"24px 10px",
+  margin:"10px 0px",
+  [props.theme.breakpoints.up("md")]:{
+    padding:"24px 19px",
+  }
+}))
+
