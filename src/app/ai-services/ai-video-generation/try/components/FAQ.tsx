@@ -37,7 +37,7 @@ const FAQ = () => {
 
 export default FAQ;
 
-//data
+//data & initial values
 const accordionData = [
   {
     title: 'What AI services do you offer, including "Text to Video"?',

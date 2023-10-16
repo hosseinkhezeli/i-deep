@@ -10,9 +10,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel, useTheme } from "@mui/material";
 import styled from "@mui/material/styles/styled"
-import theme from "@/theme/theme";
+
 //type
 interface ISubmitForm {
   name: string;
@@ -21,12 +21,9 @@ interface ISubmitForm {
 }
 
 const SubmitGenerate = () => {
+  //hooks
   const router = useRouter();
-
-  const onSubmit: SubmitHandler<ISubmitForm> = (data) => {
-    console.log(data);
-  };
-
+  const theme = useTheme()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: "",
@@ -35,6 +32,36 @@ const SubmitGenerate = () => {
     },
   });
 
+  //function
+  const onSubmit: SubmitHandler<ISubmitForm> = (data) => {
+    console.log(data);
+  };
+
+//components
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: 8,
+  maxWidth: "auto",
+  padding: "0px 16px",
+  alignItems: "center",
+  [props.theme.breakpoints.up("md")]: {
+    maxWidth: 500,
+    alignItems: "flex-start",
+  },
+}));
+
+const FormWrapper = styled(Box)((props)=>({
+  maxWidth:540,
+  backgroundColor:"white",
+  borderRadius:theme.shape.borderRadius,
+  boxShadow:"0px 0px 10px 0px rgba(0,0,0,0.176)",
+  padding:"24px 10px",
+  margin:"10px 0px",
+  [props.theme.breakpoints.up("md")]:{
+    padding:"24px 19px",
+  }
+}))
   return (
     <>
       <ComponentWrapper>
@@ -128,28 +155,5 @@ const SubmitGenerate = () => {
 
 export default SubmitGenerate;
 
-const ComponentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: 8,
-  maxWidth: "auto",
-  padding: "0px 16px",
-  alignItems: "center",
-  [props.theme.breakpoints.up("md")]: {
-    maxWidth: 500,
-    alignItems: "flex-start",
-  },
-}));
 
-const FormWrapper = styled(Box)((props)=>({
-  maxWidth:540,
-  backgroundColor:"white",
-  borderRadius:theme.shape.borderRadius,
-  boxShadow:"0px 0px 10px 0px rgba(0,0,0,0.176)",
-  padding:"24px 10px",
-  margin:"10px 0px",
-  [props.theme.breakpoints.up("md")]:{
-    padding:"24px 19px",
-  }
-}))
 

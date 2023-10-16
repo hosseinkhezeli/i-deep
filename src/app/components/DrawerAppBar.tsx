@@ -1,6 +1,6 @@
 "use client";
 //react
-import React, { useState } from "react";
+import React from "react";
 //next
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -17,56 +17,41 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import theme from "@/theme/theme";
+import { useTheme } from "@mui/material";
 //component
 import CompanyLogo from "./LogoIcon";
-import { dispatch, getState } from "@/context/store";
+import { dispatch } from "@/context/store";
 import { setTheme } from "@/context/reducers/themeReducer";
-import { PaletteMode } from "@mui/material";
 
 interface Props {
   window?: () => Window;
 }
-const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
-const drawerWidth = 240;
-const navItems = [
-  "Home",
-  "Ai Services",
-  "Platforms",
-  "Work with us",
-  "Contact us",
-  "About us",
-];
-const navLinks = [
-  "/",
-  "/ai-services",
-  "/platforms",
-  "/work-with-us",
-  "/contact-us",
-  "/about-us",
-];
 
 export default function DrawerAppBar(props: Props) {
-  const [globalTheme, setGlobalTheme] = useState(activeTheme);
+  //hooks
+  const theme = useTheme();
   const path = usePathname();
   const router = useRouter();
   const { window } = props;
+  const container =
+  window !== undefined ? () => window().document.body : undefined;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-
+  //functions
   const changeTheme = () => {
-    if (globalTheme === "light") {
-      setGlobalTheme("dark"), dispatch(setTheme("dark"));
+    if (theme.palette.mode === "light") {
+      dispatch(setTheme("dark"));
     } else {
-      setGlobalTheme("light"), dispatch(setTheme("light"));
-    };
-    router.refresh()
-  }
+      dispatch(setTheme("light"));
+    }
+    router.refresh();
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
+  //components
   const drawer = (
     <Box
       onClick={handleDrawerToggle}
@@ -76,7 +61,7 @@ export default function DrawerAppBar(props: Props) {
         height: "100%",
         justifyContent: "space-between",
         pb: 6,
-        backgroundColor: theme(activeTheme).palette.background.default,
+        backgroundColor:theme.palette.background.default,
       }}
     >
       <Box display={"flex"} flexDirection={"column"}>
@@ -135,8 +120,6 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box
@@ -206,13 +189,13 @@ export default function DrawerAppBar(props: Props) {
                       <Typography
                         variant="subtitle1"
                         display={"inline-block"}
-                        color={theme(activeTheme).palette.primary.main}
+                        color={theme.palette.primary.main}
                         fontWeight={500}
                       >
                         {item}
                       </Typography>
                       <Box
-                        bgcolor={theme(activeTheme).palette.primary.main}
+                        bgcolor={theme.palette.primary.main}
                         width={6}
                         height={6}
                         borderRadius={"50%"}
@@ -272,3 +255,21 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 }
+//data & initial values
+const drawerWidth = 240;
+const navItems = [
+  "Home",
+  "Ai Services",
+  "Platforms",
+  "Work with us",
+  "Contact us",
+  "About us",
+];
+const navLinks = [
+  "/",
+  "/ai-services",
+  "/platforms",
+  "/work-with-us",
+  "/contact-us",
+  "/about-us",
+];

@@ -1,17 +1,15 @@
 "use client";
+//react
 import React, { useState, useEffect } from "react";
+//keen slider
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+//mui
 import { Box, Button, Typography } from "@mui/material";
 
 export default function VideoSlider() {
+  //hooks
   const screenWidth = useWindowSize();
-  const videoLinks = [
-    "/videos/jason.mp4",
-    "/videos/helia.mp4",
-    "/videos/natalie.mp4",
-    "/videos/rose.mp4",
-  ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -29,6 +27,7 @@ export default function VideoSlider() {
       setLoaded(true);
     },
   });
+
   useEffect(() => {
     if (screenWidth! < 500) {
       setSlidePerView(1);
@@ -38,6 +37,32 @@ export default function VideoSlider() {
       setSlidePerView(3);
     }
   }, [screenWidth]);
+
+  //function
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState<number | undefined>(undefined);
+
+    useEffect(() => {
+      // only execute all the code below in client side
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize(window.innerWidth);
+      }
+
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
   return (
     <Box sx={{ width: "100%" }}>
       <Typography
@@ -45,7 +70,7 @@ export default function VideoSlider() {
         textAlign="center"
         fontSize={{ xs: "32px", sm: "38px", md: "50px" }}
         lineHeight={"120%"}
-        maxWidth={{xs:"max-content",md:"500px"}}
+        maxWidth={{ xs: "max-content", md: "500px" }}
         mx={"auto"}
         my={"2rem"}
       >
@@ -111,28 +136,10 @@ export default function VideoSlider() {
   );
 }
 
-// Hook
-function useWindowSize() {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState<number | undefined>(undefined);
-
-  useEffect(() => {
-    // only execute all the code below in client side
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize(window.innerWidth);
-    }
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
-}
+//data & initial values
+const videoLinks = [
+  "/videos/jason.mp4",
+  "/videos/helia.mp4",
+  "/videos/natalie.mp4",
+  "/videos/rose.mp4",
+];

@@ -10,6 +10,16 @@ import Box from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
 
 const VideoFrame = () => {
+  //components
+  const ComponentWrapper = styled(Box)((props) => ({
+    position: "relative",
+    width: "100%",
+    height: "auto",
+    display: "flex",
+    justifyContent: "center",
+    pr: "unset",
+  }));
+
   return (
     <ComponentWrapper>
       <Image
@@ -35,12 +45,3 @@ const VideoFrame = () => {
 };
 
 export default VideoFrame;
-
-const ComponentWrapper = styled(Box)((props) => ({
-  position: "relative",
-  width: "100%",
-  height: "auto",
-  display: "flex",
-  justifyContent: "center",
-  pr: "unset",
-}));

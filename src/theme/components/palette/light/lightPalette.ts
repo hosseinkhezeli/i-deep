@@ -1,4 +1,3 @@
-import theme from "@/theme/theme";
 
 export const lightPalette = {
   // palette values for light mode

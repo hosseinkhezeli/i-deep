@@ -2,7 +2,6 @@
 //react
 import React from "react";
 //next
-import { Metadata } from "next/types";
 import Image from "next/image";
 //image
 import BGTexture from "@public/images/isolation.svg";
@@ -15,6 +14,20 @@ import styled from '@mui/material/styles/styled'
 
 
 const AiVideoGeneration = () => {
+  //components
+  const ComponentWrapper = styled(Box)((props)=>({
+    position:"relative",
+    display:"flex",
+    flexDirection:"column",
+    gap:10,
+    width:"100vw",
+    alignItems:"center",
+    overflow:"hidden",
+    maxWidth:1536,
+    padding:"2rem 4rem",
+    margin:"0px auto"
+    }))
+    
   return (
     <>
       <ComponentWrapper
@@ -42,15 +55,3 @@ const AiVideoGeneration = () => {
 
 export default AiVideoGeneration;
 
-const ComponentWrapper = styled(Box)((props)=>({
-position:"relative",
-display:"flex",
-flexDirection:"column",
-gap:10,
-width:"100vw",
-alignItems:"center",
-overflow:"hidden",
-maxWidth:1536,
-padding:"2rem 4rem",
-margin:"0px auto"
-}))

@@ -1,27 +1,18 @@
-import { Box, Typography, Divider } from "@mui/material";
+//next
+import Link from "next/link";
+import Image from "next/image";
+//mui
+import { Box, Typography, Divider, useTheme } from "@mui/material";
+//images
 import FacebookIcon from "@public/images/facebook-filled.svg";
 import LinkedinIcon from "@public/images/linkedin-filled.svg";
 import TwitterIcon from "@public/images/twitter-filled.svg";
-import Link from "next/link";
-import Image from "next/image";
-import { lightPalette } from "@/theme/components/palette/light/lightPalette";
+//components
 import NavLinks from "./components/NavLinks";
 
 const Footer = () => {
-  const socials = [
-    {
-      logo: TwitterIcon,
-      link: "/",
-    },
-    {
-      logo: FacebookIcon,
-      link: "/",
-    },
-    {
-      logo: LinkedinIcon,
-      link: "/",
-    },
-  ];
+  //hooks
+  const theme = useTheme()
   return (
     <>
       <Divider sx={{ width: "99%", margin: "10rem auto 0 auto" }} />
@@ -48,7 +39,7 @@ const Footer = () => {
       <Box
         width={"100%"}
         height={59}
-        bgcolor={lightPalette.secondary.main}
+        bgcolor={theme.palette.secondary.main}
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
@@ -83,3 +74,19 @@ const Footer = () => {
 };
 
 export default Footer;
+
+//data & initial values
+const socials = [
+  {
+    logo: TwitterIcon,
+    link: "/",
+  },
+  {
+    logo: FacebookIcon,
+    link: "/",
+  },
+  {
+    logo: LinkedinIcon,
+    link: "/",
+  },
+];

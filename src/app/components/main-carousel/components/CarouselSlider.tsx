@@ -29,7 +29,95 @@ const CarouselSlide = ({
   text,
   buttonCaption,
 }: Props) => {
+  //hooks
   const screenWidth = useWindowSize();
+  //function
+  function useWindowSize() {
+    // Initialize state with undefined width/height so server and client renders match
+    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
+    const [windowSize, setWindowSize] = useState<number | undefined>(undefined);
+  
+    useEffect(() => {
+      // only execute all the code below in client side
+      // Handler to call on window resize
+      function handleResize() {
+        // Set window width/height to state
+        setWindowSize(window.innerWidth);
+      }
+  
+      // Add event listener
+      window.addEventListener("resize", handleResize);
+  
+      // Call handler right away so state gets updated with initial window size
+      handleResize();
+  
+      // Remove event listener on cleanup
+      return () => window.removeEventListener("resize", handleResize);
+    }, []); // Empty array ensures that effect is only run on mount
+    return windowSize;
+  }
+  
+  //components
+  const ImageWrapper = styled(Box)((props) => ({
+    display: "flex",
+    justifyContent: "center",
+    flexBasis: "50%",
+    [props.theme.breakpoints.up("xs")]: {
+      margin:"0px 4px",
+      width: "100vw",
+      paddingRight: 0,
+    },
+    [props.theme.breakpoints.up("md")]: {
+      margin:"0px 0px",
+      width: "max-content",
+      paddingRight: "2vw",
+    },
+  }));
+  
+  const ComponentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    maxWidth: 1536,
+    margin:"0px auto 2rem auto",
+    gap: "15px",
+    [props.theme.breakpoints.up("xs")]: {
+      flexDirection: "column",
+      justifyContent: "center",
+    },
+    [props.theme.breakpoints.up("md")]: {
+      gap: "1vw",
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    [props.theme.breakpoints.up("xl")]: {
+      gap: "4vw",
+    },
+  }));
+  const ContentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    flexBasis: "50%",
+    justifyContent: "center",
+    [props.theme.breakpoints.up("xs")]: {
+      flexDirection: "column",
+      alignItems: "center",
+      margin:"0px auto",
+      gap: 0
+    },
+    [props.theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+    },
+    [props.theme.breakpoints.up("md")]: {
+      flexDirection: "column",
+      alignItems: "flex-start",
+      width: "max-content",
+      margin:"0px",
+    },
+    [props.theme.breakpoints.up("lg")]: {
+      gap: "80px",
+    },
+    [props.theme.breakpoints.up("xl")]: {
+      gap: "100px",
+    },
+  }));
   return (
     <>
       <ComponentWrapper>
@@ -130,90 +218,4 @@ const CarouselSlide = ({
 
 export default CarouselSlide;
 
-// Hook
-function useWindowSize() {
-  // Initialize state with undefined width/height so server and client renders match
-  // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-  const [windowSize, setWindowSize] = useState<number | undefined>(undefined);
-
-  useEffect(() => {
-    // only execute all the code below in client side
-    // Handler to call on window resize
-    function handleResize() {
-      // Set window width/height to state
-      setWindowSize(window.innerWidth);
-    }
-
-    // Add event listener
-    window.addEventListener("resize", handleResize);
-
-    // Call handler right away so state gets updated with initial window size
-    handleResize();
-
-    // Remove event listener on cleanup
-    return () => window.removeEventListener("resize", handleResize);
-  }, []); // Empty array ensures that effect is only run on mount
-  return windowSize;
-}
-
-const ImageWrapper = styled(Box)((props) => ({
-  display: "flex",
-  justifyContent: "center",
-  flexBasis: "50%",
-  [props.theme.breakpoints.up("xs")]: {
-    margin:"0px 4px",
-    width: "100vw",
-    paddingRight: 0,
-  },
-  [props.theme.breakpoints.up("md")]: {
-    margin:"0px 0px",
-    width: "max-content",
-    paddingRight: "2vw",
-  },
-}));
-
-const ComponentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  maxWidth: 1536,
-  margin:"0px auto 2rem auto",
-  gap: "15px",
-  [props.theme.breakpoints.up("xs")]: {
-    flexDirection: "column",
-    justifyContent: "center",
-  },
-  [props.theme.breakpoints.up("md")]: {
-    gap: "1vw",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-  [props.theme.breakpoints.up("xl")]: {
-    gap: "4vw",
-  },
-}));
-const ContentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  flexBasis: "50%",
-  justifyContent: "center",
-  [props.theme.breakpoints.up("xs")]: {
-    flexDirection: "column",
-    alignItems: "center",
-    margin:"0px auto",
-    gap: 0
-  },
-  [props.theme.breakpoints.up("sm")]: {
-    flexDirection: "row",
-  },
-  [props.theme.breakpoints.up("md")]: {
-    flexDirection: "column",
-    alignItems: "flex-start",
-    width: "max-content",
-    margin:"0px",
-  },
-  [props.theme.breakpoints.up("lg")]: {
-    gap: "80px",
-  },
-  [props.theme.breakpoints.up("xl")]: {
-    gap: "100px",
-  },
-}));
 

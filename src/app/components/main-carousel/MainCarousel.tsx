@@ -4,16 +4,15 @@ import React, { useState } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 //mui
-import { Box, PaletteMode } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import styled from "@mui/material/styles/styled";
-import theme from "@/theme/theme";
 //images
 import CarouselImage1 from "@public/images/rectangle-34624746.png";
 import CarouselImage2 from "@public/images/ai-innovation-7f5e61b7.webp";
 import CarouselSlide from "./components/CarouselSlider";
-import { getState } from "@/context/store";
-const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
+
 const MainCarousel = () => {
+  //hooks
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -26,6 +25,57 @@ const MainCarousel = () => {
     },
   });
 
+  const theme =useTheme()
+
+  //components
+  function Arrow(props: {
+    disabled: boolean;
+    left?: boolean;
+    onClick: (e: any) => void;
+  }) {
+    const disabled = props.disabled ? " arrow--disabled" : "";
+    return (
+      <svg
+        onClick={props.onClick}
+        className={`arrow ${
+          props.left ? "arrow--left" : "arrow--right"
+        } ${disabled}`}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="-11 -12 50 50"
+      >
+        {props.left && (
+          <path
+            fill={theme.palette.secondary.contrastText}
+            d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+          />
+        )}
+        {!props.left && (
+          <path
+          fill={theme.palette.secondary.contrastText}
+            d="M6 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"
+          />
+        )}
+      </svg>
+    );
+  }
+  
+  const ArrowWrapper = styled(Box)((props) => ({
+    width: 20,
+    height: 20,
+    borderRadius: "50%",
+    backgroundColor: theme.palette.secondary.main,
+    display: "flex",
+    justifyContent: "center",
+    position: "absolute",
+    top: "50vh",
+    [props.theme.breakpoints.up("md")]: {
+      top: "32vw",
+    },
+    [props.theme.breakpoints.up("xl")]: {
+      top: "50%",
+    },
+  }));
+  
   return (
     <>
       <div className="navigation-wrapper">
@@ -78,54 +128,7 @@ const MainCarousel = () => {
 
 export default MainCarousel;
 
-function Arrow(props: {
-  disabled: boolean;
-  left?: boolean;
-  onClick: (e: any) => void;
-}) {
-  const disabled = props.disabled ? " arrow--disabled" : "";
-  return (
-    <svg
-      onClick={props.onClick}
-      className={`arrow ${
-        props.left ? "arrow--left" : "arrow--right"
-      } ${disabled}`}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="-11 -12 50 50"
-    >
-      {props.left && (
-        <path
-          fill={theme(activeTheme).palette.secondary.contrastText}
-          d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
-        />
-      )}
-      {!props.left && (
-        <path
-        fill={theme(activeTheme).palette.secondary.contrastText}
-          d="M6 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"
-        />
-      )}
-    </svg>
-  );
-}
-
-const ArrowWrapper = styled(Box)((props) => ({
-  width: 20,
-  height: 20,
-  borderRadius: "50%",
-  backgroundColor: theme(activeTheme).palette.secondary.main,
-  display: "flex",
-  justifyContent: "center",
-  position: "absolute",
-  top: "50vh",
-  [props.theme.breakpoints.up("md")]: {
-    top: "32vw",
-  },
-  [props.theme.breakpoints.up("xl")]: {
-    top: "50%",
-  },
-}));
-
+//data & initial values
 const carouselData=[
   {
     image:CarouselImage1,

@@ -13,20 +13,21 @@ import BrushIcon from "@public/images/vuesax-linear-vuesax-linear-brush.svg";
 import LinkArrowIcon from "@public/images/vuesax-linear-vuesax-linear-programming-arrow.svg";
 import PaypalIcon from "@public/images/vuesax-linear-vuesax-linear-paypal.svg";
 
-const titleItems = [
-  "RESEARCH & DEFINE",
-  "DESIGN & INNOVATION",
-  "DEVELOPMENT & REFINEMENT",
-  "APPROVAL & DELIVERY",
-];
-const descriptionItems = [
-  "We initiate your project with in-depth research, laying a strong foundation to grasp your needs.",
-  "Our creative team devises tailored, innovative solutions, backed by a solid plan.",
-  "Our experts elevate your project, constantly improving it to ensure top quality.",
-  "After presenting a demo, we proceed with delivery and payment once you're satisfied.",
-];
-const iconImageItems = [SearchIcon, BrushIcon, LinkArrowIcon, PaypalIcon];
+
 const OurProjectJourney = () => {
+  //components
+  const ComponentWrapper = styled(Box)((props)=>({
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center",
+    maxWidth:1400,
+    gap:10,
+    margin:"2rem auto",
+    [props.theme.breakpoints.up("md")]:{
+      gap:50,
+      margin:"6rem auto",
+    }
+    }))
   return (
     <>
       <ComponentWrapper
@@ -89,16 +90,18 @@ const iconItems = (
   </Box>
 );
 
-const ComponentWrapper = styled(Box)((props)=>({
-display:"flex",
-flexDirection:"column",
-alignItems:"center",
-maxWidth:1400,
-gap:10,
-margin:"2rem auto",
-[props.theme.breakpoints.up("md")]:{
-  gap:50,
-  margin:"6rem auto",
-}
-}))
 
+//data & initial values
+const titleItems = [
+  "RESEARCH & DEFINE",
+  "DESIGN & INNOVATION",
+  "DEVELOPMENT & REFINEMENT",
+  "APPROVAL & DELIVERY",
+];
+const descriptionItems = [
+  "We initiate your project with in-depth research, laying a strong foundation to grasp your needs.",
+  "Our creative team devises tailored, innovative solutions, backed by a solid plan.",
+  "Our experts elevate your project, constantly improving it to ensure top quality.",
+  "After presenting a demo, we proceed with delivery and payment once you're satisfied.",
+];
+const iconImageItems = [SearchIcon, BrushIcon, LinkArrowIcon, PaypalIcon];

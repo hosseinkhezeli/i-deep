@@ -1,10 +1,16 @@
-import { Metadata } from "next/types";
+//react
 import React from "react";
+//next
+import { Metadata } from "next/types";
+//mui
+import { Box } from "@mui/material";
+//components
 import HeroBanner from "./components/HeroBanner";
 import ContactForm from "./components/ContactForm";
-import { Box } from "@mui/material";
 import Content from "./components/Content";
 import LocationBanner from "./components/LocationBanner";
+
+
 export const metadata: Metadata = {
   title: "iDeep_Contact us",
   description: "Contact information of iDeep Company",

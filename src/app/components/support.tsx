@@ -13,6 +13,60 @@ import ClientApproachIcon from "@public/images/customer-service.svg";
 import ClientCareIcon from "@public/images/shield.svg";
 
 const Support = () => {
+//components
+const ComponentWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  maxWidth: 1360,
+  margin: "10px auto",
+  gap: 20,
+  [props.theme.breakpoints.up("md")]: {
+    gap: 50,
+    margin: "50px auto",
+  },
+}));
+
+const ItemWrapper = styled(Box)((props) => ({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  padding: "0px 4px",
+  // gap: 2,
+}));
+
+const iconItems = (
+  key: number,
+  title: string,
+  description: string,
+  iconImage: StaticImageData
+) => (
+  <ItemWrapper key={key}>
+    <Box>
+      <Image
+        src={iconImage}
+        alt="icon"
+        sizes="(min-width: 808px) 80vw, 80vw"
+        quality={2}
+        style={{
+          width: "85px",
+          height: "85px",
+        }}
+      />
+    </Box>
+    <Typography display={"inline-block"} variant="h5" width={"fit-content"}>
+      {title}
+    </Typography>
+    <Typography
+      display={"inline-block"}
+      variant="subtitle1"
+      textAlign={"center"}
+      maxWidth={300}
+    >
+      {description}
+    </Typography>
+  </ItemWrapper>
+);
   return (
     <>
       <ComponentWrapper>
@@ -72,60 +126,8 @@ const Support = () => {
 
 export default Support;
 
-const ComponentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  maxWidth: 1360,
-  margin: "10px auto",
-  gap: 20,
-  [props.theme.breakpoints.up("md")]: {
-    gap: 50,
-    margin: "50px auto",
-  },
-}));
 
-const ItemWrapper = styled(Box)((props) => ({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  padding: "0px 4px",
-  // gap: 2,
-}));
-
-const iconItems = (
-  key: number,
-  title: string,
-  description: string,
-  iconImage: StaticImageData
-) => (
-  <ItemWrapper key={key}>
-    <Box>
-      <Image
-        src={iconImage}
-        alt="icon"
-        sizes="(min-width: 808px) 80vw, 80vw"
-        quality={2}
-        style={{
-          width: "85px",
-          height: "85px",
-        }}
-      />
-    </Box>
-    <Typography display={"inline-block"} variant="h5" width={"fit-content"}>
-      {title}
-    </Typography>
-    <Typography
-      display={"inline-block"}
-      variant="subtitle1"
-      textAlign={"center"}
-      maxWidth={300}
-    >
-      {description}
-    </Typography>
-  </ItemWrapper>
-);
-
+//data & initial values
 const titleItems = [
   "24/7 AVAILABILITY",
   "CLIENT-CENTRIC APPROACH",

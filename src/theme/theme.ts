@@ -18,7 +18,7 @@ import { MuiCheckbox } from "./components/CheckBox/MuiCheckbox";
 import { MuiSelect } from "./components/Select/MuiSelect";
 import { MuiFormControl } from "./components/FormControl/MuiFormControl";
 import { MuiFormControlLabel } from "./components/FormControl/MuiFormControlLabel";
-
+import "./components/palette/palette.d.ts"
 
 type PaletteMode = "light" | "dark";
 

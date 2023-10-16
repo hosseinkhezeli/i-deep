@@ -13,6 +13,18 @@ type Props = {
   image: StaticImageData;
 };
 const ProjectDisplay = ({ title, description, image }: Props) => {
+
+  //components
+  const ComponentWrapper = styled(Box)((props)=>({
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"center",
+    margin:"80px auto",
+    padding:"0px 4px",
+    width:"max-content",
+    gap:15,
+  }))
+  
   return (
     <>
       <ComponentWrapper
@@ -68,12 +80,4 @@ const ProjectDisplay = ({ title, description, image }: Props) => {
 
 export default ProjectDisplay;
 
-const ComponentWrapper = styled(Box)((props)=>({
-  display:"flex",
-  flexDirection:"column",
-  alignItems:"center",
-  margin:"80px auto",
-  padding:"0px 4px",
-  width:"max-content",
-  gap:15,
-}))
+

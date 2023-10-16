@@ -1,9 +1,9 @@
-"use client"
+"use client";
 //next
 import Image from "next/image";
 //mui
 import Box from "@mui/material/Box";
-import styled from "@mui/material/styles/styled"
+import styled from "@mui/material/styles/styled";
 //component
 import VideoFrame from "./components/VideoFrame";
 import GenerationForm from "./components/GenerationForm";
@@ -19,6 +19,28 @@ type Props = {
 };
 
 const TryTextToVideo = ({ searchParams: { dataSubmitted } }: Props) => {
+  //components
+  const ComponentWrapper = styled(Box)((props) => ({
+    position: "relative",
+    width: "100vw",
+    overflow: "hidden",
+    maxWidth: 1536,
+    padding: "2rem 0.5rem",
+    margin: "0px auto",
+  }));
+  const ContentWrapper = styled(Box)((props) => ({
+    display: "grid",
+    alignItems: "center",
+    maxWidth: 1490,
+    mx: "auto",
+    p: 6,
+    gap: 6,
+    gridTemplateColumns: "1fr",
+    [props.theme.breakpoints.up("md")]: {
+      gridTemplateColumns: "1fr 1fr",
+    },
+  }));
+
   return (
     <ComponentWrapper>
       <Image
@@ -34,9 +56,7 @@ const TryTextToVideo = ({ searchParams: { dataSubmitted } }: Props) => {
           zIndex: "-1",
         }}
       />
-      <ContentWrapper
-        sx={{ overflowX: "hidden" }}
-      >
+      <ContentWrapper sx={{ overflowX: "hidden" }}>
         {dataSubmitted !== "true" ? <GenerationForm /> : <SubmitGenerate />}
         <Box px={{ xs: 0, sm: 3, md: 6 }}>
           <VideoFrame />
@@ -48,24 +68,3 @@ const TryTextToVideo = ({ searchParams: { dataSubmitted } }: Props) => {
 };
 
 export default TryTextToVideo;
-
-const ComponentWrapper = styled(Box)((props)=>({
-  position:"relative",
-  width:"100vw",
-  overflow:"hidden",
-  maxWidth:1536,
-  padding:"2rem 0.5rem",
-  margin:"0px auto"
-}))
-const ContentWrapper = styled(Box)((props)=>({
-  display:"grid",
-  alignItems:"center",
-  maxWidth:1490,
-  mx:"auto",
-  p:6,
-  gap:6,
-  gridTemplateColumns:"1fr",
-  [props.theme.breakpoints.up("md")]:{
-    gridTemplateColumns:"1fr 1fr"
-  }
-}))

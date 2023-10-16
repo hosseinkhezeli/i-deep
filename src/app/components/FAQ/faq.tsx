@@ -35,6 +35,7 @@ const FAQ = () => {
 };
 
 export default FAQ;
+//data & initial values
 const accordionData = [
   {
     title: "What is AI?",

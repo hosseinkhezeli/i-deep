@@ -9,7 +9,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import styled from "@mui/material/styles/styled"
+import styled from "@mui/material/styles/styled";
 //types
 type AccordionDataType = {
   title: string;
@@ -20,13 +20,21 @@ type Props = {
 };
 
 const BasicAccordion = ({ data }: Props) => {
-
+  //hooks
   const [expanded, setExpanded] = useState<string | false>(false);
-
+  
+  //function
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+    
+  //components
+  const ComponentWrapper = styled(Box)((props)=>({
+    width:"95vw",
+    maxWidth:1200,
+    margin:"auto 0px "
+    }))
 
   return (
     <>
@@ -80,8 +88,3 @@ const BasicAccordion = ({ data }: Props) => {
 };
 
 export default BasicAccordion;
-const ComponentWrapper = styled(Box)((props)=>({
-width:"95vw",
-maxWidth:1200,
-margin:"auto 0px "
-}))

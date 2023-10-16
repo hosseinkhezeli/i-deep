@@ -5,17 +5,51 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
+import { useTheme } from "@mui/material";
 import styled from "@mui/material/styles/styled";
 //image
 import WomanImage from "@public/images/woman-laugh.png";
-import theme from "@/theme/theme";
-import { getState } from "@/context/store";
-import { PaletteMode } from "@mui/material";
-
 
 const HeroSection = () => {
-const activeTheme:PaletteMode =getState().layoutTheme.layoutTheme
+  //hooks
+  const theme = useTheme();
+
+  //components
+  const ContentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-between",
+    gap: 10,
+    flexDirection: "column",
+    [props.theme.breakpoints.up("md")]: {
+      flexDirection: "row",
+    },
+  }));
+
+  const ImageWrapper = styled(Box)((props) => ({
+    width: "90vw",
+    maxWidth: 475,
+    order: 1,
+    [props.theme.breakpoints.up("md")]: {
+      order: 2,
+    },
+  }));
+
+  const FormContainer = styled(Box)((props) => ({
+    display: "flex",
+    flexDirection: "column",
+    gap: 4,
+    padding: "0px 8px",
+    margin: "20px 0px",
+    alignItems: "center",
+    height: "auto",
+    [props.theme.breakpoints.up("md")]: {
+      alignItems: "flex-start",
+      height: "500px",
+      justifyContent: "space-between",
+    },
+  }));
   return (
     <>
       <Typography
@@ -31,7 +65,7 @@ const activeTheme:PaletteMode =getState().layoutTheme.layoutTheme
           style={{
             fontSize: "14px",
             letterSpacing: "1px",
-            color: theme(activeTheme).palette.primary.main,
+            color: theme.palette.primary.main,
           }}
         >
           #1
@@ -128,39 +162,3 @@ const activeTheme:PaletteMode =getState().layoutTheme.layoutTheme
 };
 
 export default HeroSection;
-
-const ContentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  justifyContent: "space-between",
-  gap: 10,
-  flexDirection: "column",
-  [props.theme.breakpoints.up("md")]: {
-    flexDirection: "row",
-  },
-}));
-
-const ImageWrapper = styled(Box)((props) => ({
-  width: "90vw",
-  maxWidth: 475,
-  order: 1,
-  [props.theme.breakpoints.up("md")]: {
-    order: 2,
-  },
-}));
-
-const FormContainer = styled(Box)((props) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: 4,
-  padding: "0px 8px",
-  margin: "20px 0px",
-  alignItems: "center",
-  height: "auto",
-  [props.theme.breakpoints.up("md")]: {
-    alignItems: "flex-start",
-    height: "500px",
-    justifyContent: "space-between",
-  },
-}));

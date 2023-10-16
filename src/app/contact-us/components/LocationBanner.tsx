@@ -5,16 +5,69 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import styled from "@mui/material/styles/styled";
-import theme from "@/theme/theme";
 //icons
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import { PaletteMode } from "@mui/material";
-import { getState } from "@/context/store";
-const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
+import { useTheme } from "@mui/material";
+
 const LocationBanner = () => {
+  //hooks
+  const theme = useTheme()
+
+  //components
+  const ComponentWrapper = styled(Box)((props) => ({
+    width: "90%",
+    maxWidth: 1480,
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    backgroundColor: theme.palette.secondary.main,
+    borderRadius: theme.shape.borderRadius,
+    margin: "3rem auto",
+    padding: "32px 16px",
+    gap: 20,
+    height: "auto",
+    [props.theme.breakpoints.up("sm")]: {
+      padding: "32px 32px",
+    },
+    [props.theme.breakpoints.up("md")]: {
+      padding: "4px 32px",
+      flexDirection: "row",
+      height: "480px",
+    },
+  }));
+  
+  const MapComponentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    padding: "unset",
+    justifyContent: "center",
+    height: "60vw",
+    flexBasis: "unset",
+    [props.theme.breakpoints.up("md")]: {
+      justifyContent: "flex-end",
+      height: "100%",
+      flexBasis: "60%",
+      padding: "12px 0px",
+    },
+  }));
+  const ContactInformationWrapper = styled(Box)((props)=>({
+    display:"flex",
+    flexDirection:"column",
+    height:"100%",
+    justifyContent:"space-evenly",
+    flexBasis:"50%",
+    mx:"auto",
+    width:"fit-content",
+    gap:10,
+    [props.theme.breakpoints.up("md")]:{
+      gap:0
+    }
+  
+  }))
   const contactData = [
     {
       icon: <LocationOnOutlinedIcon color="primary" />,
@@ -41,7 +94,7 @@ const LocationBanner = () => {
             (item: { icon: any; content: string }, index: number) => (
               <Box key={index} display={"flex"} gap={4}>
                 {item.icon}
-                <Typography variant="body2" color={theme(activeTheme).palette.secondary.contrastText}>
+                <Typography variant="body2" color={theme.palette.secondary.contrastText}>
                   {item.content}
                 </Typography>
               </Box>
@@ -71,54 +124,3 @@ const LocationBanner = () => {
 
 export default LocationBanner;
 
-const ComponentWrapper = styled(Box)((props) => ({
-  width: "90%",
-  maxWidth: 1480,
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  backgroundColor: theme(activeTheme).palette.secondary.main,
-  borderRadius: theme(activeTheme).shape.borderRadius,
-  margin: "3rem auto",
-  padding: "32px 16px",
-  gap: 20,
-  height: "auto",
-  [props.theme.breakpoints.up("sm")]: {
-    padding: "32px 32px",
-  },
-  [props.theme.breakpoints.up("md")]: {
-    padding: "4px 32px",
-    flexDirection: "row",
-    height: "480px",
-  },
-}));
-
-const MapComponentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  alignItems: "center",
-  width: "100%",
-  padding: "unset",
-  justifyContent: "center",
-  height: "60vw",
-  flexBasis: "unset",
-  [props.theme.breakpoints.up("md")]: {
-    justifyContent: "flex-end",
-    height: "100%",
-    flexBasis: "60%",
-    padding: "12px 0px",
-  },
-}));
-const ContactInformationWrapper = styled(Box)((props)=>({
-  display:"flex",
-  flexDirection:"column",
-  height:"100%",
-  justifyContent:"space-evenly",
-  flexBasis:"50%",
-  mx:"auto",
-  width:"fit-content",
-  gap:10,
-  [props.theme.breakpoints.up("md")]:{
-    gap:0
-  }
-
-}))

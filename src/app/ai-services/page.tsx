@@ -14,6 +14,7 @@ import ImageLabeling from "@public/images/page6.jpg";
 //mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import styled from "@mui/material/styles/styled"
 //types
 type servicesCardDataType = {
   link: string;
@@ -30,22 +31,24 @@ export const metadata: Metadata = {
 };
 
 const OurServices = () => {
+  //components
+  const ServiceCardWrapper = styled(Box)((props)=>({
+    display: "flex",
+    flexWrap: "wrap",
+    maxWidth: 1536,
+    paddingTop: "2rem",
+    margin: "0px auto",
+    gap: 5,
+    justifyContent: "center",
+  }))
+  
   return (
     <>
       <Typography variant="h2" textAlign={"center"} my={4}>
         AI Services
       </Typography>
       <Typography textAlign={"center"}>Intelligence Solutions</Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          maxWidth: 1536,
-          paddingTop: "2rem",
-          margin: "0px auto",
-          gap: 5,
-          justifyContent: "center",
-        }}
+      <ServiceCardWrapper
       >
         {servicesCardData.map((item: servicesCardDataType) => (
           <ServicesCard
@@ -57,13 +60,13 @@ const OurServices = () => {
             isActive={item.isActive}
           />
         ))}
-      </Box>
+      </ServiceCardWrapper>
     </>
   );
 };
 
 export default OurServices;
-
+//data & initial values
 const servicesCardData: servicesCardDataType[] = [
   {
     link: "ai-services/ai-video-generation",

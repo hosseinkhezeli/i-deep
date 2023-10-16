@@ -3,7 +3,7 @@ import MainCarousel from "./components/main-carousel/MainCarousel";
 import OurProjectJourney from "./components/OurAiJourney";
 import GetAiServices from "./components/GetAIService";
 import Support from "./components/Support";
-import FAQ from "./components/FAQ/FAQ";
+import FAQ from "./components/faq/FAQ";
 import StayInTheKnow from "./components/StayInTheKnow";
 import Projects from "./components/projects/Projects";
 export const metadata: Metadata = {

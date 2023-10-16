@@ -4,15 +4,37 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Button, PaletteMode, TextField, Typography } from "@mui/material";
+import { Button, TextField, Typography, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
-import theme from "@/theme/theme";
 import styled from "@mui/material/styles/styled";
 //image
 import InfiniteIcon from "@public/images/infinite.svg";
-import { getState } from "@/context/store";
-const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
+
 const StayInTheKnow = () => {
+  //hooks
+  const theme = useTheme()
+
+  //components
+  const Background = styled(Box)((props) => ({
+    width: "100vw",
+    backgroundColor: theme.palette.secondary.main,
+  }));
+  const ComponentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    width: "100%",
+    maxWidth: 1350,
+    margin: "0px auto",
+    padding: "4rem 1rem",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    [props.theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+    },
+    [props.theme.breakpoints.up("md")]: {
+      padding: "4rem 6rem",
+    },
+  }));
+  
   return (
     <>
       <Background>
@@ -25,7 +47,7 @@ const StayInTheKnow = () => {
               gap={1}
             >
               <Typography
-                color={theme(activeTheme).palette.secondary.contrastText}
+                color={theme.palette.secondary.contrastText}
                 fontSize={32}
                 fontWeight={600}
                 height={"100%"}
@@ -42,7 +64,7 @@ const StayInTheKnow = () => {
               </Box>
             </Box>
             <Typography
-              color={theme(activeTheme).palette.secondary.contrastText}
+              color={theme.palette.secondary.contrastText}
               fontSize={22}
               fontWeight={500}
               lineHeight={"150%"}
@@ -58,7 +80,7 @@ const StayInTheKnow = () => {
             justifyContent={"center"}
           >
             <Typography
-              color={theme(activeTheme).palette.secondary.contrastText}
+              color={theme.palette.secondary.contrastText}
               fontSize={12}
             >
               Your e-mail :
@@ -82,22 +104,3 @@ const StayInTheKnow = () => {
 };
 
 export default StayInTheKnow;
-const Background = styled(Box)((props) => ({
-  width: "100vw",
-  backgroundColor: theme(activeTheme).palette.secondary.main,
-}));
-const ComponentWrapper = styled(Box)((props) => ({
-  display: "flex",
-  width: "100%",
-  maxWidth: 1350,
-  margin: "0px auto",
-  padding: "4rem 1rem",
-  justifyContent: "space-between",
-  flexDirection: "column",
-  [props.theme.breakpoints.up("sm")]: {
-    flexDirection: "row",
-  },
-  [props.theme.breakpoints.up("md")]: {
-    padding: "4rem 6rem",
-  },
-}));

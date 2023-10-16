@@ -1,4 +1,4 @@
-'use client'
+"use client";
 //react
 import React from "react";
 //next
@@ -6,13 +6,24 @@ import Image from "next/image";
 //mui
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import styled from "@mui/material/styles/styled"
+import styled from "@mui/material/styles/styled";
 //icons
 import GuardIcon from "@public/images/gurd.svg";
 import FlashIcon from "@public/images/flash2.svg";
 
-
 const Content = () => {
+  //components
+
+  const ComponentWrapper = styled(Box)((props) => ({
+    display: "flex",
+    flexDirection: "column",
+    flexBasis: "50%",
+    gap: 30,
+    [props.theme.breakpoints.up("lg")]: {
+      gap: 50,
+    },
+  }));
+
   return (
     <>
       <ComponentWrapper>
@@ -61,13 +72,3 @@ const Content = () => {
 };
 
 export default Content;
-
-const ComponentWrapper = styled(Box)((props)=>({
-  display:"flex",
-  flexDirection:"column",
-  flexBasis:"50%",
-  gap:30,
-  [props.theme.breakpoints.up("lg")]:{
-    gap:50
-  }
-}))

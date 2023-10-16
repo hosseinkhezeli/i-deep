@@ -4,15 +4,57 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Box, Button, PaletteMode, Typography } from "@mui/material";
-import theme from "@/theme/theme";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import styled from "@mui/material/styles/styled"
 //image
 import ThinkingRobot from "@public/images/thinkingAironman.webp";
-import { getState } from "@/context/store";
 
-const activeTheme:PaletteMode = getState().layoutTheme.layoutTheme
 const GetAiServices = () => {
+  //hooks
+  const theme = useTheme()
+
+  //components
+  const Background = styled(Box)(()=>({
+    width:"100vw",
+    backgroundColor:theme.palette.secondary.main
+  }))
+  const ComponentWrapper = styled(Box)((props)=>({
+    display:"flex",
+    maxWidth:1300,
+    margin:"2rem auto",
+    padding:"1rem auto",
+    flexDirection:"column",
+    [props.theme.breakpoints.up("md")]:{
+      flexDirection:"row"
+    }
+  }))
+  
+  const ImageWrapper = styled(Box)((props)=>({
+  width:"100%",
+  display:"flex",
+  order:2,
+  alignItems:"flex-end",
+  flexBasis:"50%",
+  [props.theme.breakpoints.up("lg")]:{
+    flexBasis:"40%",
+  }
+  }))
+  
+  
+  const ContentWrapper = styled(Box)((props)=>({
+  display:"flex",
+  flexDirection:"column",
+  padding:"2rem 4px",
+  gap:8,
+  flexBasis:"50%",
+  order:1,
+  [props.theme.breakpoints.up("lg")]:{
+    flexBasis:"60%",
+  }
+  
+  }))
+  
+
   return (
     <>
       <Background>
@@ -37,7 +79,7 @@ const GetAiServices = () => {
           <ContentWrapper
           >
             <Typography
-              color={theme(activeTheme).palette.secondary.contrastText}
+              color={theme.palette.secondary.contrastText}
               variant="h2"
               fontSize={{ xs: 24, md: 48 }}
               textAlign={{ xs: "center" }}
@@ -45,7 +87,7 @@ const GetAiServices = () => {
               Get AI Services
             </Typography>
             <Typography
-              color={theme(activeTheme).palette.secondary.contrastText}
+              color={theme.palette.secondary.contrastText}
               variant="body1"
               padding={4}
               textAlign={"justify"}
@@ -84,44 +126,5 @@ const GetAiServices = () => {
 
 export default GetAiServices;
 
-const Background = styled(Box)(()=>({
-  width:"100vw",
-  backgroundColor:theme(activeTheme).palette.secondary.main
-}))
-const ComponentWrapper = styled(Box)((props)=>({
-  display:"flex",
-  maxWidth:1300,
-  margin:"2rem auto",
-  padding:"1rem auto",
-  flexDirection:"column",
-  [props.theme.breakpoints.up("md")]:{
-    flexDirection:"row"
-  }
-}))
-
-const ImageWrapper = styled(Box)((props)=>({
-width:"100%",
-display:"flex",
-order:2,
-alignItems:"flex-end",
-flexBasis:"50%",
-[props.theme.breakpoints.up("lg")]:{
-  flexBasis:"40%",
-}
-}))
-
-
-const ContentWrapper = styled(Box)((props)=>({
-display:"flex",
-flexDirection:"column",
-padding:"2rem 4px",
-gap:8,
-flexBasis:"50%",
-order:1,
-[props.theme.breakpoints.up("lg")]:{
-  flexBasis:"60%",
-}
-
-}))
 
 

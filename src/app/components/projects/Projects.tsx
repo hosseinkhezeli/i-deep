@@ -23,7 +23,7 @@ const Projects = () => {
 };
 
 export default Projects;
-
+//data & initial values
 const projectDisplayData = [
   {
     title: "Media Asset Management Project",
