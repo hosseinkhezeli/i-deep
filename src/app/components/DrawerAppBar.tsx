@@ -25,12 +25,14 @@ import CompanyLogo from "./LogoIcon";
 import { dispatch } from "@/context/store";
 import { setTheme } from "@/context/reducers/themeReducer";
 
+
 interface Props {
   window?: () => Window;
 }
 
 export default function DrawerAppBar(props: Props) {
   //hooks
+
   const theme = useTheme();
   const path = usePathname();
   const router = useRouter();
@@ -241,7 +243,7 @@ export default function DrawerAppBar(props: Props) {
               display: { xs: "none", sm: "flex"}
             }}
           >
-            {theme.palette.mode === "dark" ? (
+            {theme.palette.mode === "light" ? (
               <DarkModeIcon />
             ) : (
               <LightModeIcon />

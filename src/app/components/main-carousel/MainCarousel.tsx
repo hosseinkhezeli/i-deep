@@ -3,6 +3,8 @@ import React, { useState } from "react";
 //slider
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
+//i18n
+
 //mui
 import { Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
@@ -27,6 +29,7 @@ const MainCarousel = () => {
   });
 
   const theme =useTheme()
+
 
   //components
   function Arrow(props: {
@@ -76,6 +79,27 @@ const MainCarousel = () => {
       top: "50%",
     },
   }));
+
+
+  //data & initial values
+const carouselData=[
+  {
+    image:CarouselImage1,
+    header:"Welcome",
+    subHeader:"To iDeep",
+    title:"Revolutionizing Business Through AI Excellence",
+    text:"With a wealth of AI expertise, we`re your trusted partner for turning ideas into technological wonders. With a focus on AI, we bring innovation to life with efficiency and precision",
+    buttonCaption:"Explore Our Vision!",
+  },
+  {
+    image:CarouselImage2,
+    header:"AI",
+    subHeader:"Text To Video",
+    title:"Explore AI`s incredible transformation of text into captivating videos",
+    text:"Our technology simplifies the process , saving time and enhancing accessibility. Elevate your content creation effortlessly.",
+    buttonCaption:"Explore Now!",
+  }
+]
   
   return (
     <>
@@ -129,23 +153,5 @@ const MainCarousel = () => {
 
 export default MainCarousel;
 
-//data & initial values
-const carouselData=[
-  {
-    image:CarouselImage1,
-    header:"Welcome",
-    subHeader:"To iDeep",
-    title:"Revolutionizing Business Through AI Excellence",
-    text:"With a wealth of AI expertise, we`re your trusted partner for turning ideas into technological wonders. With a focus on AI, we bring innovation to life with efficiency and precision",
-    buttonCaption:"Explore Our Vision!",
-  },
-  {
-    image:CarouselImage2,
-    header:"AI",
-    subHeader:"Text To Video",
-    title:"Explore AI`s incredible transformation of text into captivating videos",
-    text:"Our technology simplifies the process , saving time and enhancing accessibility. Elevate your content creation effortlessly.",
-    buttonCaption:"Explore Now!",
-  }
-]
+
 

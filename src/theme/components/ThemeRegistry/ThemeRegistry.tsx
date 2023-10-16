@@ -25,7 +25,7 @@ export default function ThemeRegistry({
 
   return (
     <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <ThemeProvider theme={customTheme(activeTheme)}>
+      <ThemeProvider theme={customTheme(activeTheme)} >
         <CssBaseline />
         {children}
       </ThemeProvider>
