@@ -1,7 +1,7 @@
 import { SelectProps } from "@mui/material/Select";
 import { OverridesStyleRules } from "@mui/material/styles/overrides";
 import { Theme } from "@mui/material/styles";
-import theme from "@/theme/theme";
+
 
 type TMuiSelect =
   | {
@@ -17,7 +17,7 @@ type TMuiSelect =
 
 export const MuiSelect: TMuiSelect = {
   styleOverrides: {
-    root: ({ ownerState, Theme }) => ({
+    root: ({ ownerState, theme }) => ({
       ...(ownerState.variant === "outlined" && {
         backgroundColor: theme.palette.mode==="dark"?theme.palette.secondary.dark:theme.palette.background.paper,
 

@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import styled from "@mui/material/styles/styled";
 //images
 import ContactUsImage from "@public/images/ideepContactus.svg";
-import { useTheme } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 
 const HeroBanner = () => {
   //hooks

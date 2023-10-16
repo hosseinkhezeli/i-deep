@@ -19,8 +19,8 @@ import { MuiSelect } from "./components/Select/MuiSelect";
 import { MuiFormControl } from "./components/FormControl/MuiFormControl";
 import { MuiFormControlLabel } from "./components/FormControl/MuiFormControlLabel";
 import "./components/palette/palette.d.ts"
+import { PaletteMode } from "@mui/material";
 
-type PaletteMode = "light" | "dark";
 
 const getDesignTokens = (mode: PaletteMode) => ({
   mode,
@@ -49,6 +49,7 @@ const customTheme = (mode: PaletteMode) =>
       MuiFormControl,
       MuiFormControlLabel,
       MuiSelect,
+      // @ts-ignore
       MuiAccordion,
       MuiCheckbox,
       MuiCssBaseline,

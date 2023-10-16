@@ -9,7 +9,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import RibbonIcon from "@public/images/soon_bg.svg";
 import styled from "@mui/material/styles/styled";
-import { useTheme } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 
 //types
 type Props = {

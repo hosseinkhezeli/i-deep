@@ -4,7 +4,8 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Button, TextField, Typography, useTheme } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 import Box from "@mui/material/Box";
 import styled from "@mui/material/styles/styled";
 //image

@@ -4,7 +4,8 @@ import React from "react";
 //next
 import Image from "next/image";
 //mui
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 import styled from "@mui/material/styles/styled"
 //image
 import ThinkingRobot from "@public/images/thinkingAironman.webp";

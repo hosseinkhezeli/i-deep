@@ -10,7 +10,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import { useTheme } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 
 const LocationBanner = () => {
   //hooks

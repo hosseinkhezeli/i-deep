@@ -1,7 +1,7 @@
 import { OverridesStyleRules } from "@mui/material/styles/overrides";
 import { Theme } from "@mui/material/styles";
 import {AccordionProps, AccordionClasses} from "@mui/material";
-import theme from "@/theme/theme";
+
 
 type TMuiAccordion =
   | {
@@ -25,9 +25,8 @@ export const MuiAccordion: TMuiAccordion = {
     root: ({ownerState , theme}) => ({
         backgroundColor: "transparent",
         marginBottom: "10px",
-        border: "none",
         borderBottom: `1px solid ${theme.palette.secondary.light}`,
-        ":before": { backgroundColor: "transparent" },
+        ":before": { backgroundColor: "transparent",},
     }),
   },
 }

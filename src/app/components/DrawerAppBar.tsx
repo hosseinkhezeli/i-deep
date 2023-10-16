@@ -17,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { useTheme } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 //component
 import CompanyLogo from "./LogoIcon";
 import { dispatch } from "@/context/store";

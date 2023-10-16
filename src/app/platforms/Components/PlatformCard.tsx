@@ -14,10 +14,9 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  PaletteMode,
-  useTheme,
 } from "@mui/material";
 import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme"
 
 //types
 type Props = {

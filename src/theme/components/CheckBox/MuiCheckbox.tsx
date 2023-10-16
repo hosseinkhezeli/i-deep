@@ -1,7 +1,6 @@
 import { CheckboxProps } from "@mui/material/Checkbox";
 import { OverridesStyleRules } from "@mui/material/styles/overrides";
 import { Theme } from "@mui/material/styles";
-import theme from "@/theme/theme";
 
 type TMuiCheckbox =
   | {
@@ -21,7 +20,7 @@ type TMuiCheckbox =
 
 export const MuiCheckbox: TMuiCheckbox= {
   styleOverrides: {
-    root: ({ ownerState, Theme }) => ({
+    root: ({ ownerState, theme }) => ({
       color:theme.palette.mode==="dark"?theme.palette.text.secondary:theme.palette.text.primary
     }),
     

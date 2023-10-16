@@ -1,4 +1,4 @@
-import { useTheme } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 
 const LogoIcon = () => {
   const theme = useTheme()

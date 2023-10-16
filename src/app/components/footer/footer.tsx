@@ -1,8 +1,10 @@
+"use client"
 //next
 import Link from "next/link";
 import Image from "next/image";
 //mui
-import { Box, Typography, Divider, useTheme } from "@mui/material";
+import { Box, Typography, Divider } from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 //images
 import FacebookIcon from "@public/images/facebook-filled.svg";
 import LinkedinIcon from "@public/images/linkedin-filled.svg";

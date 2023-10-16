@@ -7,7 +7,8 @@ import Image from "next/image";
 import TeamImage from "@public/images/exited-people.webp";
 import BGTexture from "@public/images/isolation.svg";
 //mui
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography} from "@mui/material";
+import useTheme from "@mui/material/styles/useTheme"
 import styled from "@mui/material/styles/styled";
 
 const Contents = () => {
