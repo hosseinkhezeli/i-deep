@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 //mui
-import { Box, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import styled from "@mui/material/styles/styled";
+import useTheme from "@mui/material/styles/useTheme"
 //images
 import CarouselImage1 from "@public/images/rectangle-34624746.png";
 import CarouselImage2 from "@public/images/ai-innovation-7f5e61b7.webp";

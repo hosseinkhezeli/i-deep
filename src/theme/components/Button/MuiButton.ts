@@ -69,6 +69,9 @@ export const MuiButton: TMuiButton = {
       minHeight: "45px",
       whiteSpace: "nowrap",
       padding: 0,
+      ":disabled":{
+        color:theme.palette.text.disabled
+      }
     }),
   },
 };

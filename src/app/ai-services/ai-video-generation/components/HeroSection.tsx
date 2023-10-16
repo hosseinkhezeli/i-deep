@@ -5,7 +5,7 @@ import Image from "next/image";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { useTheme } from "@mui/material";
+import  useTheme  from "@mui/material/styles/useTheme";
 import styled from "@mui/material/styles/styled";
 //image
 import WomanImage from "@public/images/woman-laugh.png";

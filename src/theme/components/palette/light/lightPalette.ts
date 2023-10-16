@@ -15,7 +15,7 @@ export const lightPalette = {
     light: "#1d1d1d35",
     contrastText: "#fff",
   },
-  divider: "#1d1d1d",
+  divider: "#8E8E8E",
 
   background: {
     main: "#fff",
@@ -57,7 +57,7 @@ export const lightPalette = {
   text: {
     primary: "#1d1d1d",
     secondary: "#fff",
-    disabled: "#747474",
+    disabled: "#8E8E8E",
   },
   grey: {
     50: "#fafafa",

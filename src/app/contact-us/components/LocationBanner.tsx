@@ -10,11 +10,11 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import PhoneIphoneOutlinedIcon from "@mui/icons-material/PhoneIphoneOutlined";
-import useTheme from "@mui/material/styles/useTheme"
+import useTheme from "@mui/material/styles/useTheme";
 
 const LocationBanner = () => {
   //hooks
-  const theme = useTheme()
+  const theme = useTheme();
 
   //components
   const ComponentWrapper = styled(Box)((props) => ({
@@ -38,7 +38,7 @@ const LocationBanner = () => {
       height: "480px",
     },
   }));
-  
+
   const MapComponentWrapper = styled(Box)((props) => ({
     display: "flex",
     alignItems: "center",
@@ -54,20 +54,19 @@ const LocationBanner = () => {
       padding: "12px 0px",
     },
   }));
-  const ContactInformationWrapper = styled(Box)((props)=>({
-    display:"flex",
-    flexDirection:"column",
-    height:"100%",
-    justifyContent:"space-evenly",
-    flexBasis:"50%",
-    mx:"auto",
-    width:"fit-content",
-    gap:10,
-    [props.theme.breakpoints.up("md")]:{
-      gap:0
-    }
-  
-  }))
+  const ContactInformationWrapper = styled(Box)((props) => ({
+    display: "flex",
+    flexDirection: "column",
+    height: "100%",
+    justifyContent: "space-evenly",
+    flexBasis: "50%",
+    mx: "auto",
+    width: "fit-content",
+    gap: 10,
+    [props.theme.breakpoints.up("md")]: {
+      gap: 0,
+    },
+  }));
   const contactData = [
     {
       icon: <LocationOnOutlinedIcon color="primary" />,
@@ -94,7 +93,10 @@ const LocationBanner = () => {
             (item: { icon: any; content: string }, index: number) => (
               <Box key={index} display={"flex"} gap={4}>
                 {item.icon}
-                <Typography variant="body2" color={theme.palette.secondary.contrastText}>
+                <Typography
+                  variant="body2"
+                  color={theme.palette.secondary.contrastText}
+                >
                   {item.content}
                 </Typography>
               </Box>
@@ -110,6 +112,9 @@ const LocationBanner = () => {
               width: "100%",
               height: "100%",
               maxWidth: "480px",
+              filter: `${
+                theme.palette.mode === "dark" ? "invert(95%)" : "unset"
+              }`,
             }}
             // @ts-ignore
             allowFullScreen=""
@@ -123,4 +128,3 @@ const LocationBanner = () => {
 };
 
 export default LocationBanner;
-

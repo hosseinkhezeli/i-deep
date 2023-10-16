@@ -22,13 +22,9 @@ export const MuiInputLabel: TMuiInputLabel = {
 
   styleOverrides: {
     root: ({ownerState, theme}) => ({
-      top: 14,
-      left: 14,
-      transform: 'unset',
-      color: theme.palette.grey[100] ,
-      '&[data-shrink=true]': {
-        display: 'none'
-      }
+
+      color: theme.palette.text.disabled ,
+
     }),
   }
 };

@@ -10,7 +10,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Checkbox, FormControlLabel, useTheme } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import  useTheme  from "@mui/material/styles/useTheme";
 import styled from "@mui/material/styles/styled"
 
 //type

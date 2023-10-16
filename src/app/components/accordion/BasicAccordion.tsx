@@ -9,7 +9,7 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-
+import useTheme from "@mui/material/styles/useTheme";
 //types
 type AccordionDataType = {
   title: string;
@@ -22,13 +22,12 @@ type Props = {
 const BasicAccordion = ({ data }: Props) => {
   //hooks
   const [expanded, setExpanded] = useState<string | false>(false);
-
+  const theme = useTheme();
   //function
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-
 
   return (
     <>
@@ -40,7 +39,13 @@ const BasicAccordion = ({ data }: Props) => {
             onChange={handleChange(`panel${index}`)}
           >
             <AccordionSummary
-              expandIcon={expanded === `panel${index}` ? "-" : "+"}
+              expandIcon={
+                expanded === `panel${index}` ? (
+                  <span style={{ color: theme.palette.text.primary }}>-</span>
+                ) : (
+                  <span style={{ color: theme.palette.text.primary }}>+</span>
+                )
+              }
               sx={{ margin: { xs: "0 10px", md: "0 25px" }, fontSize: "25px" }}
             >
               <Box display={"flex"} flexDirection={"column"}>

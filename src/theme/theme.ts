@@ -18,6 +18,7 @@ import { MuiCheckbox } from "./components/CheckBox/MuiCheckbox";
 import { MuiSelect } from "./components/Select/MuiSelect";
 import { MuiFormControl } from "./components/FormControl/MuiFormControl";
 import { MuiFormControlLabel } from "./components/FormControl/MuiFormControlLabel";
+import { MuiInputLabel } from "./components/InputLabel/MuiInputLabel";
 import "./components/palette/palette.d.ts"
 import { PaletteMode } from "@mui/material";
 
@@ -63,6 +64,7 @@ const customTheme = (mode: PaletteMode) =>
       MuiMenu,
       MuiCard,
       MuiTypography,
+      MuiInputLabel
     },
   });
 

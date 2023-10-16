@@ -17,7 +17,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import useTheme from "@mui/material/styles/useTheme"
+import useTheme from "@mui/material/styles/useTheme";
+import DarkModeIcon from "@mui/icons-material/NightlightOutlined";
+import LightModeIcon from "@mui/icons-material/LightModeOutlined";
 //component
 import CompanyLogo from "./LogoIcon";
 import { dispatch } from "@/context/store";
@@ -34,7 +36,7 @@ export default function DrawerAppBar(props: Props) {
   const router = useRouter();
   const { window } = props;
   const container =
-  window !== undefined ? () => window().document.body : undefined;
+    window !== undefined ? () => window().document.body : undefined;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   //functions
@@ -61,10 +63,23 @@ export default function DrawerAppBar(props: Props) {
         height: "100%",
         justifyContent: "space-between",
         pb: 6,
-        backgroundColor:theme.palette.background.default,
+        backgroundColor: theme.palette.background.default,
       }}
     >
       <Box display={"flex"} flexDirection={"column"}>
+      <Button
+            onClick={() => changeTheme()}
+            sx={{
+              mt: 4,
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            {theme.palette.mode === "light" ? (
+              <DarkModeIcon />
+            ) : (
+              <LightModeIcon />
+            )}
+          </Button>
         <Typography variant="h6" sx={{ my: 2, textAlign: "center" }}>
           iDeep
         </Typography>
@@ -73,7 +88,7 @@ export default function DrawerAppBar(props: Props) {
           {navItems.map((item: string, index: number) => (
             <ListItem key={item} disablePadding>
               <ListItemButton sx={{ textAlign: "center", p: 0 }}>
-                <Link href={navLinks[index]} style={{ width: "100%" }}>
+                <Link href={navLinks[index]} style={{ width: "100%" ,color:theme.palette.text.primary}}>
                   <Typography
                     variant="h6"
                     sx={{ width: "100%", textAlign: "center", p: 3 }}
@@ -98,17 +113,7 @@ export default function DrawerAppBar(props: Props) {
           >
             Create Account
           </Button>
-          <Button
-            onClick={() => changeTheme()}
-            variant="contained"
-            sx={{
-              mt: 4,
-              width: "200px",
-              display: { xs: "block", md: "none" },
-            }}
-          >
-            Theme
-          </Button>
+
         </Box>
       </Box>
 
@@ -119,7 +124,6 @@ export default function DrawerAppBar(props: Props) {
       </Box>
     </Box>
   );
-
 
   return (
     <Box
@@ -156,7 +160,7 @@ export default function DrawerAppBar(props: Props) {
               onClick={handleDrawerToggle}
               sx={{ mx: { xs: 0, md: 2 }, display: { md: "none" } }}
             >
-              <MenuIcon />
+              <MenuIcon sx={{color:theme.palette.text.primary}} />
             </IconButton>
             <Box>
               <Box
@@ -179,7 +183,11 @@ export default function DrawerAppBar(props: Props) {
               }}
             >
               {navItems.map((item: string, index: number) => (
-                <Link href={navLinks[index]} key={index}>
+                <Link
+                  href={navLinks[index]}
+                  key={index}
+                  style={{ color: theme.palette.text.primary }}
+                >
                   {path === navLinks[index] ? (
                     <Box
                       display={"flex"}
@@ -202,7 +210,12 @@ export default function DrawerAppBar(props: Props) {
                       />
                     </Box>
                   ) : (
-                    <Typography variant="subtitle1">{item}</Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ ":hover": { color: theme.palette.primary.main } }}
+                    >
+                      {item}
+                    </Typography>
                   )}
                 </Link>
               ))}
@@ -218,15 +231,22 @@ export default function DrawerAppBar(props: Props) {
             >
               Create Account
             </Button>
-            <Button
-              onClick={() => changeTheme()}
-              sx={{
-                width: "140px",
-              }}
-            >
-              Theme
-            </Button>
           </Box>
+          <Button
+            onClick={() => changeTheme()}
+            sx={{
+              width: "55px",
+              minWidth: "max-content",
+              borderRadius: "50%",
+              display: { xs: "none", sm: "flex"}
+            }}
+          >
+            {theme.palette.mode === "dark" ? (
+              <DarkModeIcon />
+            ) : (
+              <LightModeIcon />
+            )}
+          </Button>
         </Toolbar>
       </AppBar>
       <nav>

@@ -16,7 +16,7 @@ export const darkPalette = {
     light: "#DBEBFF35",
     contrastText: "#1d1d1d",
   },
-  divider: "#1d1d1d",
+  divider: "#8E8E8E",
 
   background: {
     main: "#1d1d1d",
@@ -58,7 +58,7 @@ export const darkPalette = {
   text: {
     primary: "#fff",
     secondary: "#1d1d1d",
-    disabled: "#747474",
+    disabled: "#8E8E8E",
   },
   button:{
     primary: "#fff",

@@ -74,6 +74,7 @@ const ServicesCard = ({
         pointerEvents: `${isActive ? "auto" : "none"}`,
         display: "content",
         position: "relative",
+        color:theme.palette.text.primary
       }}
     >
       {!isActive && (
