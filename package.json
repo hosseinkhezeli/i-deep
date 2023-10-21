@@ -20,6 +20,7 @@
     "i18next-http-backend": "^2.2.2",
     "keen-slider": "^6.8.6",
     "next": "latest",
+    "next-intl": "^2.21.0",
     "next-videos": "^1.4.1",
     "react": "latest",
     "react-dom": "latest",

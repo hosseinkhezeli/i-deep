@@ -13,9 +13,11 @@ import useTheme from "@mui/material/styles/useTheme"
 import CarouselImage1 from "@public/images/rectangle-34624746.png";
 import CarouselImage2 from "@public/images/ai-innovation-7f5e61b7.webp";
 import CarouselSlide from "./components/CarouselSlider";
+import { useTranslations } from "next-intl";
 
 const MainCarousel = () => {
   //hooks
+  const t = useTranslations("IndexPage.Maincarousel")
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -85,19 +87,19 @@ const MainCarousel = () => {
 const carouselData=[
   {
     image:CarouselImage1,
-    header:"Welcome",
-    subHeader:"To iDeep",
-    title:"Revolutionizing Business Through AI Excellence",
-    text:"With a wealth of AI expertise, we`re your trusted partner for turning ideas into technological wonders. With a focus on AI, we bring innovation to life with efficiency and precision",
-    buttonCaption:"Explore Our Vision!",
+    header:t("slide1.header"),
+    subHeader:t("slide1.subHeader"),
+    title:t("slide1.title"),
+    text:t("slide1.text"),
+    buttonCaption:t("slide1.buttonCaption"),
   },
   {
     image:CarouselImage2,
-    header:"AI",
-    subHeader:"Text To Video",
-    title:"Explore AI`s incredible transformation of text into captivating videos",
-    text:"Our technology simplifies the process , saving time and enhancing accessibility. Elevate your content creation effortlessly.",
-    buttonCaption:"Explore Now!",
+    header:t("slide2.header"),
+    subHeader:t("slide2.subHeader"),
+    title:t("slide2.title"),
+    text:t("slide2.text"),
+    buttonCaption:t("slide2.buttonCaption"),
   }
 ]
   

@@ -1,0 +1,61 @@
+{
+  "IndexPage": {
+    "Maincarousel":{
+      "slide1":{
+        "header":"خوش آمدید",
+        "subHeader":"به آی دیپ",
+        "title":"انقلابی در کسب و کار به کمک هوش مصنوعی",
+        "text":"با دراختیار داشتن متخصصان هوش مصنوعی، ما شریک مورد اعتماد شما برای تبدیل ایده ها به شگفتی های فناوری هستیم. با تمرکز بر هوش مصنوعی، نوآوری را با کارایی و دقت زنده می کنیم",
+        "buttonCaption":"اهداف ما رو دنبال کنید"
+      },
+      "slide2":{
+        "header":"هوش مصنوعی",
+        "subHeader":"متن به تصویر",
+        "title":" کاوش در تبدیل باورنکردنی متن به ویدیوهای جذاب هوش مصنوعی",
+        "text":"فناوری ما فرآیند را ساده می کند، در زمان صرفه جویی می کند و دسترسی را افزایش می دهد. تولید محتوای خود را بدون زحمت بالا ببرید.",
+        "buttonCaption":"کشف کنید!"
+      }
+    }
+    },
+    "AboutPage": {
+      "title": "About",
+      "description": "<p>نمونه نمونه..</p><p>نمونه نمونه. <code>/about</code> نمونه نمونه..</p><p>نمونه نمونه. (<code>/de/about</code>).</p>"
+    },
+    "Error": {
+      "title": "نومنه",
+      "description": "<pنمونه نمونه.</p><p>نمونه نمونه.<retry>نمونه نمونه.</retry> نمونه نمونه.</p>"
+    },
+    "NotFoundPage": {
+      "title": "نمونه",
+      "description": "نمونه نمونه."
+    },
+    "LocaleLayout": {
+      "title": "نمونه"
+    },
+    "LocaleSwitcher": {
+      "label": "تغییر زبان",
+      "locale": "{locale, select, fa {Fa} en {En} other {Fa}}"
+    },
+    "Navigation": {
+      "home": "خانه",
+      "about": "درباره"
+    },
+    "PageLayout": {
+      "links": {
+        "docs": {
+          "title": "نمونه",
+          "description": "نمونه نمونه.",
+          "href": "https://next-intl-docs.vercel.app/"
+        },
+        "source": {
+          "title": "منبع",
+          "description": "نمونه نمونه.",
+          "href": "https://github.com/amannn/next-intl/tree/main/examples/example-next-13"
+        }
+      }
+    },
+    "NavBar":{
+        "title":"آی دیپ"
+    }
+  }
+  

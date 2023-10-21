@@ -21,6 +21,7 @@ import { MuiFormControlLabel } from "./components/FormControl/MuiFormControlLabe
 import { MuiInputLabel } from "./components/InputLabel/MuiInputLabel";
 import "./components/palette/palette.d.ts"
 import { PaletteMode } from "@mui/material";
+import { NextFont } from "next/dist/compiled/@next/font";
 
 
 const getDesignTokens = (mode: PaletteMode) => ({
@@ -28,11 +29,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
   ...(mode === "light" ? lightPalette : darkPalette),
 });
 
-const customTheme = (mode: PaletteMode) =>
+const customTheme = (mode: PaletteMode,font:NextFont) =>
   createTheme({
     direction: "ltr",
     palette: getDesignTokens(mode),
-    typography,
+    typography:{fontFamily:font.style.fontFamily},
     spacing: 4,
     shape: {
       borderRadius: 10,

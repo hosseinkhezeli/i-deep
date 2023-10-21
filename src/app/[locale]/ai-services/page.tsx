@@ -16,6 +16,7 @@ import ImageLabeling from "@public/images/page6.jpg";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
+
 //types
 type servicesCardDataType = {
   link: string;

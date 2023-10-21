@@ -4,6 +4,9 @@ import React from "react";
 //next
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+//next-intl
+import LocaleSwitcher from "@/components/LocalSwitcher";
+import { useTranslations } from "next-intl";
 //mui
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -32,6 +35,7 @@ interface Props {
 }
 export default function DrawerAppBar(props: Props) {
   //hooks
+  const t = useTranslations("NavBar");
   const theme = useTheme();
   const path = usePathname();
   const router = useRouter();
@@ -77,8 +81,9 @@ export default function DrawerAppBar(props: Props) {
               <LightModeIcon />
             )}
           </Button>
+          <LocaleSwitcher/>
         <Typography variant="h6" sx={{ my: 2, textAlign: "center" }}>
-          iDeep
+          {t("title")}
         </Typography>
         <Divider />
         <List sx={{ display: "flex", flexDirection: "column" }}>
@@ -244,6 +249,7 @@ export default function DrawerAppBar(props: Props) {
               <LightModeIcon />
             )}
           </Button>
+          <LocaleSwitcher/>
         </Toolbar>
       </AppBar>
       <nav>
