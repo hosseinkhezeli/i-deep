@@ -18,8 +18,9 @@ export default function ThemeRegistry({
   );
 
   useEffect(() => {
-    setActiveTheme(getState().layoutTheme.layoutTheme);
-  }, [getState().layoutTheme.layoutTheme]);
+    setActiveTheme(getState().common.themeMode);
+  }, [getState().common.themeMode]);
+
 
 
 
