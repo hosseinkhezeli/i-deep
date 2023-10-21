@@ -23,16 +23,15 @@ import LightModeIcon from "@mui/icons-material/LightModeOutlined";
 //component
 import CompanyLogo from "./LogoIcon";
 import { dispatch } from "@/context/store";
-import { setTheme } from "@/context/reducers/themeReducer";
+import { changeThemeMode } from "@/context/common/commonSlice";
 
 
 interface Props {
   window?: () => Window;
-}
 
+}
 export default function DrawerAppBar(props: Props) {
   //hooks
-
   const theme = useTheme();
   const path = usePathname();
   const router = useRouter();
@@ -43,11 +42,7 @@ export default function DrawerAppBar(props: Props) {
 
   //functions
   const changeTheme = () => {
-    if (theme.palette.mode === "light") {
-      dispatch(setTheme("dark"));
-    } else {
-      dispatch(setTheme("light"));
-    }
+    dispatch(changeThemeMode());
     router.refresh();
   };
 
