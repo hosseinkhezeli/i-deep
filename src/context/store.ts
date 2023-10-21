@@ -1,6 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import languageReducer from "./reducers/languageReducer";
-import themeReducer from "./reducers/themeReducer";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import CommonReducer from "@context/common/commonSlice";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import {
   persistStore,
@@ -11,24 +10,36 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
+  PersistConfig,
 } from "redux-persist";
 import storage from "./storage/storage";
+import hardSet from "redux-persist/es/stateReconciler/hardSet";
 
-const persistThemeConfig = {
-  key: "layoutTheme",
-  storage:storage,
+const commonPersistConfig: PersistConfig<any> = {
+  key: "common",
+  version: 1,
+  storage,
+  stateReconciler: hardSet,
 };
-const persistLanguageConfig = {
-  key: "language",
-  storage:storage,
+
+const persistedCommon = persistReducer(commonPersistConfig, CommonReducer);
+
+const combinedReducer = combineReducers({
+  common: persistedCommon,
+});
+
+const rootReducer = (state: any, action: any) => {
+  if (action.type === "auth/logout") {
+    state = undefined;
+    localStorage.removeItem("token");
+    localStorage.removeItem("phone");
+  }
+  return combinedReducer(state, action);
 };
-const persistedThemeReducer = persistReducer(persistThemeConfig, themeReducer);
-const persistedLanguageReducer = persistReducer(persistLanguageConfig, languageReducer);
+
 export const store = configureStore({
-  reducer: {
-    layoutTheme: persistedThemeReducer,
-    language:persistedLanguageReducer
-  },
+  reducer: rootReducer,
+  // devTools: !import.meta.env.PROD,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
