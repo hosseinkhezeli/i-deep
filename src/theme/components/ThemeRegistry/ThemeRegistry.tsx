@@ -9,20 +9,7 @@ import { PaletteMode } from "@mui/material";
 import customTheme from "../../theme";
 import { Poppins } from "next/font/google";
 import { Vazirmatn } from "next/font/google";
-
-
-const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const vazirmatn = Vazirmatn({
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
-  subsets: ["arabic"],
-  display: "swap",
-});
-
+import { NextFont } from "next/dist/compiled/@next/font";
 
 export default function ThemeRegistry({
   children,
@@ -30,8 +17,7 @@ export default function ThemeRegistry({
   children: React.ReactNode;
 }) {
   const [activeTheme, setActiveTheme] = useState<PaletteMode>("light");
-  const [activeLang, setActiveLang] = useState(getState().common.lang);
-  const [activeFont, setActiveFont] = useState(poppins);
+  const [activeLang, setActiveLang] = useState("en");
 
   useEffect(() => {
     setActiveTheme(getState().common.themeMode);
@@ -39,12 +25,11 @@ export default function ThemeRegistry({
 
   useEffect(() => {
     setActiveLang(getState().common.lang);
-    setActiveFont(activeLang === "en" ? poppins : vazirmatn);
   }, [getState().common.lang]);
 
   return (
     <NextAppDirEmotionCacheProvider options={{ key: "mui" }}>
-      <ThemeProvider theme={customTheme(activeTheme, activeFont)}>
+      <ThemeProvider theme={customTheme(activeTheme, activeLang)}>
         <CssBaseline />
         {children}
       </ThemeProvider>

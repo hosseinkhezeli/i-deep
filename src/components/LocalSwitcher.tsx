@@ -40,6 +40,7 @@ export default function LocaleSwitcher() {
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
     });
+    router.refresh()
     setSelectedIndex(index);
     setAnchorEl(null);
   };

@@ -22,7 +22,7 @@ async function getMessages(locale: string) {
 }
 
 export async function generateStaticParams() {
-  return ['en', 'de'].map((locale) => ({locale}));
+  return ['en', 'fa'].map((locale) => ({locale}));
 }
 
 export async function generateMetadata({params: {locale}}: Props) {
@@ -51,7 +51,7 @@ export default async function LocalLayout({
 }: Props) {
 
   const messages = await getMessages(locale);
-
+  console.log(locale)
   return (
     <html lang={locale}>
       <body style={{ overflowX: "hidden" }}>

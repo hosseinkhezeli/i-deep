@@ -17,7 +17,7 @@ export interface CommonState {
 }
 let getLangfromLocalStorage;
 if (typeof window !== "undefined") {
- getLangfromLocalStorage = window?.localStorage?.getItem("persist:common") ? JSON.parse(JSON.parse(localStorage.getItem("persist:common") || "")?.lang)
+ getLangfromLocalStorage = window?.localStorage?.getItem("persist:common") ? JSON.parse(localStorage?.getItem("persist:common")||"").lang
   : "en";
 }
 

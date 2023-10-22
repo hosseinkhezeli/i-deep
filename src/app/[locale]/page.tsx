@@ -6,6 +6,7 @@ import Support from "./components/Support";
 import FAQ from "./components/faq/FAQ";
 import StayInTheKnow from "./components/StayInTheKnow";
 import Projects from "./components/projects/Projects";
+
 export const metadata: Metadata = {
   title: "iDeep_Home",
   description: "Home page of iDeep website",

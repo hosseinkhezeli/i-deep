@@ -21,19 +21,36 @@ import { MuiFormControlLabel } from "./components/FormControl/MuiFormControlLabe
 import { MuiInputLabel } from "./components/InputLabel/MuiInputLabel";
 import "./components/palette/palette.d.ts"
 import { PaletteMode } from "@mui/material";
-import { NextFont } from "next/dist/compiled/@next/font";
+import { Poppins, Vazirmatn } from "next/font/google";
 
+
+const poppins = Poppins({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const vazirmatn = Vazirmatn({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["arabic"],
+  display: "swap",
+});
 
 const getDesignTokens = (mode: PaletteMode) => ({
   mode,
   ...(mode === "light" ? lightPalette : darkPalette),
 });
 
-const customTheme = (mode: PaletteMode,font:NextFont) =>
+const getTypographyTokens = (lang:string) => ({
+  lang,
+  ...(lang === "en" ? poppins : vazirmatn),
+});
+
+const customTheme = (mode: PaletteMode,lang:string) =>
   createTheme({
-    direction: "ltr",
+    direction: lang==="fa"||lang==="ar"?"rtl":"ltr",
     palette: getDesignTokens(mode),
-    typography:{fontFamily:font.style.fontFamily},
+    typography:{...typography,fontFamily: getTypographyTokens(lang).style.fontFamily},
     spacing: 4,
     shape: {
       borderRadius: 10,
