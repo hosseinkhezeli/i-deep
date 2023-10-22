@@ -7,6 +7,7 @@ import StoreProvider from "@/context/store-provider";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, createTranslator } from "next-intl";
 import { ReactNode } from "react";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 type Props = {
   children: ReactNode;
@@ -48,6 +49,7 @@ export default async function LocalLayout({
         <StoreProvider>
           <ThemeRegistry>
           <NextIntlClientProvider locale={locale} messages={messages}>
+            <ScrollToTopButton/>
             <DrawerAppBar />
             {children}
             <Footer />
