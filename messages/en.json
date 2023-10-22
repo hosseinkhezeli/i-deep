@@ -1,5 +1,15 @@
 {
     "IndexPage": {
+      "NavBarItems":{
+        "ideep":"iDeep",
+        "home":"Home",
+        "aiServices":"AI Services",
+        "platform":"Platform",
+        "workWithUs":"Work with us",
+        "contactUs":"Contact us",
+        "aboutUs":"About us",
+        "createAcoount":"Create Account"
+      },
     "Maincarousel":{
       "slide1":{
         "header":"Welcome",
@@ -53,9 +63,7 @@
           "href": "https://github.com/amannn/next-intl/tree/main/examples/example-next-13"
         }
       }
-    },
-    "NavBar":{
-        "title":"iDeep"
     }
+
   }
   

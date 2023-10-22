@@ -28,9 +28,6 @@ export async function generateStaticParams() {
 export async function generateMetadata({params: {locale}}: Props) {
   const messages = await getMessages(locale);
 
-  // You can use the core (non-React) APIs when you have to use next-intl
-  // outside of components. Potentially this will be simplified in the future
-  // (see https://next-intl-docs.vercel.app/docs/next-13/server-components).
   const t = createTranslator({locale, messages});
 
   return {
@@ -39,21 +36,14 @@ export async function generateMetadata({params: {locale}}: Props) {
 }
 
 
-
-// export const metadata = {
-//   title: "iDeep",
-//   description: "iDeep is a company that provides AI services",
-// };
-
 export default async function LocalLayout({
   children,
   params: {locale}
 }: Props) {
 
   const messages = await getMessages(locale);
-  console.log(locale)
   return (
-    <html lang={locale}>
+    <html lang={locale} dir={locale==="fa"||locale==="ar"?"rtl":"ltr"}>
       <body style={{ overflowX: "hidden" }}>
         <StoreProvider>
           <ThemeRegistry>

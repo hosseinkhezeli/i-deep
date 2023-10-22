@@ -24,6 +24,7 @@ export const MuiAppBar: TMuiAppBar = {
     root: ({ownerState , theme}) => ({
       backgroundColor: theme.palette.background.default,
       boxShadow:`0px 0px 10px 0px ${theme.palette.mode==="light"?theme.palette.secondary.main.padEnd(9,"15"):theme.palette.primary.main.padEnd(9,"15")}`,
+      ":dir":theme.direction
     }),
   },
 }

@@ -1,5 +1,15 @@
 {
   "IndexPage": {
+    "NavBarItems":{
+      "ideep":"آی دیپ",
+      "home":"صفحه اصلی",
+      "aiServices":"سرویس های هوش مصنوعی",
+      "platform":"پلتفرم",
+      "workWithUs":"موقعیت های شغلی",
+      "contactUs":"ارتباط با ما",
+      "aboutUs":"درباره ما",
+      "createAcoount":"ورود | ثبت نام"
+    },
     "Maincarousel":{
       "slide1":{
         "header":"خوش آمدید",
@@ -53,9 +63,7 @@
           "href": "https://github.com/amannn/next-intl/tree/main/examples/example-next-13"
         }
       }
-    },
-    "NavBar":{
-        "title":"آی دیپ"
     }
+
   }
   

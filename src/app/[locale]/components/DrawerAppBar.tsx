@@ -25,17 +25,15 @@ import DarkModeIcon from "@mui/icons-material/NightlightOutlined";
 import LightModeIcon from "@mui/icons-material/LightModeOutlined";
 //component
 import CompanyLogo from "./LogoIcon";
-import { dispatch } from "@/context/store";
+import { dispatch, getState } from "@/context/store";
 import { changeThemeMode } from "@/context/common/commonSlice";
-
 
 interface Props {
   window?: () => Window;
-
 }
 export default function DrawerAppBar(props: Props) {
   //hooks
-  const t = useTranslations("NavBar");
+  const t = useTranslations("IndexPage.NavBarItems");
   const theme = useTheme();
   const path = usePathname();
   const router = useRouter();
@@ -43,6 +41,25 @@ export default function DrawerAppBar(props: Props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  //data & initial values
+  const drawerWidth = 240;
+  const navItems = [
+    t("home"),
+    t("aiServices"),
+    t("platform"),
+    t("workWithUs"),
+    t("contactUs"),
+    t("aboutUs"),
+  ];
+  const navLinks = [
+    "/",
+    "/ai-services",
+    "/platforms",
+    "/work-with-us",
+    "/contact-us",
+    "/about-us",
+  ];
 
   //functions
   const changeTheme = () => {
@@ -61,36 +78,40 @@ export default function DrawerAppBar(props: Props) {
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "100%",
+        height: "100vh",
         justifyContent: "space-between",
         pb: 6,
         backgroundColor: theme.palette.background.default,
       }}
     >
       <Box display={"flex"} flexDirection={"column"}>
-      <Button
-            onClick={() => changeTheme()}
-            sx={{
-              mt: 4,
-              display: { xs: "block", md: "none" },
-            }}
-          >
-            {theme.palette.mode === "light" ? (
-              <DarkModeIcon />
-            ) : (
-              <LightModeIcon />
-            )}
-          </Button>
-          <LocaleSwitcher/>
+        <Button
+          onClick={() => changeTheme()}
+          sx={{
+            mt: 4,
+          }}
+        >
+          {theme.palette.mode === "light" ? (
+            <DarkModeIcon />
+          ) : (
+            <LightModeIcon />
+          )}
+        </Button>
+
+        <LocaleSwitcher />
+
         <Typography variant="h6" sx={{ my: 2, textAlign: "center" }}>
-          {t("title")}
+          {t("ideep")}
         </Typography>
         <Divider />
         <List sx={{ display: "flex", flexDirection: "column" }}>
           {navItems.map((item: string, index: number) => (
             <ListItem key={item} disablePadding>
               <ListItemButton sx={{ textAlign: "center", p: 0 }}>
-                <Link href={navLinks[index]} style={{ width: "100%" ,color:theme.palette.text.primary}}>
+                <Link
+                  href={navLinks[index]}
+                  style={{ width: "100%", color: theme.palette.text.primary }}
+                >
                   <Typography
                     variant="h6"
                     sx={{ width: "100%", textAlign: "center", p: 3 }}
@@ -113,9 +134,8 @@ export default function DrawerAppBar(props: Props) {
               display: { xs: "block", md: "none" },
             }}
           >
-            Create Account
+            {t("createAcoount")}
           </Button>
-
         </Box>
       </Box>
 
@@ -144,7 +164,8 @@ export default function DrawerAppBar(props: Props) {
         <Toolbar
           sx={{
             display: "flex",
-            justifyContent: "flex-start",
+            justifyContent:
+              theme.direction === "ltr" ? "flex-start" : "flex-end",
             maxWidth: "1536px",
             mx: "auto",
             py: { xs: "0.7rem", sm: "1rem", xl: "2rem" },
@@ -162,7 +183,7 @@ export default function DrawerAppBar(props: Props) {
               onClick={handleDrawerToggle}
               sx={{ mx: { xs: 0, md: 2 }, display: { md: "none" } }}
             >
-              <MenuIcon sx={{color:theme.palette.text.primary}} />
+              <MenuIcon sx={{ color: theme.palette.text.primary }} />
             </IconButton>
             <Box>
               <Box
@@ -231,7 +252,7 @@ export default function DrawerAppBar(props: Props) {
                 width: "140px",
               }}
             >
-              Create Account
+              {t("createAcoount")}
             </Button>
           </Box>
           <Button
@@ -240,7 +261,7 @@ export default function DrawerAppBar(props: Props) {
               width: "55px",
               minWidth: "max-content",
               borderRadius: "50%",
-              display: { xs: "none", sm: "flex"}
+              display: { xs: "none", sm: "flex" },
             }}
           >
             {theme.palette.mode === "light" ? (
@@ -249,11 +270,22 @@ export default function DrawerAppBar(props: Props) {
               <LightModeIcon />
             )}
           </Button>
-          <LocaleSwitcher/>
+          <Box
+            sx={{
+              width: "55px",
+              minWidth: "max-content",
+              borderRadius: "50%",
+              display: { xs: "none", md: "block" },
+            }}
+          >
+            <LocaleSwitcher />
+          </Box>
         </Toolbar>
       </AppBar>
       <nav>
         <Drawer
+          dir={theme.direction}
+          anchor={theme.direction === "ltr" ? "left" : "top"}
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -278,21 +310,3 @@ export default function DrawerAppBar(props: Props) {
     </Box>
   );
 }
-//data & initial values
-const drawerWidth = 240;
-const navItems = [
-  "Home",
-  "Ai Services",
-  "Platforms",
-  "Work with us",
-  "Contact us",
-  "About us",
-];
-const navLinks = [
-  "/",
-  "/ai-services",
-  "/platforms",
-  "/work-with-us",
-  "/contact-us",
-  "/about-us",
-];

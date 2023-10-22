@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next-intl/client";
 import { useTransition } from "react";
 import LanguageIcon from "@mui/icons-material/Language";
 import React from "react";
-import { List, ListItem, Menu, MenuItem, Typography } from "@mui/material";
+import { Box, List, ListItem, Menu, MenuItem, Typography } from "@mui/material";
 import useTheme from "@mui/material/styles/useTheme"
 import { dispatch, getState } from "@/context/store";
 import { setLang } from "@/context/common/commonSlice";
@@ -50,8 +50,7 @@ export default function LocaleSwitcher() {
   };
   
   return (
-    <>
-      <div>
+    <Box display={"flex"} justifyContent={"center"}>
         <List>
           <ListItem
             aria-expanded={open ? "true" : undefined}
@@ -79,7 +78,7 @@ export default function LocaleSwitcher() {
             </MenuItem>
           ))}
         </Menu>
-      </div>
-    </>
+
+    </Box>
   );
 }

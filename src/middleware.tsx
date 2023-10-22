@@ -1,11 +1,12 @@
 import createMiddleware from 'next-intl/middleware';
+import { NextRequest, NextResponse } from 'next/server';
 
 export default createMiddleware({
   locales: ['en','fa'],
   defaultLocale: 'en'
 });
 
+// See "Matching Paths" below to learn more
 export const config = {
-  // Skip all paths that should not be internationalized
   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
-};
+}
