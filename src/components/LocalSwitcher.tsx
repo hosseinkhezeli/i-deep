@@ -7,7 +7,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 import React from "react";
 import { List, ListItem, Menu, MenuItem, Typography } from "@mui/material";
 import useTheme from "@mui/material/styles/useTheme"
-import { dispatch } from "@/context/store";
+import { dispatch, getState } from "@/context/store";
 import { setLang } from "@/context/common/commonSlice";
 
 export default function LocaleSwitcher() {
@@ -35,20 +35,20 @@ export default function LocaleSwitcher() {
     index: number
   ) => {
 
-    const nextLocale = event.currentTarget.ariaValueText?.toLocaleLowerCase();
-    dispatch(setLang(nextLocale))
+    const nextLocale = index===0?"en":index===1?"fa":"ar";
     startTransition(() => {
       router.replace(pathname, { locale: nextLocale });
-    });
-    router.refresh()
+      dispatch(setLang(nextLocale))
+      });
+
     setSelectedIndex(index);
     setAnchorEl(null);
   };
-
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  
   return (
     <>
       <div>

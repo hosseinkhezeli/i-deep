@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "@context/store";
 import { PaletteMode } from "@mui/material";
 
-// import { fa } from "~/lang/fa";
 
 export interface CommonState {
   lang: string | undefined;
@@ -42,7 +41,7 @@ export const CommonSlice = createSlice({
   initialState,
   reducers: {
     setLang: (state, action) => {
-      state.lang = action.payload;
+      state.lang = action.payload||"en";
       state.isRtl = state.rtlLanguages.includes(state.lang || "");
     },
     changeThemeMode: (state) => {
